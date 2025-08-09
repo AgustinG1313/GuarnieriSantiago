@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeModalButton = document.querySelector('.close-button');
     const artworkItems = document.querySelectorAll('.card[data-artwork-id]');
 
-    // --- Datos de las obras (sin cambios) ---
+    // --- Datos de las obras ---
     // Este objeto simula una base de datos para las obras de arte.
     const artworkData = {
         obra1: { title: "Nombre Escultura 1", description: "Breve leyenda de la obra 1.", materials: "Bronce, acero inoxidable.", technique: "Fundición a la cera perdida.", history: "Esta obra fue inspirada por la dualidad del hombre y la naturaleza, buscando capturar la esencia de la forma humana.", images: ["https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+1+Obra+1", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+2+Obra+1", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+3+Obra+1"] },
@@ -33,16 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuHandler = {
         init() {
             if (!hamburger || !mainNav) return;
-
             hamburger.addEventListener('click', () => {
-                // Alterna la clase 'is-active' para mostrar/ocultar el menú
-                mainNav.classList.toggle('is-active');
-                hamburger.classList.toggle('is-active');
-                // Bloquea el scroll del body cuando el menú está abierto
-                document.body.style.overflow = mainNav.classList.contains('is-active') ? 'hidden' : '';
+                const isActive = mainNav.classList.toggle('is-active');
+                hamburger.classList.toggle('is-active', isActive);
+                document.body.style.overflow = isActive ? 'hidden' : '';
             });
-
-            // Cierra el menú al hacer clic en un enlace (para navegación en la misma página)
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     if (mainNav.classList.contains('is-active')) {
@@ -55,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // --- MANEJADOR DE NAVEGACIÓN MODERNA ---
+    // --- MANEJADOR DE NAVEGACIÓN MODERNA (OPTIMIZADO) ---
     const navigationHandler = {
         init() {
             const activeLink = document.querySelector('.nav-link.active');
@@ -73,8 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if(currentActiveLink) this.updateIndicator(currentActiveLink);
                 });
             }
-
-            window.addEventListener('scroll', this.scrollSpy.bind(this), { passive: true });
+            this.initScrollSpy();
         },
         updateIndicator(link) {
             if (!link || !navIndicator) return;
@@ -93,22 +87,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 window.scrollTo({ top: targetPosition, behavior: 'smooth' });
             }
         },
-        scrollSpy() {
-            let currentSectionId = '';
-            const headerHeight = header.offsetHeight + 50;
-            
-            sections.forEach(section => {
-                if (window.scrollY >= section.offsetTop - headerHeight) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
-
-            const activeLink = document.querySelector(`.nav-link[href="#${currentSectionId}"]`);
-            if (activeLink && !activeLink.classList.contains('active')) {
-                navLinks.forEach(link => link.classList.remove('active'));
-                activeLink.classList.add('active');
-                this.updateIndicator(activeLink);
-            }
+        initScrollSpy() {
+            const observerOptions = {
+                rootMargin: `-${header.offsetHeight}px 0px -40% 0px`,
+                threshold: 0
+            };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (entry.isIntersecting && navLink) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        navLink.classList.add('active');
+                        this.updateIndicator(navLink);
+                    }
+                });
+            }, observerOptions);
+            sections.forEach(section => observer.observe(section));
         }
     };
 
@@ -116,19 +111,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalHandler = {
         currentArtworkId: null,
         currentImageIndex: 0,
-        
         init() {
             if (!modal) return;
             artworkItems.forEach(item => {
                 item.addEventListener('click', () => this.open(item.dataset.artworkId));
             });
-
             closeModalButton.addEventListener('click', () => this.close());
             modal.addEventListener('click', (e) => { if (e.target === modal) this.close(); });
-            
             modal.querySelector('#prevModalImage').addEventListener('click', () => this.showPrevImage());
             modal.querySelector('#nextModalImage').addEventListener('click', () => this.showNextImage());
-
             modal.querySelectorAll('.modal-tab-button').forEach(button => {
                 button.addEventListener('click', () => this.switchTab(button));
             });
@@ -136,43 +127,30 @@ document.addEventListener('DOMContentLoaded', function () {
         open(artworkId) {
             const data = artworkData[artworkId];
             if (!data) return;
-
             this.currentArtworkId = artworkId;
             this.currentImageIndex = 0;
-
             modal.querySelector('#modalArtworkTitle').textContent = data.title;
             modal.querySelector('#modalArtworkDescription').textContent = data.description;
             modal.querySelector('#modalArtworkMaterials').textContent = data.materials;
             modal.querySelector('#modalArtworkTechnique').textContent = data.technique;
             modal.querySelector('#modalArtworkHistory').textContent = data.history;
-
             this.generateThumbnails(data.images);
             this.updateMainImage();
-
             modal.classList.add('show');
             document.body.style.overflow = 'hidden';
         },
         close() {
-            const modalContent = modal.querySelector('.modal-content');
-            modal.classList.add('hiding');
-            
-            // Usar 'animationend' para un cierre más robusto que setTimeout
-            modalContent.addEventListener('animationend', () => {
-                modal.classList.remove('show', 'hiding');
-                document.body.style.overflow = '';
-            }, { once: true });
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
         },
         updateMainImage() {
             const data = artworkData[this.currentArtworkId];
             if (!data || !data.images) return;
             modal.querySelector('#modalArtworkMainImage').src = data.images[this.currentImageIndex];
-            
             const thumbnails = modal.querySelectorAll('.modal-thumbnail-gallery img');
             thumbnails.forEach((thumb, index) => {
                 thumb.classList.toggle('active', index === this.currentImageIndex);
             });
-
-            // Ocultar botones de navegación si hay solo una imagen
             const navButtons = modal.querySelectorAll('.modal-nav-button');
             navButtons.forEach(btn => btn.style.display = data.images.length > 1 ? 'block' : 'none');
         },
@@ -207,10 +185,8 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         switchTab(button) {
             const targetId = button.dataset.tab;
-            
             modal.querySelectorAll('.modal-tab-button').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            
             modal.querySelectorAll('.modal-tab-content').forEach(content => {
                 content.classList.toggle('active', content.id === targetId);
             });
@@ -219,81 +195,65 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // --- MANEJADOR DEL CARRUSEL CON DRAG ---
     const carouselHandler = {
-        isDown: false,
-        startX: 0,
-        scrollLeft: 0,
-        
+        isDown: false, startX: 0, scrollLeft: 0,
         init() {
             if (!carousel) return;
-            
-            carousel.addEventListener('mousedown', (e) => {
-                this.isDown = true;
-                carousel.classList.add('active');
-                this.startX = e.pageX - carousel.offsetLeft;
-                this.scrollLeft = carousel.scrollLeft;
-            });
-            carousel.addEventListener('mouseleave', () => {
-                this.isDown = false;
-                carousel.classList.remove('active');
-            });
-            carousel.addEventListener('mouseup', () => {
-                this.isDown = false;
-                carousel.classList.remove('active');
-            });
-            carousel.addEventListener('mousemove', (e) => {
-                if (!this.isDown) return;
-                e.preventDefault();
-                const x = e.pageX - carousel.offsetLeft;
-                const walk = (x - this.startX) * 2; // El multiplicador aumenta la velocidad del scroll
-                carousel.scrollLeft = this.scrollLeft - walk;
-            });
+            carousel.addEventListener('mousedown', (e) => this.start(e));
+            carousel.addEventListener('mouseleave', () => this.end());
+            carousel.addEventListener('mouseup', () => this.end());
+            carousel.addEventListener('mousemove', (e) => this.move(e));
+        },
+        start(e) {
+            this.isDown = true;
+            carousel.classList.add('active');
+            this.startX = e.pageX - carousel.offsetLeft;
+            this.scrollLeft = carousel.scrollLeft;
+        },
+        end() {
+            this.isDown = false;
+            carousel.classList.remove('active');
+        },
+        move(e) {
+            if (!this.isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - this.startX) * 2;
+            carousel.scrollLeft = this.scrollLeft - walk;
         }
     };
 
-    // --- EFECTOS DE SCROLL (Header, botón, animaciones) ---
+    // --- EFECTOS DE SCROLL (OPTIMIZADO) ---
     const scrollEffectsHandler = {
         init() {
-            this.animateSkills();
             window.addEventListener('scroll', () => {
                 const scrollY = window.pageYOffset;
                 header.classList.toggle('scrolled', scrollY > 50);
                 scrollTopButton.classList.toggle('visible', scrollY > 300);
-                this.animateSkills();
             }, { passive: true });
             scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-        },
-        isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (rect.top <= window.innerHeight && rect.bottom >= 0);
-        },
-        animateSkills() {
-            skillItems.forEach(item => {
-                if (this.isInViewport(item) && !item.classList.contains('animated')) {
-                    const level = item.querySelector('.skill-level');
-                    level.style.width = level.style.getPropertyValue('--skill-width');
-                    item.classList.add('animated'); // Evita que la animación se repita
-                }
-            });
+
+            const skillObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const level = entry.target.querySelector('.skill-level');
+                        level.style.width = level.style.getPropertyValue('--skill-width');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            skillItems.forEach(item => skillObserver.observe(item));
         }
     };
 
     // --- INICIALIZACIÓN ---
     function init() {
-        // Mejora del preloader: se oculta completamente después de la transición
         const preloader = document.querySelector('.preloader');
         if (preloader) {
-            preloader.addEventListener('transitionend', () => {
-                preloader.style.display = 'none';
-            }, { once: true });
-            
-            // Forzar un reflow para asegurar que la transición se aplique
-            window.getComputedStyle(preloader).opacity; 
-            
+            preloader.addEventListener('transitionend', () => preloader.style.display = 'none', { once: true });
+            window.getComputedStyle(preloader).opacity;
             preloader.style.opacity = '0';
             preloader.style.visibility = 'hidden';
         }
-        
-        // Inicializar todos los manejadores
         mobileMenuHandler.init();
         navigationHandler.init();
         modalHandler.init();
@@ -301,7 +261,5 @@ document.addEventListener('DOMContentLoaded', function () {
         scrollEffectsHandler.init();
     }
 
-    // Usar 'load' para asegurar que todas las imágenes y recursos estén cargados
-    // antes de ocultar el preloader y ejecutar las animaciones.
     window.addEventListener('load', init);
 });
