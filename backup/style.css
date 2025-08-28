@@ -1,0 +1,895 @@
+/* =================================
+   1. CONFIGURACIÓN GLOBAL Y VARIABLES
+   ================================= */
+
+/* --- FUENTES --- */
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+/* --- KEYFRAMES PARA ANIMACIONES --- */
+/* (Tus keyframes existentes están bien, los mantendremos) */
+ @-webkit-keyframes tracking-in-contract-bck{0%{letter-spacing:1em;-webkit-transform:translateZ(400px);transform:translateZ(400px);opacity:0}40%{opacity:.6}100%{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}}
+ @keyframes tracking-in-contract-bck{0%{letter-spacing:1em;-webkit-transform:translateZ(400px);transform:translateZ(400px);opacity:0}40%{opacity:.6}100%{-webkit-transform:translateZ(0);transform:translateZ(0);opacity:1}}
+
+ @-webkit-keyframes puff-in-center{0%{-webkit-transform:scale(2);transform:scale(2);-webkit-filter:blur(4px);filter:blur(4px);opacity:0}100%{-webkit-transform:scale(1);transform:scale(1);-webkit-filter:blur(0);filter:blur(0);opacity:1}}
+ @keyframes puff-in-center{0%{-webkit-transform:scale(2);transform:scale(2);-webkit-filter:blur(4px);filter:blur(4px);opacity:0}100%{-webkit-transform:scale(1);transform:scale(1);-webkit-filter:blur(0);filter:blur(0);opacity:1}}
+
+ @-webkit-keyframes heartbeat{from{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:center center;transform-origin:center center;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}10%{-webkit-transform:scale(.91);transform:scale(.91);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}17%{-webkit-transform:scale(.98);transform:scale(.98);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}33%{-webkit-transform:scale(.87);transform:scale(.87);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}45%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}
+ @keyframes heartbeat{from{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:center center;transform-origin:center center;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}10%{-webkit-transform:scale(.91);transform:scale(.91);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}17%{-webkit-transform:scale(.98);transform:scale(.98);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}33%{-webkit-transform:scale(.87);transform:scale(.87);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}45%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}
+
+/* AÑADIDO: Animación para fondo de Hero */
+@keyframes subtle-gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* AÑADIDO: Animación para revelado en scroll */
+ @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --- CLASES DE ANIMACIÓN --- */
+.tracking-in-contract-bck{-webkit-animation:tracking-in-contract-bck 1s cubic-bezier(.215,.61,.355,1.000) both;animation:tracking-in-contract-bck 1s cubic-bezier(.215,.61,.355,1.000) both}
+.puff-in-center{-webkit-animation:puff-in-center .7s cubic-bezier(.47,0.000,.745,.715) both;animation:puff-in-center .7s cubic-bezier(.47,0.000,.745,.715) both}
+.heartbeat{-webkit-animation:heartbeat 1.5s ease-in-out infinite both;animation:heartbeat 1.5s ease-in-out infinite both}
+
+
+/* --- VARIABLES CSS (MODIFICADO) --- */
+:root {
+    /* Colores */
+    --primary-bg: #050505; /* Un negro más profundo */
+    --dark-bg: #101010;
+    --card-bg: linear-gradient(145deg, #1e1e1e, #121212);
+    --text-light: #e5e5e5; /* Ligeramente menos blanco */
+    --text-medium: #888888;
+    --accent: #DAA520;
+    --accent-hover: #f0b94b;
+    --border-color: rgba(218, 165, 32, 0.15); /* Más sutil */
+    --glow-color: rgba(218, 165, 32, 0.2); /* AÑADIDO: Para efectos de brillo */
+    
+    /* Fuentes */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    
+    /* Radios */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 50%;
+    
+    /* Sombras (más sutiles) */
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+    
+    /* Transiciones */
+    --transition-fast: 0.2s ease-out;
+    --transition-normal: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-slow: 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- ESTILOS BASE --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--primary-bg); /* MODIFICADO */
+}
+
+body {
+    background-color: var(--primary-bg); /* MODIFICADO */
+    font-family: var(--font-body);
+    color: var(--text-light);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body.modal-is-open,
+body.mobile-menu-open {
+    overflow: hidden !important;
+}
+
+/* AÑADIDO: Estilo para la barra de scroll */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+body::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+body::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 10px;
+    border: 2px solid var(--dark-bg);
+}
+
+.container {
+    max-width: 1280px; /* Aumentado para más espacio */
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 3rem 0; /* Más espaciado vertical */
+}
+
+main section[id],
+footer.section[id] {
+    scroll-margin-top: 100px;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.8rem, 6vw, 4rem);
+    color: var(--text-light);
+    margin-bottom: 4rem;
+    text-align: center;
+    position: relative;
+    font-weight: 700;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -1.2rem;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* AÑADIDO: Clase para animar elementos al hacer scroll */
+.reveal-on-scroll {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+.reveal-on-scroll.is-visible {
+    animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* --- PRELOADER (Sin cambios, ya está bien) --- */
+.preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary-bg); display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s ease; }
+.preloader-inner { width: 50px; height: 50px; border: 4px solid rgba(218, 165, 32, 0.2); border-top-color: var(--accent); border-radius: var(--radius-full); animation: spin 1s linear infinite; }
+ @keyframes spin { to { transform: rotate(360deg); } }
+
+/* =================================
+   2. HEADER Y NAVEGACIÓN MODERNA
+   ================================= */
+.main-header {
+    position: fixed; /* MODIFICADO: para un efecto más profesional */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background 0.4s ease, border-color 0.4s ease, padding 0.4s ease;
+}
+.main-header.scrolled {
+    padding: 1rem 0;
+    background: rgba(5, 5, 5, 0.7);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hamburger {
+    display: none; /* Oculto por defecto en escritorio */
+    position: absolute;
+    top: 1.7rem;
+    right: 2rem;
+    z-index: 1500;
+}
+
+.header-content { display: flex; justify-content: center; align-items: center; }
+
+.main-nav ul {
+    position: relative;
+    display: flex;
+    list-style: none;
+    background: transparent;
+    border: 1px solid var(--border-color); /* MODIFICADO */
+    border-radius: var(--radius-md); /* MODIFICADO */
+    padding: 0.4rem;
+    transition: background var(--transition-normal);
+}
+.main-nav ul:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.main-nav .nav-link {
+    color: var(--text-medium);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--radius-md); /* MODIFICADO */
+    transition: color var(--transition-fast);
+    position: relative;
+    z-index: 2;
+}
+.main-nav .nav-link:hover,
+.main-nav .nav-link.active {
+    color: var(--text-light); /* MODIFICADO */
+}
+
+/* MODIFICADO: Indicador más sutil y elegante */
+.nav-indicator {
+    position: absolute;
+    height: calc(100% - 0.8rem);
+    top: 0.4rem;
+    left: 0;
+    background-color: var(--accent);
+    border-radius: var(--radius-md);
+    z-index: 1;
+    transition: all var(--transition-slow);
+}
+
+/* =================================
+   3. HERO Y CAROUSEL (GRAN CAMBIO)
+   ================================= */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 0; /* El carrusel se posicionará de forma absoluta */
+}
+/* AÑADIDO: Capa de superposición para la imagen de fondo */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 20% 20%, var(--glow-color) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--accent) 0%, transparent 35%);
+    background-size: 300% 300%;
+    opacity: 0.1;
+    z-index: -1;
+    animation: subtle-gradient-move 25s ease infinite;
+}
+
+.hero-content {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 100px;
+}
+.hero-text {
+    text-align: left;
+}
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 1;
+    color: var(--text-light);
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--accent);
+    letter-spacing: 4px; /* Aumentado */
+    text-transform: uppercase; /* AÑADIDO */
+    margin-top: 1rem;
+}
+.hero-image-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-wrapper {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: none; /* La sombra la daremos con un glow */
+    border: none;
+    position: relative;
+    max-width: 350px;
+}
+/* AÑADIDO: Efecto de brillo sutil en la imagen */
+.image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-md);
+    box-shadow: 0 0 60px 10px var(--glow-color);
+    opacity: 0.8;
+    transition: opacity var(--transition-normal);
+}
+body:not(.modal-is-open) .image-wrapper:hover::after {
+    opacity: 1;
+}
+.hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carousel-section {
+    position: relative;
+    width: 100%;
+    padding: 3rem 0;
+    background: linear-gradient(to top, rgba(5,5,5,1) 5%, transparent 50%); /* AÑADIDO: Integración suave */
+}
+.carousel-wrapper {
+    position: relative;
+}
+.carousel-items {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0 2rem; /* Padding inferior añadido */
+    scrollbar-width: none;
+    cursor: grab;
+}
+.carousel-items.active {
+    cursor: grabbing;
+}
+.carousel-items::-webkit-scrollbar { display: none; }
+
+.carousel-item {
+    flex: 0 0 320px; /* Un poco más grande */
+}
+
+/* =================================
+   4. TARJETAS (CARD) - (GRAN CAMBIO)
+   ================================= */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    position: relative;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+/* AÑADIDO: Borde que se ilumina en hover */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 1px;
+    background: linear-gradient(145deg, var(--accent), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+body:not(.modal-is-open) .card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 0 40px var(--glow-color);
+}
+body:not(.modal-is-open) .card:hover::before {
+    opacity: 1;
+}
+.card .image-container {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+body:not(.modal-is-open) .card:hover img {
+    transform: scale(1.08);
+}
+.card-content {
+    padding: 1.5rem;
+}
+.card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+.card p {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+}
+
+/* =================================
+   5. GALERÍA PRINCIPAL
+   ================================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+.gallery-item {
+    /* AÑADIDO: para que la animación de scroll sea escalonada */
+    animation-delay: calc(0.1s * var(--item-index, 1));
+}
+
+/* =================================
+   6. SECCIÓN "QUIÉN SOY" (ABOUT)
+   ================================= */
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+ @media (min-width: 900px) { .about-grid { grid-template-columns: repeat(2, 1fr); } .about-achievements-column { grid-column: 1 / -1; } }
+
+.about-text-column, .about-details-column, .about-achievements-column {
+    padding: 2.5rem; /* Más padding */
+}
+.artist-quote {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--accent);
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--accent);
+    margin: 2rem 0;
+}
+.skills-list { list-style: none; }
+.skill-item { margin-bottom: 1.5rem; }
+.skill-bar { height: 6px; background: rgba(0,0,0,0.5); border-radius: var(--radius-full); overflow: hidden; margin-top: 0.5rem; }
+.skill-level { height: 100%; background: var(--accent); border-radius: var(--radius-full); width: 0; /* Se establece en JS */ transition: width 2s cubic-bezier(0.25, 1, 0.5, 1); } /* Transición más suave */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.achievement-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.achievement-card h4 {
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+}
+
+.achievement-card p {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+}
+
+/* =================================
+   7. FOOTER Y CONTACTO
+   ================================= */
+.single-contact-card { max-width: 800px; margin: 0 auto; padding: 4rem; text-align: center; }
+.single-contact-card h3 { font-family: var(--font-heading); font-size: 2.5rem; }
+.single-contact-card p { color: var(--text-medium); margin: 1rem 0 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; margin-bottom: 2.5rem; }
+.contact-link { display: flex; align-items: center; gap: 0.7rem; color: var(--text-medium); text-decoration: none; transition: color var(--transition-fast); }
+.contact-link:hover { color: var(--accent); }
+.social-links { display: flex; justify-content: center; gap: 1.5rem; }
+.social-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; color: var(--text-medium); background: transparent; border: 1px solid var(--border-color); border-radius: var(--radius-full); transition: all var(--transition-normal); }
+.social-icon:hover { color: var(--primary-bg); background: var(--accent); border-color: var(--accent); transform: scale(1.1) rotate(-10deg); } /* Efecto más dinámico */
+
+/* =================================
+   8. MODAL (VENTANA EMERGENTE) - CORREGIDO
+   ================================= */
+/* El modal por defecto está oculto */
+.modal {
+    display: none; /* Se mantiene oculto por defecto */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 5, 0.85);
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Invisible inicialmente */
+    /* Aplicamos la animación fadeIn directamente */
+    animation: modalFadeOut 0.5s var(--transition-normal) forwards; /* Animación de salida por defecto */
+}
+
+/* Keyframe para la animación de aparición (fadeIn) */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+        display: flex; /* Se muestra al inicio de la animación */
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keyframe para la animación de desaparición (fadeOut) - Opcional pero bueno para consistencia */
+@keyframes modalFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+        display: flex; /* Se mantiene visible durante la animación */
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+        display: none; /* Se oculta al final */
+    }
+}
+
+
+/* Cuando se añade la clase .show, se activa la animación de entrada */
+.modal.show {
+    display: flex; /* Aseguramos display:flex por si acaso */
+    /* Detenemos la animación de salida si estaba corriendo */
+    animation: modalFadeIn 0.5s var(--transition-normal) forwards;
+}
+
+/* La clase is-opening ya no es estrictamente necesaria para la animación,
+   pero la mantenemos para compatibilidad o futuras mejoras si es necesario */
+.modal-content {
+    background: var(--dark-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.6);
+    width: 90vw;
+    max-width: 1400px;
+    max-height: 90vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    /* Eliminamos will-change y la clase .is-opening para simplificar */
+    /* will-change: transform, opacity; */
+}
+
+/* El resto del CSS del modal (botones, imagen, detalles, etc.) permanece igual */
+.close-button {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--text-medium);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    background: var(--accent);
+    color: var(--primary-bg);
+    transform: rotate(90deg) scale(1.1);
+}
+
+.modal-body {
+    display: flex;
+    height: 100%;
+    min-height: 650px;
+}
+
+.modal-image-area {
+    flex: 3;
+    background: var(--primary-bg);
+    position: relative;
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    overflow: hidden;
+}
+
+#modalArtworkMainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Para ver la obra completa */
+}
+
+.modal-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 5;
+    border-radius: var(--radius-full);
+    width: 50px;
+    height: 50px;
+    transition: all var(--transition-fast);
+}
+
+.modal-nav-button:hover {
+    background-color: var(--accent);
+}
+
+.prev-image {
+    left: 1rem;
+}
+
+.next-image {
+    right: 1rem;
+}
+
+.modal-thumbnail-gallery {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    gap: 0.7rem;
+    justify-content: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.modal-thumbnail-gallery img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    opacity: 0.6;
+    border: 2px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.modal-thumbnail-gallery img.active,
+.modal-thumbnail-gallery img:hover {
+    opacity: 1;
+    border-color: var(--accent);
+    transform: scale(1.05);
+}
+
+.modal-details-area {
+    flex: 2;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#modalArtworkTitle {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.modal-description {
+    color: var(--text-medium);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* AÑADIDO: Estilo para el precio */
+.modal-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    display: inline-block;
+}
+
+.modal-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.modal-tab-button {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-medium);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.modal-tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+}
+
+.modal-tab-button.active {
+    color: var(--accent);
+}
+
+.modal-tab-button.active::after {
+    transform: scaleX(1);
+}
+
+.modal-tab-content-wrapper {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-tab-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+}
+
+.modal-tab-content.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-full-details h4 {
+    color: var(--accent);
+    margin-top: 1rem;
+}
+
+
+/* =================================
+   9. OTROS COMPONENTES Y RESPONSIVE
+   ================================= */
+.scroll-top {
+    position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 1200; background: var(--accent);
+    color: var(--primary-bg); border: none; border-radius: 50%; width: 50px; height: 50px;
+    display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);
+    opacity: 0; pointer-events: none; transform: translateY(20px); transition: all var(--transition-normal);
+}
+.scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.scroll-top:hover { transform: scale(1.1); box-shadow: 0 0 20px var(--glow-color); }
+
+
+
+ /* =================================
+   10. RESPONSIVE DESIGN
+   ================================= */
+
+/* --- TABLET (Y DISPOSITIVOS MEDIANOS) --- */
+@media (max-width: 900px) {
+    .header-content {
+        justify-content: flex-end;
+        padding: 0 2rem; /* Añadir padding para que el botón no esté pegado al borde */
+    }
+
+    .main-nav {
+        display: none;
+    }
+    
+    .main-nav.is-active {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--primary-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1400;
+    }
+    .main-nav.is-active ul {
+        flex-direction: column;
+        border: none;
+        background: none;
+        gap: 1.5rem;
+    }
+    .main-nav.is-active .nav-link {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+    }
+    .main-nav.is-active .nav-indicator {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    .hamburger span {
+        width: 2rem;
+        height: 2px;
+        background: var(--text-light);
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        position: relative;
+        transform-origin: 1px;
+    }
+    .hamburger.is-active span:nth-child(1) {
+        transform: rotate(45deg);
+    }
+    .hamburger.is-active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    .hamburger.is-active span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 120px;
+    }
+    .hero-text { text-align: center; }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- MÓVIL (PANTALLAS PEQUEÑAS) --- */
+@media (max-width: 600px) {
+    .section {
+        padding: 2rem 0;
+    }
+    .container {
+        padding: 0 1.5rem;
+    }
+    .section-title {
+        margin-bottom: 3rem;
+    }
+    .hero-title {
+        font-size: clamp(2.5rem, 12vw, 3.5rem);
+    }
+    .hero-subtitle {
+        font-size: clamp(0.9rem, 4vw, 1rem);
+        letter-spacing: 3px;
+    }
+    .modal-body {
+        flex-direction: column;
+        min-height: 0;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+    .modal-details-area {
+        padding: 2rem;
+    }
+    #modalArtworkTitle {
+        font-size: 2rem;
+    }
+}
