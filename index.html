@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santiago Guarneri / Escultor</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23050505'/><text x='50' y='55' font-family='Playfair Display, serif' font-size='50' fill='%23DAA520' text-anchor='middle' dominant-baseline='central'>SG</text></svg>">
 </head>
 
 <body>
@@ -39,9 +40,9 @@
                     <p class="hero-subtitle">Escultor</p>
                 </div>
                 <div class="hero-image-placeholder">
-                    <div class="image-wrapper puff-in-center">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
-                                alt="Foto de Santiago Guarneri" class="hero-image">
+                    <div class="image-wrapper puff-in-center" data-tilt-effect>
+                        <img src="/Fotos/hero.jpg"
+                                alt="Santiago Guarneri" class="hero-image">
                     </div>
                 </div>
             </div>
@@ -79,16 +80,6 @@
                                     <p>Breve leyenda de la obra 3</p>
                                 </div>
                             </div>
-                            <div class="carousel-item card" data-artwork-id="obra4">
-                                <div class="image-container">
-                                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80" 
-                                         alt="Nombre Escultura 4">
-                                </div>
-                                <div class="card-content">
-                                    <h3>Nombre Escultura 4</h3>
-                                    <p>Breve leyenda de la obra 4</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -99,7 +90,7 @@
             <div class="container">
                 <h2 class="section-title">Mi Galería</h2>
                 <div class="gallery-grid">
-                    <div class="gallery-item card" data-artwork-id="obra6">
+                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra6" style="--item-index: 1;">
                         <div class="image-container">
                             <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80" alt="Obra de Arte 1">
                         </div>
@@ -108,7 +99,7 @@
                             <p>Breve introducción de esta escultura.</p>
                         </div>
                     </div>
-                    <div class="gallery-item card" data-artwork-id="obra7">
+                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra7" style="--item-index: 2;">
                         <div class="image-container">
                             <img src="https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80" alt="Obra de Arte 2">
                         </div>
@@ -117,7 +108,7 @@
                             <p>Una pieza que explora el movimiento.</p>
                         </div>
                     </div>
-                    <div class="gallery-item card" data-artwork-id="obra8">
+                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra8" style="--item-index: 3;">
                         <div class="image-container">
                             <img src="https://images.unsplash.com/photo-1578307767673-15a2acd2d45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Obra de Arte 3">
                         </div>
@@ -126,7 +117,7 @@
                             <p>Materiales innovadores y forma orgánica.</p>
                         </div>
                     </div>
-                    <div class="gallery-item card" data-artwork-id="obra9">
+                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra9" style="--item-index: 4;">
                         <div class="image-container">
                             <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80" alt="Obra de Arte 4">
                         </div>
@@ -135,7 +126,7 @@
                             <p>Un viaje a través de la historia.</p>
                         </div>
                     </div>
-                    <div class="gallery-item card" data-artwork-id="obra10">
+                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra10" style="--item-index: 5;">
                         <div class="image-container">
                             <img src="https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80" alt="Obra de Arte 5">
                         </div>
@@ -153,57 +144,84 @@
                 <h2 class="section-title">Quién Soy</h2>
                 <div class="about-grid">
                     <div class="about-text-column card">
-                        <h3>Mi Historia como Artista</h3>
+                        <h3>Mi Filosofía</h3>
                         <blockquote class="artist-quote">
-                            "La escultura es la danza de la materia con el espacio"
+                            "Mi objetivo principal es trascender lo estético, invitando al público a reflexionar sobre la esencia de lo humano a través de una experiencia sensible y significativa."
                         </blockquote>
-                        <p>Aquí irá tu biografía, tu trayectoria, tu filosofía artística y cómo llegaste al mundo de la escultura.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Desde los primeros trazos de arcilla hasta la materialización de esculturas cargadas de expresión y vida, mi camino como escultor ha estado marcado por la búsqueda constante de transmitir la esencia humana. Autodidacta por naturaleza, he desarrollado mi formación artística a través de la observación, el estudio de obras maestras y la experimentación con diferentes técnicas y materiales.</p>
+                        <p>Mi obra escultórica se centra en la representación de la figura humana, destacando su esencia y fragilidad sin llegar al hiperrealismo. A través de bustos y figuras, busco capturar la humanidad y las emociones profundas de cada personaje, utilizando las miradas como un elemento central para generar un diálogo íntimo con el espectador.</p>
                     </div>
                     <div class="about-details-column card">
-                        <h3>Habilidades y Técnicas</h3>
+                        <h3>Formación y Técnicas</h3>
                         <ul class="skills-list">
                             <li class="skill-item">
-                                <span class="skill-name">Escultura en Bronce</span>
-                                <div class="skill-bar"><div class="skill-level" style="--skill-width: 95%"></div></div>
+                                <strong>Formación Académica</strong>
+                                <p>Título de Maestro Mayor de Obras (Escuela de Educación Técnica Gral. Manuel Belgrano) y Abogado (Universidad Nacional del Nordeste).</p>
                             </li>
                             <li class="skill-item">
-                                <span class="skill-name">Modelado en Arcilla</span>
-                                <div class="skill-bar"><div class="skill-level" style="--skill-width: 90%"></div></div>
+                                <strong>Formación Artística</strong>
+                                <p>Autodidacta, incorporando conocimientos a través de la lectura, observación y experimentación en técnicas escultóricas.</p>
                             </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Tallado en Madera</span>
-                                <div class="skill-bar"><div class="skill-level" style="--skill-width: 85%"></div></div>
-                            </li>
-                            <li class="skill-item">
-                                <span class="skill-name">Técnicas Mixtas</span>
-                                <div class="skill-bar"><div class="skill-level" style="--skill-width: 80%"></div></div>
+                             <li class="skill-item">
+                                <strong>Técnica Principal</strong>
+                                <p>Trabajo principalmente en arcilla, transformando la materia prima en un vehículo para explorar la conexión emocional y psicológica de cada figura.</p>
                             </li>
                         </ul>
                     </div>
                     <div class="about-achievements-column card">
                         <h3>Logros y Exposiciones</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h4>2023 - Exposición "Formas del Alma"</h4>
-                                    <p>Participación destacada en la Galería X.</p>
-                                </div>
+                        <div class="achievements-grid">
+                            <div class="achievement-card">
+                                <h4>Exhibición Individual CCN (2025)</h4>
+                                <p>Seleccionado para exhibición en el Centro Cultural del Noreste con una serie de esculturas en arcilla.</p>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h4>2021 - Premio "Joven Escultor"</h4>
-                                    <p>Reconocimiento en el Concurso Nacional Z.</p>
-                                </div>
+                            <div class="achievement-card">
+                                <h4>Taller "Modelado de Manos" (2025)</h4>
+                                <p>Dictado en la Semana de la Cerámica en el Instituto Superior de Bellas Artes (ISPEA).</p>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <h4>2019 - Bienal de Arte</h4>
-                                    <p>Primera participación en la Bienal de Arte de la Ciudad.</p>
-                                </div>
+                            <div class="achievement-card">
+                                <h4>Exposición "Arcilla Viva" (2024)</h4>
+                                <p>Exposición individual en el Museo Provincial de Bellas Artes Dr. Juan R. Vidal de Corrientes.</p>
+                            </div>
+                             <div class="achievement-card">
+                                <h4>Bienal de Esculturas 2022</h4>
+                                <p>Participación en la apertura con la pieza "El Legado", homenaje al escultor Fabriciano Gómez.</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h4>Muestra Colectiva "Clandestina 2022"</h4>
+                                <p>Participación en un evento clave para la comunidad artística local.</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h4>Proyecto Expositivo MBA (2020)</h4>
+                                <p>Seleccionado para el proyecto expositivo del Museo de Bellas Artes.</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h4>Busto del Gral. San Martín</h4>
+                                <p>Creación y emplazamiento del busto en la comunidad Hardy, provincia de Santa Fe.</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h4>Muestra Individual "La"</h4>
+                                <p>Exposición individual de obras destacadas en el Museo de Bellas Artes René Brusau (MUBA).</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h4>Muestra "De la misma tierra"</h4>
+                                <p>Participación en la muestra colectiva en el Museo de Bellas Artes René Brusau (MUBA).</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h4>Encuentro de las Artes</h4>
+                                <p>Evento organizado por el Ministerio de Educación y Cultura del Chaco.</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h4>Intervención Artística</h4>
+                                <p>Jornada de intervención en la Plaza 25 de Mayo de Resistencia.</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h4>Día del Ceramista</h4>
+                                <p>Participación activa en la celebración y eventos asociados.</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h4>Docencia y Difusión</h4>
+                                <p>Dictado de talleres de Modelado de Figura Humana en el ISPEA.</p>
                             </div>
                         </div>
                     </div>
@@ -218,20 +236,17 @@
                 <h3>Contacto y Redes</h3>
                 <p>Si te interesa mi trabajo o quieres proponer una colaboración, no dudes en escribirme.</p>
                 <div class="contact-info">
-                    <a href="mailto:tu.email@ejemplo.com" class="contact-link">
+                    <a href="mailto:guartiago@hotmail.com" class="contact-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <span>tu.email@ejemplo.com</span>
+                        <span>guartiago@hotmail.com</span>
                     </a>
-                    <span class="contact-link">
+                    <a href="tel:+543624686826" class="contact-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        <span>+54 9 11 1234 5678</span>
-                    </span>
+                        <span>(54) 3624-686826</span>
+                    </a>
                 </div>
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook" class="social-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M9.19795 21.5H13.198V13.498H16.8021L17.198 9.50195H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50195H7.19795V13.498H9.19795V21.5Z"/></svg>
-                    </a>
-                    <a href="#" aria-label="Instagram" class="social-icon">
+                    <a href="https://www.instagram.com/santiagoguarnieri/" target="_blank" aria-label="Instagram" class="social-icon">
                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
                 </div>
@@ -256,6 +271,7 @@
                 <div class="modal-details-area">
                     <h3 id="modalArtworkTitle" class="tracking-in-contract-bck">Título de la Obra</h3>
                     <p class="modal-description" id="modalArtworkDescription">Breve leyenda o descripción inicial.</p>
+                    <p class="modal-price" id="modalArtworkPrice"></p>
                     <div class="modal-tabs">
                         <button class="modal-tab-button active" data-tab="modal-tab-story">Historia</button>
                         <button class="modal-tab-button" data-tab="modal-tab-details">Detalles</button>

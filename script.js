@@ -18,15 +18,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Datos de las obras ---
     // Este objeto simula una base de datos para las obras de arte.
     const artworkData = {
-        obra1: { title: "Nombre Escultura 1", description: "Breve leyenda de la obra 1.", materials: "Bronce, acero inoxidable.", technique: "Fundición a la cera perdida.", history: "Esta obra fue inspirada por la dualidad del hombre y la naturaleza, buscando capturar la esencia de la forma humana.", images: ["https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+1+Obra+1", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+2+Obra+1", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+3+Obra+1"] },
-        obra2: { title: "Nombre Escultura 2", description: "Breve leyenda de la obra 2.", materials: "Mármol carrara.", technique: "Tallado clásico.", history: "Una exploración de la forma pura, donde la luz y la sombra juegan un papel fundamental para definir la textura y el volumen.", images: ["https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80", "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80"] },
-        obra3: { title: "Nombre Escultura 3", description: "Breve leyenda de la obra 3.", materials: "Madera de roble.", technique: "Tallado y ensamblaje.", history: "Historia detallada de la inspiración, proceso y significado de la obra 3.", images: ["https://images.unsplash.com/photo-1578307767673-15a2acd2d45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"] },
-        obra4: { title: "Nombre Escultura 4", description: "Breve leyenda de la obra 4.", materials: "Acero corten.", technique: "Soldadura y oxidación controlada.", history: "Historia detallada de la inspiración, proceso y significado de la obra 4.", images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+2+Obra+4"] },
-        obra6: { title: "Título Obra 1 (Galería)", description: "Breve introducción de esta escultura.", materials: "Materiales de la obra 6.", technique: "Técnica de la obra 6.", history: "Historia detallada de la inspiración, proceso y significado de la obra 6.", images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80"] },
-        obra7: { title: "Título Obra 2 (Galería)", description: "Una pieza que explora el movimiento.", materials: "Materiales de la obra 7.", technique: "Técnica de la obra 7.", history: "Historia detallada de la inspiración, proceso y significado de la obra 7.", images: ["https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80"] },
-        obra8: { title: "Título Obra 3 (Galería)", description: "Materiales innovadores y forma orgánica.", materials: "Materiales de la obra 8.", technique: "Técnica de la obra 8.", history: "Historia detallada de la inspiración, proceso y significado de la obra 8.", images: ["https://images.unsplash.com/photo-1578307767673-15a2acd2d45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"] },
-        obra9: { title: "Título Obra 4 (Galería)", description: "Un viaje a través de la historia.", materials: "Materiales de la obra 9.", technique: "Técnica de la obra 9.", history: "Historia detallada de la inspiración, proceso y significado de la obra 9.", images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80"] },
-        obra10: { title: "Título Obra 5 (Galería)", description: "Inspiración en la mitología.", materials: "Materiales de la obra 10.", technique: "Técnica de la obra 10.", history: "Historia detallada de la inspiración, proceso y significado de la obra 10.", images: ["https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80"] }
+        obra1: { title: "Nombre Escultura 1", description: "Breve leyenda de la obra 1.", materials: "Bronce, acero inoxidable.", technique: "Fundición a la cera perdida.", history: "Esta obra fue inspirada por la dualidad del hombre y la naturaleza, buscando capturar la esencia de la forma humana.", price: "Consultar", images: ["https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+1+Obra+1", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+2+Obra+1", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+3+Obra+1"] },
+        obra2: { title: "Nombre Escultura 2", description: "Breve leyenda de la obra 2.", materials: "Mármol carrara.", technique: "Tallado clásico.", history: "Una exploración de la forma pura, donde la luz y la sombra juegan un papel fundamental para definir la textura y el volumen.", price: "$ 1,500 USD", images: ["https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80", "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80"] },
+        obra3: { title: "Nombre Escultura 3", description: "Breve leyenda de la obra 3.", materials: "Madera de roble.", technique: "Tallado y ensamblaje.", history: "Historia detallada de la inspiración, proceso y significado de la obra 3.", price: "Consultar", images: ["https://images.unsplash.com/photo-1578307767673-15a2acd2d45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"] },
+        obra4: { title: "Nombre Escultura 4", description: "Breve leyenda de la obra 4.", materials: "Acero corten.", technique: "Soldadura y oxidación controlada.", history: "Historia detallada de la inspiración, proceso y significado de la obra 4.", price: "Consultar", images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+2+Obra+4"] },
+        obra6: { title: "Título Obra 1 (Galería)", description: "Breve introducción de esta escultura.", materials: "Materiales de la obra 6.", technique: "Técnica de la obra 6.", history: "Historia detallada de la inspiración, proceso y significado de la obra 6.", price: "Consultar", images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80"] },
+        obra7: { title: "Título Obra 2 (Galería)", description: "Una pieza que explora el movimiento.", materials: "Materiales de la obra 7.", technique: "Técnica de la obra 7.", history: "Historia detallada de la inspiración, proceso y significado de la obra 7.", price: "Consultar", images: ["https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80"] },
+        obra8: { title: "Título Obra 3 (Galería)", description: "Materiales innovadores y forma orgánica.", materials: "Materiales de la obra 8.", technique: "Técnica de la obra 8.", history: "Historia detallada de la inspiración, proceso y significado de la obra 8.", price: "Consultar", images: ["https://images.unsplash.com/photo-1578307767673-15a2acd2d45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"] },
+        obra9: { title: "Título Obra 4 (Galería)", description: "Un viaje a través de la historia.", materials: "Materiales de la obra 9.", technique: "Técnica de la obra 9.", history: "Historia detallada de la inspiración, proceso y significado de la obra 9.", price: "Consultar", images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80"] },
+        obra10: { title: "Título Obra 5 (Galería)", description: "Inspiración en la mitología.", materials: "Materiales de la obra 10.", technique: "Técnica de la obra 10.", history: "Historia detallada de la inspiración, proceso y significado de la obra 10.", price: "Consultar", images: ["https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80"] }
     };
 
     // --- MANEJADOR DEL MENÚ MÓVIL (HAMBURGUESA) ---
@@ -115,6 +115,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!modal) return;
             artworkItems.forEach(item => {
                 item.addEventListener('click', () => this.open(item.dataset.artworkId));
+                // Preload image on hover for faster modal opening
+                item.addEventListener('mouseenter', () => {
+                    const data = artworkData[item.dataset.artworkId];
+                    if (data && data.images && data.images.length > 0) {
+                        this.preloadImage(data.images[0]);
+                    }
+                });
             });
             closeModalButton.addEventListener('click', () => this.close());
             modal.addEventListener('click', (e) => { if (e.target === modal) this.close(); });
@@ -124,6 +131,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 button.addEventListener('click', () => this.switchTab(button));
             });
         },
+        preloadImage(url) {
+            const img = new Image();
+            img.src = url;
+        },
         open(artworkId) {
             const data = artworkData[artworkId];
             if (!data) return;
@@ -131,6 +142,16 @@ document.addEventListener('DOMContentLoaded', function () {
             this.currentImageIndex = 0;
             modal.querySelector('#modalArtworkTitle').textContent = data.title;
             modal.querySelector('#modalArtworkDescription').textContent = data.description;
+
+            // AÑADIR ESTA SECCIÓN PARA EL PRECIO
+            const priceEl = modal.querySelector('#modalArtworkPrice');
+            if (data.price) {
+                priceEl.textContent = data.price;
+                priceEl.style.display = 'inline-block';
+            } else {
+                priceEl.style.display = 'none';
+            }
+
             modal.querySelector('#modalArtworkMaterials').textContent = data.materials;
             modal.querySelector('#modalArtworkTechnique').textContent = data.technique;
             modal.querySelector('#modalArtworkHistory').textContent = data.history;
@@ -245,6 +266,63 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
+    // AÑADIR TODO ESTE NUEVO OBJETO
+    // --- MANEJADOR DE REVELADO EN SCROLL ---
+    const revealOnScrollHandler = {
+        init() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            if (revealElements.length === 0) return;
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px 0px -10% 0px' // Activa la animación un poco antes de que llegue al borde
+            });
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+        }
+    };
+
+    // --- MANEJADOR DE EFECTOS PREMIUM ---
+    const premiumEffectsHandler = {
+        init() {
+            this.initTiltEffect();
+        },
+        initTiltEffect() {
+            const tiltElement = document.querySelector('[data-tilt-effect]');
+            if (!tiltElement) return;
+
+            const maxTilt = 10; // Max tilt in degrees
+
+            tiltElement.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = tiltElement.getBoundingClientRect();
+                const x = e.clientX - left;
+                const y = e.clientY - top;
+
+                const centerX = width / 2;
+                const centerY = height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -maxTilt;
+                const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+                tiltElement.style.transition = 'transform 0.1s ease-out';
+                tiltElement.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+
+            tiltElement.addEventListener('mouseleave', () => {
+                tiltElement.style.transition = 'transform 0.5s ease-in-out';
+                tiltElement.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        }
+    };
+
     // --- INICIALIZACIÓN ---
     function init() {
         const preloader = document.querySelector('.preloader');
@@ -259,6 +337,8 @@ document.addEventListener('DOMContentLoaded', function () {
         modalHandler.init();
         carouselHandler.init();
         scrollEffectsHandler.init();
+        revealOnScrollHandler.init();
+        premiumEffectsHandler.init();
     }
 
     window.addEventListener('load', init);
