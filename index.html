@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santiago Guarneri / Escultor</title>
+    <meta name="description" content="Portfolio del escultor Santiago Guarneri, especializado en la figura humana realista y expresiva. Descubre sus obras, filosofía y trayectoria artística.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:title" content="Santiago Guarneri / Escultor">
+    <meta property="og:description" content="Portfolio del escultor Santiago Guarneri, especializado en la figura humana realista y expresiva.">
+    <meta property="og:image" content="Fotos/hero.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://example.com">
+    <meta property="twitter:title" content="Santiago Guarneri / Escultor">
+    <meta property="twitter:description" content="Portfolio del escultor Santiago Guarneri, especializado en la figura humana realista y expresiva.">
+    <meta property="twitter:image" content="Fotos/hero.jpg">
+
+    <!-- Preload -->
+    <link rel="preload" href="Fotos/hero.jpg" as="image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23050505'/><text x='50' y='55' font-family='Playfair Display, serif' font-size='50' fill='%23DAA520' text-anchor='middle' dominant-baseline='central'>SG</text></svg>">
 </head>
@@ -41,8 +63,8 @@
                 </div>
                 <div class="hero-image-placeholder">
                     <div class="image-wrapper puff-in-center" data-tilt-effect>
-                        <img src="/Fotos/hero.jpg"
-                                alt="Santiago Guarneri" class="hero-image">
+            <img src="Fotos/hero.jpg"
+                alt="Santiago Guarneri" class="hero-image">
                     </div>
                 </div>
             </div>
@@ -51,35 +73,7 @@
                 <div class="container">
                     <div class="carousel-wrapper">
                         <div class="carousel-items">
-                            <div class="carousel-item card" data-artwork-id="obra1">
-                                <div class="image-container">
-                                    <img src="https://placehold.co/250x200/1a1a1a/DAA520?text=Escultura+1" alt="Nombre Escultura 1">
-                                </div>
-                                <div class="card-content">
-                                    <h3>Nombre Escultura 1</h3>
-                                    <p>Breve leyenda de la obra 1</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item card" data-artwork-id="obra2">
-                                <div class="image-container">
-                                    <img src="https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80" 
-                                         alt="Nombre Escultura 2">
-                                </div>
-                                <div class="card-content">
-                                    <h3>Nombre Escultura 2</h3>
-                                    <p>Breve leyenda de la obra 2</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item card" data-artwork-id="obra3">
-                                <div class="image-container">
-                                    <img src="https://images.unsplash.com/photo-1578307767673-15a2acd2d45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                                         alt="Nombre Escultura 3">
-                                </div>
-                                <div class="card-content">
-                                    <h3>Nombre Escultura 3</h3>
-                                    <p>Breve leyenda de la obra 3</p>
-                                </div>
-                            </div>
+                            <!-- Las obras del carrusel se cargarán aquí dinámicamente -->
                         </div>
                     </div>
                 </div>
@@ -90,51 +84,7 @@
             <div class="container">
                 <h2 class="section-title">Mi Galería</h2>
                 <div class="gallery-grid">
-                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra6" style="--item-index: 1;">
-                        <div class="image-container">
-                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80" alt="Obra de Arte 1">
-                        </div>
-                        <div class="card-content">
-                            <h3>Título Obra 1</h3>
-                            <p>Breve introducción de esta escultura.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra7" style="--item-index: 2;">
-                        <div class="image-container">
-                            <img src="https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80" alt="Obra de Arte 2">
-                        </div>
-                        <div class="card-content">
-                            <h3>Título Obra 2</h3>
-                            <p>Una pieza que explora el movimiento.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra8" style="--item-index: 3;">
-                        <div class="image-container">
-                            <img src="https://images.unsplash.com/photo-1578307767673-15a2acd2d45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Obra de Arte 3">
-                        </div>
-                        <div class="card-content">
-                            <h3>Título Obra 3</h3>
-                            <p>Materiales innovadores y forma orgánica.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra9" style="--item-index: 4;">
-                        <div class="image-container">
-                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80" alt="Obra de Arte 4">
-                        </div>
-                        <div class="card-content">
-                            <h3>Título Obra 4</h3>
-                            <p>Un viaje a través de la historia.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item card reveal-on-scroll" data-artwork-id="obra10" style="--item-index: 5;">
-                        <div class="image-container">
-                            <img src="https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80" alt="Obra de Arte 5">
-                        </div>
-                        <div class="card-content">
-                            <h3>Título Obra 5</h3>
-                            <p>Inspiración en la mitología.</p>
-                        </div>
-                    </div>
+                    <!-- Las obras de la galería se cargarán aquí dinámicamente -->
                 </div>
             </div>
         </section>
@@ -146,7 +96,8 @@
                     <div class="about-text-column card">
                         <h3>Mi Filosofía</h3>
                         <blockquote class="artist-quote">
-                            "Mi objetivo principal es trascender lo estético, invitando al público a reflexionar sobre la esencia de lo humano a través de una experiencia sensible y significativa."
+                            &#8220;Mi objetivo principal es trascender lo estético, invitando al público a reflexionar sobre la esencia de lo humano a través de una experiencia sensible y significativa.&#8221;
+                            <cite class="artist-quote-author">— Santiago Guarneri</cite>
                         </blockquote>
                         <p>Desde los primeros trazos de arcilla hasta la materialización de esculturas cargadas de expresión y vida, mi camino como escultor ha estado marcado por la búsqueda constante de transmitir la esencia humana. Autodidacta por naturaleza, he desarrollado mi formación artística a través de la observación, el estudio de obras maestras y la experimentación con diferentes técnicas y materiales.</p>
                         <p>Mi obra escultórica se centra en la representación de la figura humana, destacando su esencia y fragilidad sin llegar al hiperrealismo. A través de bustos y figuras, busco capturar la humanidad y las emociones profundas de cada personaje, utilizando las miradas como un elemento central para generar un diálogo íntimo con el espectador.</p>
@@ -246,9 +197,13 @@
                     </a>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/santiagoguarnieri/" target="_blank" aria-label="Instagram" class="social-icon">
+                    <a href="https://www.instagram.com/santiagoguarnieri/" target="_blank" aria-label="Instagram" class="contact-link">
                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    </a>
+                         <span>@santiagoguarnieri</span>
+                        </a>
+                </div>
+                <div class="validation-area">
+                    <button id="validate-button">Validar Datos</button>
                 </div>
             </div>
         </div>
@@ -260,9 +215,11 @@
 
     <div id="artworkModal" class="modal">
         <div class="modal-content">
+            <script id="artwork-schema" type="application/ld+json"></script>
             <button class="close-button">&times;</button>
             <div class="modal-body">
                 <div class="modal-image-area">
+                    <div class="modal-image-loader"></div>
                     <img src="" alt="Obra de Arte en detalle" id="modalArtworkMainImage">
                     <button class="modal-nav-button prev-image" id="prevModalImage">&#10094;</button>
                     <button class="modal-nav-button next-image" id="nextModalImage">&#10095;</button>
@@ -270,7 +227,10 @@
                 </div>
                 <div class="modal-details-area">
                     <h3 id="modalArtworkTitle" class="tracking-in-contract-bck">Título de la Obra</h3>
-                    <p class="modal-description" id="modalArtworkDescription">Breve leyenda o descripción inicial.</p>
+                    
+                                        <div class="modal-description-wrapper">
+                        <p class="modal-description" id="modalArtworkDescription">Breve leyenda o descripción inicial.</p>
+                    </div>
                     <p class="modal-price" id="modalArtworkPrice"></p>
                     <div class="modal-tabs">
                         <button class="modal-tab-button active" data-tab="modal-tab-story">Historia</button>
@@ -296,6 +256,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <script src="validate.js" defer></script>
 </body>
 </html>

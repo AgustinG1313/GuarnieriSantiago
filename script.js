@@ -9,25 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.querySelector('.hamburger');
     const mainNav = document.querySelector('.main-nav');
     const carousel = document.querySelector('.carousel-items');
-
-    // Modal
     const modal = document.getElementById('artworkModal');
     const closeModalButton = document.querySelector('.close-button');
-    const artworkItems = document.querySelectorAll('.card[data-artwork-id]');
 
-    // --- Datos de las obras ---
-    // Este objeto simula una base de datos para las obras de arte.
-    const artworkData = {
-        obra1: { title: "Nombre Escultura 1", description: "Breve leyenda de la obra 1.", materials: "Bronce, acero inoxidable.", technique: "Fundición a la cera perdida.", history: "Esta obra fue inspirada por la dualidad del hombre y la naturaleza, buscando capturar la esencia de la forma humana.", price: "Consultar", images: ["https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+1+Obra+1", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+2+Obra+1", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+3+Obra+1"] },
-        obra2: { title: "Nombre Escultura 2", description: "Breve leyenda de la obra 2.", materials: "Mármol carrara.", technique: "Tallado clásico.", history: "Una exploración de la forma pura, donde la luz y la sombra juegan un papel fundamental para definir la textura y el volumen.", price: "$ 1,500 USD", images: ["https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80", "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80"] },
-        obra3: { title: "Nombre Escultura 3", description: "Breve leyenda de la obra 3.", materials: "Madera de roble.", technique: "Tallado y ensamblaje.", history: "Historia detallada de la inspiración, proceso y significado de la obra 3.", price: "Consultar", images: ["https://images.unsplash.com/photo-1578307767673-15a2acd2d45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"] },
-        obra4: { title: "Nombre Escultura 4", description: "Breve leyenda de la obra 4.", materials: "Acero corten.", technique: "Soldadura y oxidación controlada.", history: "Historia detallada de la inspiración, proceso y significado de la obra 4.", price: "Consultar", images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80", "https://placehold.co/800x600/1a1a1a/DAA520?text=Vista+2+Obra+4"] },
-        obra6: { title: "Título Obra 1 (Galería)", description: "Breve introducción de esta escultura.", materials: "Materiales de la obra 6.", technique: "Técnica de la obra 6.", history: "Historia detallada de la inspiración, proceso y significado de la obra 6.", price: "Consultar", images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80"] },
-        obra7: { title: "Título Obra 2 (Galería)", description: "Una pieza que explora el movimiento.", materials: "Materiales de la obra 7.", technique: "Técnica de la obra 7.", history: "Historia detallada de la inspiración, proceso y significado de la obra 7.", price: "Consultar", images: ["https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80"] },
-        obra8: { title: "Título Obra 3 (Galería)", description: "Materiales innovadores y forma orgánica.", materials: "Materiales de la obra 8.", technique: "Técnica de la obra 8.", history: "Historia detallada de la inspiración, proceso y significado de la obra 8.", price: "Consultar", images: ["https://images.unsplash.com/photo-1578307767673-15a2acd2d45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"] },
-        obra9: { title: "Título Obra 4 (Galería)", description: "Un viaje a través de la historia.", materials: "Materiales de la obra 9.", technique: "Técnica de la obra 9.", history: "Historia detallada de la inspiración, proceso y significado de la obra 9.", price: "Consultar", images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1945&q=80"] },
-        obra10: { title: "Título Obra 5 (Galería)", description: "Inspiración en la mitología.", materials: "Materiales de la obra 10.", technique: "Técnica de la obra 10.", history: "Historia detallada de la inspiración, proceso y significado de la obra 10.", price: "Consultar", images: ["https://images.unsplash.com/photo-1598214880891-90f7e3e1f3eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80"] }
-    };
+    let artworkData = {};
+    const originalTitle = document.title;
+    let lastFocusedElement;
 
     // --- MANEJADOR DEL MENÚ MÓVIL (HAMBURGUESA) ---
     const mobileMenuHandler = {
@@ -37,14 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 const isActive = mainNav.classList.toggle('is-active');
                 hamburger.classList.toggle('is-active', isActive);
                 document.body.style.overflow = isActive ? 'hidden' : '';
-            });
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mainNav.classList.contains('is-active')) {
-                        mainNav.classList.remove('is-active');
-                        hamburger.classList.remove('is-active');
-                        document.body.style.overflow = '';
-                    }
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('is-active')) {
+                            mainNav.classList.remove('is-active');
+                            hamburger.classList.remove('is-active');
+                            document.body.style.overflow = '';
+                        }
+                    });
                 });
             });
         }
@@ -113,22 +100,35 @@ document.addEventListener('DOMContentLoaded', function () {
         currentImageIndex: 0,
         init() {
             if (!modal) return;
+            closeModalButton.addEventListener('click', () => this.close());
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) this.close();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (modal.classList.contains('show')) {
+                    if (e.key === 'Escape') this.close();
+                    if (e.key === 'ArrowLeft') this.showPrevImage();
+                    if (e.key === 'ArrowRight') this.showNextImage();
+                }
+            });
+            modal.querySelector('#prevModalImage').addEventListener('click', () => this.showPrevImage());
+            modal.querySelector('#nextModalImage').addEventListener('click', () => this.showNextImage());
+            modal.querySelectorAll('.modal-tab-button').forEach(button => {
+                button.addEventListener('click', () => this.switchTab(button));
+            });
+        },
+        initArtworkListeners() {
+            const artworkItems = document.querySelectorAll('.card[data-artwork-id]');
             artworkItems.forEach(item => {
+                if (item.dataset.listenerAttached) return;
                 item.addEventListener('click', () => this.open(item.dataset.artworkId));
-                // Preload image on hover for faster modal opening
                 item.addEventListener('mouseenter', () => {
                     const data = artworkData[item.dataset.artworkId];
                     if (data && data.images && data.images.length > 0) {
                         this.preloadImage(data.images[0]);
                     }
                 });
-            });
-            closeModalButton.addEventListener('click', () => this.close());
-            modal.addEventListener('click', (e) => { if (e.target === modal) this.close(); });
-            modal.querySelector('#prevModalImage').addEventListener('click', () => this.showPrevImage());
-            modal.querySelector('#nextModalImage').addEventListener('click', () => this.showNextImage());
-            modal.querySelectorAll('.modal-tab-button').forEach(button => {
-                button.addEventListener('click', () => this.switchTab(button));
+                item.dataset.listenerAttached = true;
             });
         },
         preloadImage(url) {
@@ -140,10 +140,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!data) return;
             this.currentArtworkId = artworkId;
             this.currentImageIndex = 0;
-            modal.querySelector('#modalArtworkTitle').textContent = data.title;
-            modal.querySelector('#modalArtworkDescription').textContent = data.description;
 
-            // AÑADIR ESTA SECCIÓN PARA EL PRECIO
+            lastFocusedElement = document.activeElement;
+            window.location.hash = artworkId;
+
+            modal.querySelector('#modalArtworkTitle').textContent = data.title;
+            document.title = `${data.title} | Santiago Guarneri`;
+            modal.querySelector('#modalArtworkDescription').textContent = data.description;
             const priceEl = modal.querySelector('#modalArtworkPrice');
             if (data.price) {
                 priceEl.textContent = data.price;
@@ -151,23 +154,46 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 priceEl.style.display = 'none';
             }
-
             modal.querySelector('#modalArtworkMaterials').textContent = data.materials;
             modal.querySelector('#modalArtworkTechnique').textContent = data.technique;
             modal.querySelector('#modalArtworkHistory').textContent = data.history;
             this.generateThumbnails(data.images);
             this.updateMainImage();
+            this.updateSchema(data);
+
             modal.classList.add('show');
             document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-is-open');
+            closeModalButton.focus();
         },
         close() {
             modal.classList.remove('show');
-            document.body.style.overflow = '';
+            document.title = originalTitle;
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+            const schemaScript = document.getElementById('artwork-schema');
+            schemaScript.textContent = '';
+            setTimeout(() => {
+                document.body.style.overflow = '';
+                document.body.classList.remove('modal-is-open');
+                if (lastFocusedElement) lastFocusedElement.focus();
+            }, 500);
         },
         updateMainImage() {
             const data = artworkData[this.currentArtworkId];
             if (!data || !data.images) return;
-            modal.querySelector('#modalArtworkMainImage').src = data.images[this.currentImageIndex];
+            const mainImage = modal.querySelector('#modalArtworkMainImage');
+            const imageArea = modal.querySelector('.modal-image-area');
+            
+            imageArea.classList.add('loading');
+            mainImage.style.opacity = '0.5';
+
+            mainImage.onload = () => {
+                imageArea.classList.remove('loading');
+                mainImage.style.opacity = '1';
+            };
+
+            mainImage.src = data.images[this.currentImageIndex];
+            mainImage.alt = `${data.title} - Vista ${this.currentImageIndex + 1}`;
             const thumbnails = modal.querySelectorAll('.modal-thumbnail-gallery img');
             thumbnails.forEach((thumb, index) => {
                 thumb.classList.toggle('active', index === this.currentImageIndex);
@@ -196,11 +222,13 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         showNextImage() {
             const images = artworkData[this.currentArtworkId].images;
+            if (images.length <= 1) return;
             this.currentImageIndex = (this.currentImageIndex + 1) % images.length;
             this.updateMainImage();
         },
         showPrevImage() {
             const images = artworkData[this.currentArtworkId].images;
+            if (images.length <= 1) return;
             this.currentImageIndex = (this.currentImageIndex - 1 + images.length) % images.length;
             this.updateMainImage();
         },
@@ -211,6 +239,87 @@ document.addEventListener('DOMContentLoaded', function () {
             modal.querySelectorAll('.modal-tab-content').forEach(content => {
                 content.classList.toggle('active', content.id === targetId);
             });
+        },
+        handleDeepLink() {
+            const artworkId = window.location.hash.substring(1);
+            if (artworkId && artworkData[artworkId]) {
+                this.open(artworkId);
+            }
+        },
+        updateSchema(data) {
+            const schemaScript = document.getElementById('artwork-schema');
+            const schema = {
+                "@context": "https://schema.org",
+                "@type": "VisualArtwork",
+                "name": data.title,
+                "artist": {
+                    "@type": "Person",
+                    "name": "Santiago Guarneri"
+                },
+                "description": data.description,
+                "image": new URL(data.images[0], window.location.href).href,
+                "material": data.materials,
+                "artform": data.technique
+            };
+            schemaScript.textContent = JSON.stringify(schema);
+        }
+    };
+
+    // --- MANEJADOR DE GALERÍA DINÁMICA (OPTIMIZADO) ---
+    const dynamicGalleryHandler = {
+        createArtworkCard(id, data) {
+            const imageUrl = data.images.find(img => img.includes('portada')) || data.images[0];
+            const card = document.createElement('div');
+            card.className = 'card gallery-item reveal-on-scroll';
+            card.dataset.artworkId = id;
+
+            card.innerHTML = `
+                <div class="image-container">
+                    <img src="${imageUrl}" alt="${data.title}" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3>${data.title}</h3>
+                </div>
+            `;
+            return card;
+        },
+
+        populate() {
+            const galleryContainer = document.querySelector('.gallery-grid');
+            const carouselContainer = document.querySelector('.carousel-items');
+
+            if (!galleryContainer || !carouselContainer) return;
+
+            galleryContainer.innerHTML = '';
+            carouselContainer.innerHTML = '';
+            
+            const galleryFragment = document.createDocumentFragment();
+            const carouselFragment = document.createDocumentFragment();
+
+            const artworkIds = Object.keys(artworkData);
+
+            // Populate Main Gallery
+            artworkIds.forEach((id, index) => {
+                const card = this.createArtworkCard(id, artworkData[id]);
+                card.style.setProperty('--item-index', index + 1);
+                galleryFragment.appendChild(card);
+            });
+
+            // Populate Carousel with featured artworks
+            artworkIds.forEach(id => {
+                const artwork = artworkData[id];
+                if (artwork.featured) {
+                    const card = this.createArtworkCard(id, artwork);
+                    card.classList.add('carousel-item');
+                    carouselFragment.appendChild(card);
+                }
+            });
+            
+            galleryContainer.appendChild(galleryFragment);
+            carouselContainer.appendChild(carouselFragment);
+
+            if (typeof modalHandler !== 'undefined') modalHandler.initArtworkListeners();
+            if (typeof revealOnScrollHandler !== 'undefined') revealOnScrollHandler.init();
         }
     };
     
@@ -257,8 +366,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const level = entry.target.querySelector('.skill-level');
-                        level.style.width = level.style.getPropertyValue('--skill-width');
-                        observer.unobserve(entry.target);
+                        if (level) {
+                            level.style.width = level.style.getPropertyValue('--skill-width');
+                            observer.unobserve(entry.target);
+                        }
                     }
                 });
             }, { threshold: 0.5 });
@@ -266,7 +377,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // AÑADIR TODO ESTE NUEVO OBJETO
     // --- MANEJADOR DE REVELADO EN SCROLL ---
     const revealOnScrollHandler = {
         init() {
@@ -281,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
             }, {
-                rootMargin: '0px 0px -10% 0px' // Activa la animación un poco antes de que llegue al borde
+                rootMargin: '0px 0px -10% 0px'
             });
 
             revealElements.forEach(el => {
@@ -299,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const tiltElement = document.querySelector('[data-tilt-effect]');
             if (!tiltElement) return;
 
-            const maxTilt = 10; // Max tilt in degrees
+            const maxTilt = 10;
 
             tiltElement.addEventListener('mousemove', (e) => {
                 const { left, top, width, height } = tiltElement.getBoundingClientRect();
@@ -324,22 +434,35 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // --- INICIALIZACIÓN ---
-    function init() {
+    async function init() {
         const preloader = document.querySelector('.preloader');
+        
+        try {
+            const response = await fetch('artworks.json');
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            artworkData = await response.json();
+        } catch (error) {
+            console.error("Could not load artwork data:", error);
+            // Opcional: Mostrar un mensaje de error al usuario en la página
+        }
+
         if (preloader) {
             preloader.addEventListener('transitionend', () => preloader.style.display = 'none', { once: true });
             window.getComputedStyle(preloader).opacity;
             preloader.style.opacity = '0';
             preloader.style.visibility = 'hidden';
         }
+        
+        // Inicializar todos los módulos que dependen de los datos o del DOM
+        dynamicGalleryHandler.populate();
         mobileMenuHandler.init();
         navigationHandler.init();
-        modalHandler.init();
         carouselHandler.init();
         scrollEffectsHandler.init();
-        revealOnScrollHandler.init();
         premiumEffectsHandler.init();
+        modalHandler.init();
+        modalHandler.handleDeepLink();
     }
 
-    window.addEventListener('load', init);
+    init();
 });
