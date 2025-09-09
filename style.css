@@ -1266,6 +1266,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     .hero-title { font-size: clamp(2.5rem, 12vw, 3.5rem); }
     .hero-subtitle { font-size: clamp(0.9rem, 4vw, 1rem); letter-spacing: 3px; }
     .modal-body { display: block; overflow-y: auto; max-height: 85vh; }
+    .modal-header { padding: 1.5rem 4.5rem; }
     .modal-details-area { padding: 2rem; }
     #modalArtworkTitle { font-size: 2rem; }
     .gallery-grid { column-count: 1; } /* Masonry para móvil */
@@ -1353,7 +1354,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     }
 
     .modal-header {
-        padding: 1.5rem;
+        padding: 1.5rem 4.5rem;
     }
 
     .modal-details-area {
