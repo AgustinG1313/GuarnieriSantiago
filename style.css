@@ -92,7 +92,6 @@ body {
     font-family: var(--font-body);
     color: var(--text-light);
     line-height: 1.7;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     opacity: 0;
@@ -378,17 +377,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 .card:hover {
-    transform: translateY(-8px);
     border-color: rgba(218, 165, 32, 0.2);
-}
-body:not(.modal-is-open) .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 40px var(--glow-color), 0 0 20px gold;
-}
-
-body:not(.modal-is-open) .card:hover::before {
-    opacity: 1;
-    background: linear-gradient(145deg, gold, transparent);
 }
 
 .card .image-container {
@@ -401,8 +390,24 @@ body:not(.modal-is-open) .card:hover::before {
     object-fit: cover;
     transition: transform 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940);
 }
-body:not(.modal-is-open) .card:hover img {
-    transform: scale(1.05);
+
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-8px);
+    }
+    body:not(.modal-is-open) .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 40px var(--glow-color), 0 0 20px gold;
+    }
+
+    body:not(.modal-is-open) .card:hover::before {
+        opacity: 1;
+        background: linear-gradient(145deg, gold, transparent);
+    }
+
+    body:not(.modal-is-open) .card:hover img {
+        transform: scale(1.05);
+    }
 }
 
 .card-content { padding: 1.5rem; }
@@ -509,9 +514,15 @@ body:not(.modal-is-open) .card:hover img {
 
 .achievement-card:hover,
 .detail-card:hover {
-    transform: translateY(-8px);
     border-color: var(--accent);
-    box-shadow: 0 0 30px var(--glow-color);
+}
+
+@media (hover: hover) {
+    .achievement-card:hover,
+    .detail-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 30px var(--glow-color);
+    }
 }
 
 .achievement-card h4,
@@ -578,7 +589,6 @@ body:not(.modal-is-open) .card:hover img {
 .flip-back-button:hover {
     background: var(--accent);
     color: var(--primary-bg);
-    transform: rotate(-180deg);
 }
 
 .contact-front::-webkit-scrollbar,
@@ -695,16 +705,10 @@ body:not(.modal-is-open) .card:hover img {
 
 .reveal-button:hover {
     background: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
 }
 
 .reveal-button .button-icon {
     transition: transform 0.3s ease;
-}
-
-.reveal-button:hover .button-icon {
-    transform: translateX(5px);
 }
 
 .contact-methods {
@@ -739,9 +743,7 @@ body:not(.modal-is-open) .card:hover img {
 }
 
 .feature:hover {
-    transform: translateY(-5px);
     border-color: var(--accent);
-    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.1);
 }
 
 .feature svg {
@@ -796,8 +798,27 @@ body:not(.modal-is-open) .card:hover img {
 .contact-method:hover {
     background: rgba(218, 165, 32, 0.05);
     border-color: var(--accent);
-    transform: translateX(10px);
-    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.1);
+}
+
+@media (hover: hover) {
+    .flip-back-button:hover {
+        transform: rotate(-180deg);
+    }
+    .reveal-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+    }
+    .reveal-button:hover .button-icon {
+        transform: translateX(5px);
+    }
+    .feature:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(218, 165, 32, 0.1);
+    }
+    .contact-method:hover {
+        transform: translateX(10px);
+        box-shadow: 0 5px 15px rgba(218, 165, 32, 0.1);
+    }
 }
 
 .method-icon {
@@ -941,7 +962,11 @@ body:not(.modal-is-open) .card:hover img {
 .close-button:hover {
     background: var(--accent);
     color: var(--primary-bg);
-    transform: rotate(90deg) scale(1.1);
+}
+@media (hover: hover) {
+    .close-button:hover {
+        transform: rotate(90deg) scale(1.1);
+    }
 }
 
 .modal-header {
@@ -1038,12 +1063,23 @@ body:not(.modal-is-open) .card:hover img {
     flex-shrink: 0;
 }
 
-.modal-thumbnail-gallery img.active,
-.modal-thumbnail-gallery img:hover {
+.modal-thumbnail-gallery img.active {
     opacity: 1;
     border-color: var(--accent);
     transform: scale(1.1);
     box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
+}
+
+.modal-thumbnail-gallery img:hover {
+    opacity: 1;
+    border-color: var(--accent);
+}
+
+@media (hover: hover) {
+    .modal-thumbnail-gallery img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
+    }
 }
 
 .modal-details-area { 
@@ -1109,31 +1145,22 @@ body:not(.modal-is-open) .card:hover img {
 .modal-tab-button.active { color: var(--accent); }
 .modal-tab-button.active::after { transform: scaleX(1); }
 
-.modal-tab-content-wrapper { 
-    flex-grow: 1; 
-    position: relative; 
-    overflow: hidden;
+.modal-tab-content-wrapper {
+    position: relative;
     background: rgba(255, 255, 255, 0.02);
     border-radius: 0 0 var(--radius-md) var(--radius-md);
     margin-top: -0.5rem;
-    min-height: 200px; /* Ensure it has a minimum height */
+    min-height: 200px;
 }
-.modal-tab-content { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    overflow-y: auto; 
-    opacity: 0; 
-    visibility: hidden; 
-    transition: all 0.4s ease;
+.modal-tab-content {
+    display: none; /* Oculta las pestañas inactivas y no deja que ocupen espacio */
     padding: 1.5rem;
+    animation: fadeIn 0.4s ease; /* Animación simple de fade-in */
 }
-.modal-tab-content::-webkit-scrollbar { width: 6px; }
-.modal-tab-content::-webkit-scrollbar-track { background: var(--dark-bg); }
-.modal-tab-content::-webkit-scrollbar-thumb { background-color: var(--accent); border-radius: 10px; border: 2px solid var(--dark-bg); }
-.modal-tab-content.active { opacity: 1; visibility: visible; }
+
+.modal-tab-content.active {
+    display: block; /* Muestra la pestaña activa */
+}
 .modal-full-details h4 { color: var(--accent); margin-top: 1rem; }
 
 /* =================================
@@ -1147,9 +1174,12 @@ body:not(.modal-is-open) .card:hover img {
     transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
 }
 .scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-.scroll-top:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 20px var(--glow-color);
+
+@media (hover: hover) {
+    .scroll-top:hover {
+        transform: scale(1.15);
+        box-shadow: 0 0 20px var(--glow-color);
+    }
 }
 
 
@@ -1274,6 +1304,16 @@ body:not(.modal-is-open) .card:hover img {
     }
     .carousel-item {
         flex: 0 0 85%;
+    }
+
+    .details-grid,
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- Performance Improvement --- */
+    html::before {
+        animation: none;
     }
 }
 
