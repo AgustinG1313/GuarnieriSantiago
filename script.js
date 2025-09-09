@@ -336,9 +336,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
     
-    // --- MANEJADOR DEL CARRUSEL CON DRAG (CON SOPORTE TÁCTIL) ---
+    // --- MANEJADOR DEL CARRUSEL CON DRAG (CON SOPORTE TÁCTIL MEJORADO) ---
     const carouselHandler = {
-        isDown: false, startX: 0, scrollLeft: 0,
+        isDown: false, startX: 0, scrollLeft: 0, touchStartX: 0, touchStartY: 0,
         init() {
             if (!carousel) return;
             // Eventos de Ratón
@@ -347,13 +347,17 @@ document.addEventListener('DOMContentLoaded', function () {
             carousel.addEventListener('mouseup', () => this.end());
             carousel.addEventListener('mousemove', (e) => this.move(e));
             // Eventos Táctiles
-            carousel.addEventListener('touchstart', (e) => this.start(e));
+            carousel.addEventListener('touchstart', (e) => this.start(e), { passive: true });
             carousel.addEventListener('touchend', () => this.end());
             carousel.addEventListener('touchmove', (e) => this.move(e));
         },
         start(e) {
             this.isDown = true;
             carousel.classList.add('active');
+            if (e.type === 'touchstart') {
+                this.touchStartX = e.touches[0].pageX;
+                this.touchStartY = e.touches[0].pageY;
+            }
             const pageX = e.pageX || e.touches[0].pageX;
             this.startX = pageX - carousel.offsetLeft;
             this.scrollLeft = carousel.scrollLeft;
@@ -364,7 +368,17 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         move(e) {
             if (!this.isDown) return;
-            e.preventDefault();
+            if (e.type === 'touchmove') {
+                const currentX = e.touches[0].pageX;
+                const currentY = e.touches[0].pageY;
+                const dx = currentX - this.touchStartX;
+                const dy = currentY - this.touchStartY;
+                if (Math.abs(dx) > Math.abs(dy)) {
+                    e.preventDefault();
+                } else {
+                    return;
+                }
+            }
             const pageX = e.pageX || e.touches[0].pageX;
             const x = pageX - carousel.offsetLeft;
             const walk = (x - this.startX) * 2; // El multiplicador 2 acelera el scroll
