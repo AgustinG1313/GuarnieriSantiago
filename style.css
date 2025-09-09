@@ -1233,6 +1233,48 @@ body:not(.modal-is-open) .card:hover img {
     .modal-details-area { padding: 2rem; }
     #modalArtworkTitle { font-size: 2rem; }
     .gallery-grid { column-count: 1; } /* Masonry para móvil */
+
+    /* Fix for contact card on mobile */
+    .contact-features,
+    .contact-methods {
+        grid-template-columns: 1fr;
+    }
+    .contact-card {
+        perspective: none;
+        height: auto;
+    }
+    .contact-front,
+    .contact-back {
+        position: static;
+        transform: none;
+        height: auto;
+        backface-visibility: visible;
+    }
+    .contact-back {
+        display: none;
+        border-top: 1px solid var(--border-color);
+        margin-top: 2rem;
+        padding-top: 2rem;
+    }
+    .contact-card.revealed .contact-back {
+        display: flex;
+    }
+    .contact-card.revealed .contact-front {
+        display: none;
+    }
+    .flip-back-button {
+        display: none;
+    }
+
+    /* Fix for carousel on mobile */
+    .carousel-items {
+        justify-content: flex-start;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .carousel-item {
+        flex: 0 0 85%;
+    }
 }
 
 @media (max-height: 700px) and (min-width: 901px) {
