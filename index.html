@@ -241,7 +241,7 @@
                             </div>
                             <div class="method-info">
                                 <span class="method-title">Correo Electrónico</span>
-                                <span class="method-value" data-user="guartiago" data-domain="hotmail.com"></span>
+                                <span class="method-value"></span>
                                 <span class="method-description">Respuesta en 24-48 horas</span>
                             </div>
                         </a>
@@ -253,7 +253,7 @@
                             </div>
                             <div class="method-info">
                                 <span class="method-title">Teléfono/WhatsApp</span>
-                                <span class="method-value" data-country="54" data-number="3624686826"></span>
+                                <span class="method-value"></span>
                                 <span class="method-description">Lun-Vie: 9:00-18:00</span>
                             </div>
                         </a>
@@ -267,13 +267,16 @@
                             </div>
                             <div class="method-info">
                                 <span class="method-title">Instagram</span>
-                                <span class="method-value" data-user="santiagoguarnieri"></span>
+                                <span class="method-value"></span>
                                 <span class="method-description">Sígueme para ver mi trabajo</span>
                             </div>
                         </a>
                     </div>
                     <p class="contact-guarantee">Tu consulta no te compromete a nada. ¡Conversemos sobre tu proyecto!</p>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button id="validate-button" style="display:none;">Validar Datos (para el desarrollador)</button>
             </div>
         </div>
     </footer>
@@ -282,7 +285,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </button>
 
-    <div id="artworkModal" class="modal">
+    <div id="artworkModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalArtworkTitle">
         <div class="modal-content">
             <script id="artwork-schema" type="application/ld+json"></script>
             <button class="close-button">&times;</button>
@@ -296,8 +299,8 @@
                 <div class="modal-image-area">
                     <div class="modal-image-loader"></div>
                     <img src="" alt="Obra de Arte en detalle" id="modalArtworkMainImage">
-                    <button class="modal-nav-button prev-image" id="prevModalImage">&#10094;</button>
-                    <button class="modal-nav-button next-image" id="nextModalImage">&#10095;</button>
+                    <button class="modal-nav-button prev-image" id="prevModalImage" aria-label="Imagen anterior">&#10094;</button>
+                    <button class="modal-nav-button next-image" id="nextModalImage" aria-label="Siguiente imagen">&#10095;</button>
                     <div class="modal-thumbnail-gallery"></div>
                 </div>
                 <div class="modal-details-area">
@@ -327,6 +330,5 @@
     </div>
 
     <script src="script.js" defer></script>
-    <script src="validate.js" defer></script>
 </body>
 </html>

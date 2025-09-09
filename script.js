@@ -84,8 +84,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     const id = entry.target.getAttribute('id');
                     const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
                     if (entry.isIntersecting && navLink) {
-                        navLinks.forEach(link => link.classList.remove('active'));
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            link.removeAttribute('aria-current');
+                        });
                         navLink.classList.add('active');
+                        navLink.setAttribute('aria-current', 'page');
                         this.updateIndicator(navLink);
                     }
                 });
@@ -100,6 +104,10 @@ document.addEventListener('DOMContentLoaded', function () {
         currentImageIndex: 0,
         init() {
             if (!modal) return;
+            modal.setAttribute('aria-hidden', 'true');
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-modal', 'true');
+            modal.setAttribute('aria-labelledby', 'modalArtworkTitle');
             closeModalButton.addEventListener('click', () => this.close());
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) this.close();
@@ -162,12 +170,14 @@ document.addEventListener('DOMContentLoaded', function () {
             this.updateSchema(data);
 
             modal.classList.add('show');
+            modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
             document.body.classList.add('modal-is-open');
             closeModalButton.focus();
         },
         close() {
             modal.classList.remove('show');
+            modal.setAttribute('aria-hidden', 'true');
             document.title = originalTitle;
             history.pushState("", document.title, window.location.pathname + window.location.search);
             const schemaScript = document.getElementById('artwork-schema');
@@ -213,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const img = document.createElement('img');
                 img.src = src;
                 img.alt = `Vista ${index + 1}`;
+                img.loading = 'lazy';
                 img.addEventListener('click', () => {
                     this.currentImageIndex = index;
                     this.updateMainImage();
@@ -267,15 +278,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- MANEJADOR DE GALERÍA DINÁMICA (OPTIMIZADO) ---
     const dynamicGalleryHandler = {
-        createArtworkCard(id, data) {
+        createArtworkCard(id, data, isCarousel = false) {
             const imageUrl = data.images.find(img => img.includes('portada')) || data.images[0];
             const card = document.createElement('div');
             card.className = 'card gallery-item reveal-on-scroll';
+            if (isCarousel) {
+                card.classList.add('carousel-item');
+            }
             card.dataset.artworkId = id;
 
             card.innerHTML = `
                 <div class="image-container">
-                    <img src="${imageUrl}" alt="${data.title}" loading="lazy">
+                    <img src="${imageUrl}" alt="${data.title}" ${isCarousel ? 'loading="lazy"' : ''}>
                 </div>
                 <div class="card-content">
                     <h3>${data.title}</h3>
@@ -309,8 +323,7 @@ document.addEventListener('DOMContentLoaded', function () {
             artworkIds.forEach(id => {
                 const artwork = artworkData[id];
                 if (artwork.featured) {
-                    const card = this.createArtworkCard(id, artwork);
-                    card.classList.add('carousel-item');
+                    const card = this.createArtworkCard(id, artwork, true);
                     carouselFragment.appendChild(card);
                 }
             });
@@ -323,20 +336,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
     
-    // --- MANEJADOR DEL CARRUSEL CON DRAG ---
+    // --- MANEJADOR DEL CARRUSEL CON DRAG (CON SOPORTE TÁCTIL) ---
     const carouselHandler = {
         isDown: false, startX: 0, scrollLeft: 0,
         init() {
             if (!carousel) return;
+            // Eventos de Ratón
             carousel.addEventListener('mousedown', (e) => this.start(e));
             carousel.addEventListener('mouseleave', () => this.end());
             carousel.addEventListener('mouseup', () => this.end());
             carousel.addEventListener('mousemove', (e) => this.move(e));
+            // Eventos Táctiles
+            carousel.addEventListener('touchstart', (e) => this.start(e));
+            carousel.addEventListener('touchend', () => this.end());
+            carousel.addEventListener('touchmove', (e) => this.move(e));
         },
         start(e) {
             this.isDown = true;
             carousel.classList.add('active');
-            this.startX = e.pageX - carousel.offsetLeft;
+            const pageX = e.pageX || e.touches[0].pageX;
+            this.startX = pageX - carousel.offsetLeft;
             this.scrollLeft = carousel.scrollLeft;
         },
         end() {
@@ -346,8 +365,9 @@ document.addEventListener('DOMContentLoaded', function () {
         move(e) {
             if (!this.isDown) return;
             e.preventDefault();
-            const x = e.pageX - carousel.offsetLeft;
-            const walk = (x - this.startX) * 2;
+            const pageX = e.pageX || e.touches[0].pageX;
+            const x = pageX - carousel.offsetLeft;
+            const walk = (x - this.startX) * 2; // El multiplicador 2 acelera el scroll
             carousel.scrollLeft = this.scrollLeft - walk;
         }
     };
@@ -462,6 +482,8 @@ document.addEventListener('DOMContentLoaded', function () {
         premiumEffectsHandler.init();
         modalHandler.init();
         modalHandler.handleDeepLink();
+        initObfuscatedContact();
+        initValidationTool();
     }
 
     init();
@@ -489,50 +511,126 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // --- MANEJADOR DE CONTACTO OFUSCADO ---
+    // --- MANEJADOR DE CONTACTO OFUSCADO (REFACTORIZADO) ---
     function initObfuscatedContact() {
-        // Email
-        const emailLink = document.getElementById('email-link');
-        if (emailLink) {
-            const emailValue = emailLink.querySelector('.method-value');
-            const user = emailValue.dataset.user;
-            const domain = emailValue.dataset.domain;
-            if (user && domain) {
-                emailValue.textContent = `${user}@${domain}`;
-                emailLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    window.location.href = `mailto:${user}@${domain}`;
-                });
+        const contactMethods = {
+            'email-link': {
+                valueSelector: '.method-value',
+                user: 'guartiago',
+                domain: 'hotmail.com',
+                constructHref: (user, domain) => `mailto:${user}@${domain}`,
+                constructText: (user, domain) => `${user}@${domain}`
+            },
+            'phone-link': {
+                valueSelector: '.method-value',
+                country: '54',
+                number: '3624686826',
+                constructHref: (country, number) => `tel:+${country}${number}`,
+                constructText: (country, number) => `(${country}) ${number.slice(0, 4)}-${number.slice(4)}`
+            },
+            'instagram-link': {
+                valueSelector: '.method-value',
+                user: 'santiagoguarnieri',
+                constructHref: (user) => `https://www.instagram.com/${user}/`,
+                constructText: (user) => `@${user}`
             }
-        }
+        };
 
-        // Phone
-        const phoneLink = document.getElementById('phone-link');
-        if (phoneLink) {
-            const phoneValue = phoneLink.querySelector('.method-value');
-            const country = phoneValue.dataset.country;
-            const number = phoneValue.dataset.number;
-            if (country && number) {
-                phoneValue.textContent = `(${country}) ${number.slice(0, 4)}-${number.slice(4)}`;
-                phoneLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    window.location.href = `tel:+${country}${number}`;
-                });
-            }
-        }
-
-        // Instagram
-        const instagramLink = document.getElementById('instagram-link');
-        if (instagramLink) {
-            const instaValue = instagramLink.querySelector('.method-value');
-            const user = instaValue.dataset.user;
-            if (user) {
-                instaValue.textContent = `@${user}`;
-                const url = `https://www.instagram.com/${user}/`;
-                instagramLink.href = url;
+        for (const id in contactMethods) {
+            const link = document.getElementById(id);
+            if (link) {
+                const config = contactMethods[id];
+                const valueEl = link.querySelector(config.valueSelector);
+                const href = config.constructHref(config.user || config.country, config.domain || config.number);
+                const text = config.constructText(config.user || config.country, config.domain || config.number);
+                
+                if (valueEl) valueEl.textContent = text;
+                link.href = href;
+                if (id !== 'instagram-link') {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        window.location.href = href;
+                    });
+                }
             }
         }
     }
 
-    initObfuscatedContact();
+    // --- HERRAMIENTA DE VALIDACIÓN DE DATOS ---
+    function initValidationTool() {
+        const validateButton = document.getElementById('validate-button');
+        if (validateButton) {
+            validateButton.addEventListener('click', validateArtworks);
+        }
+    }
+
+    async function validateArtworks() {
+        console.log('Iniciando validación de artworks.json...');
+
+        try {
+            const response = await fetch('artworks.json');
+            if (!response.ok) {
+                console.error('Error: No se pudo cargar artworks.json. Estado:', response.status);
+                return;
+            }
+            const artworks = await response.json();
+            const artworkIds = Object.keys(artworks);
+
+            const requiredFields = ['title', 'description', 'materials', 'technique', 'history', 'images'];
+            let errorCount = 0;
+            const errorLog = {};
+
+            console.log(`Se encontraron ${artworkIds.length} obras. Validando campos requeridos: ${requiredFields.join(', ')}...`);
+
+            artworkIds.forEach(id => {
+                const artwork = artworks[id];
+                const errors = [];
+
+                requiredFields.forEach(field => {
+                    if (!artwork.hasOwnProperty(field)) {
+                        errors.push(`Falta el campo requerido: '${field}'.`);
+                    } else if (typeof artwork[field] === 'string' && artwork[field].trim() === '') {
+                        errors.push(`El campo '${field}' está vacío.`);
+                    } else if (Array.isArray(artwork[field]) && artwork[field].length === 0) {
+                        errors.push(`El arreglo de imágenes '${field}' está vacío.`);
+                    }
+                });
+                
+                // Validaciones específicas para campos con descripciones genéricas
+                if (artwork.description && artwork.description.toLowerCase().includes('descripción de la obra')) {
+                    errors.push(`El campo 'description' tiene contenido genérico.`);
+                }
+                if (artwork.materials && artwork.materials.toLowerCase().includes('materiales de la obra')) {
+                    errors.push(`El campo 'materials' tiene contenido genérico.`);
+                }
+                if (artwork.technique && artwork.technique.toLowerCase().includes('técnica utilizada')) {
+                    errors.push(`El campo 'technique' tiene contenido genérico.`);
+                }
+                if (artwork.history && artwork.history.toLowerCase().includes('historia de la obra')) {
+                    errors.push(`El campo 'history' tiene contenido genérico.`);
+                }
+
+                if (errors.length > 0) {
+                    errorCount += errors.length;
+                    errorLog[id] = errors;
+                }
+            });
+
+            if (errorCount === 0) {
+                console.log('%c¡Validación completada! Todos las obras pasaron la prueba.', 'color: #4CAF50; font-weight: bold;');
+            } else {
+                console.warn(`%cValidación completada con ${errorCount} errores en ${Object.keys(errorLog).length} obras.`, 'color: #FFC107; font-weight: bold;');
+                console.log('--- Reporte de Errores ---');
+                for (const id in errorLog) {
+                    console.groupCollapsed(`Obra: ${id}`);
+                    errorLog[id].forEach(error => console.error(`- ${error}`));
+                    console.groupEnd();
+                }
+                console.log('--- Fin del Reporte ---');
+            }
+
+        } catch (error) {
+            console.error('Ocurrió un error inesperado durante la validación:', error);
+        }
+    }
 });
