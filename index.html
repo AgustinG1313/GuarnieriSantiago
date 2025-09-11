@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Santiago Guarneri / Escultor</title>
     <meta name="description" content="Portfolio del escultor Santiago Guarneri, especializado en la figura humana realista y expresiva. Descubre sus obras, filosofía y trayectoria artística.">
 
@@ -28,6 +28,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23050505'/><text x='50' y='55' font-family='Playfair Display, serif' font-size='50' fill='%23DAA520' text-anchor='middle' dominant-baseline='central'>SG</text></svg>">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Santiago Guarneri / Escultor",
+      "url": "https://example.com",
+      "author": {
+        "@type": "Person",
+        "name": "Santiago Guarneri"
+      },
+      "description": "Portfolio del escultor Santiago Guarneri, especializado en la figura humana realista y expresiva. Descubre sus obras, filosofía y trayectoria artística."
+    }
+    </script>
 </head>
 
 <body>
@@ -275,9 +288,7 @@
                     <p class="contact-guarantee">Tu consulta no te compromete a nada. ¡Conversemos sobre tu proyecto!</p>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <button id="validate-button" style="display:none;">Validar Datos (para el desarrollador)</button>
-            </div>
+            
         </div>
     </footer>
 
@@ -290,12 +301,11 @@
             <script id="artwork-schema" type="application/ld+json"></script>
             <button class="close-button">&times;</button>
             
-            <div class="modal-header">
-                <h3 id="modalArtworkTitle" class="tracking-in-contract-bck">Título de la Obra</h3>
-                <p class="modal-description" id="modalArtworkDescription">Breve leyenda o descripción inicial.</p>
-            </div>
-
             <div class="modal-body">
+                <div class="modal-header">
+                    <h3 id="modalArtworkTitle" class="tracking-in-contract-bck">Título de la Obra</h3>
+                    <p class="modal-description" id="modalArtworkDescription">Breve leyenda o descripción inicial.</p>
+                </div>
                 <div class="modal-image-area">
                     <div class="modal-image-loader"></div>
                     <img src="" alt="Obra de Arte en detalle" id="modalArtworkMainImage">

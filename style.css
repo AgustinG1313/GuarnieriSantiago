@@ -5,6 +5,42 @@
 /* --- FUENTES --- */
 
 /* --- KEYFRAMES PARA ANIMACIONES --- */
+.tracking-in-contract-bck {
+    -webkit-animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+@-webkit-keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
 @keyframes slideUpFade {
     from {
         opacity: 0;
@@ -26,7 +62,7 @@
     --dark-bg: #0a0a0a;
     --card-bg: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(18, 18, 18, 0.9));
     --text-light: #f5f5f5;
-    --text-medium: #9a9a9a;
+    --text-medium: #b0b0b0;
     --accent: #DAA520;
     --accent-hover: #f0b94b;
     --border-color: rgba(218, 165, 32, 0.12);
@@ -232,7 +268,7 @@ main section[id], footer.section[id] {
     transition: all var(--transition-normal);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
-.main-nav ul:hover {
+.main-nav ul:hover, .main-nav ul:active {
     border-color: rgba(218, 165, 32, 0.2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
@@ -249,6 +285,7 @@ main section[id], footer.section[id] {
     letter-spacing: 0.5px;
 }
 .main-nav .nav-link:hover,
+.main-nav .nav-link:active,
 .main-nav .nav-link.active {
     color: var(--text-light);
 }
@@ -325,14 +362,14 @@ main section[id], footer.section[id] {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
-.image-wrapper:hover::after {
+.image-wrapper:hover::after, .image-wrapper:active::after {
     opacity: 1;
 }
 body:not(.modal-is-open) .image-wrapper:hover::after { 
     opacity: 1;
     transform: translateZ(0);
 }
-.image-wrapper:hover::before {
+.image-wrapper:hover::before, .image-wrapper:active::before {
     opacity: 1;
 }
 .hero-image { 
@@ -342,7 +379,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     transform: translateZ(30px);
     transition: transform 0.5s var(--transition-bounce);
 }
-.image-wrapper:hover .hero-image {
+.image-wrapper:hover .hero-image, .image-wrapper:active .hero-image {
     transform: translateZ(40px) scale(1.05);
 }
 
@@ -377,7 +414,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     position: relative;
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
-.card:hover {
+.card:hover, .card:active {
     border-color: rgba(218, 165, 32, 0.2);
 }
 
@@ -409,6 +446,21 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     body:not(.modal-is-open) .card:hover img {
         transform: scale(1.05);
     }
+}
+
+.card:active {
+    transform: translateY(-8px);
+}
+body:not(.modal-is-open) .card:active {
+    transform: translateY(-8px);
+    box-shadow: 0 0 40px var(--glow-color), 0 0 20px gold;
+}
+body:not(.modal-is-open) .card:active::before {
+    opacity: 1;
+    background: linear-gradient(145deg, gold, transparent);
+}
+body:not(.modal-is-open) .card:active img {
+    transform: scale(1.05);
 }
 
 .card-content { padding: 1.5rem; }
@@ -514,7 +566,9 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
 }
 
 .achievement-card:hover,
-.detail-card:hover {
+.detail-card:hover,
+.achievement-card:active,
+.detail-card:active {
     border-color: var(--accent);
 }
 
@@ -524,6 +578,12 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
         transform: translateY(-8px);
         box-shadow: 0 0 30px var(--glow-color);
     }
+}
+
+.achievement-card:active,
+.detail-card:active {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px var(--glow-color);
 }
 
 .achievement-card h4,
@@ -587,7 +647,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     transition: all 0.3s ease;
 }
 
-.flip-back-button:hover {
+.flip-back-button:hover, .flip-back-button:active {
     background: var(--accent);
     color: var(--primary-bg);
 }
@@ -704,7 +764,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     overflow: hidden;
 }
 
-.reveal-button:hover {
+.reveal-button:hover, .reveal-button:active {
     background: var(--accent-hover);
 }
 
@@ -734,7 +794,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     transition: all 0.3s ease;
 }
 
-.feature:hover {
+.feature:hover, .feature:active {
     border-color: var(--accent);
 }
 
@@ -743,6 +803,11 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
         transform: translateY(-5px);
         box-shadow: 0 5px 15px rgba(218, 165, 32, 0.1);
     }
+}
+
+.feature:active {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.1);
 }
 
 .feature svg {
@@ -796,7 +861,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     transition: all 0.3s ease;
 }
 
-.contact-method:hover {
+.contact-method:hover, .contact-method:active {
     background: rgba(218, 165, 32, 0.05);
     border-color: var(--accent);
 }
@@ -820,6 +885,21 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
         transform: translateX(10px);
         box-shadow: 0 5px 15px rgba(218, 165, 32, 0.1);
     }
+}
+
+.flip-back-button:active {
+    transform: rotate(-180deg);
+}
+.reveal-button:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+}
+.reveal-button:active .button-icon {
+    transform: translateX(5px);
+}
+.contact-method:active {
+     transform: translateX(10px);
+     box-shadow: 0 5px 15px rgba(218, 165, 32, 0.1);
 }
 
 .method-icon {
@@ -942,6 +1022,30 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     border: 1px solid var(--border-color);
 }
 
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-content::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 10px;
+    border: 2px solid var(--dark-bg);
+}
+
+.modal-details-area::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-details-area::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+.modal-details-area::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 10px;
+    border: 2px solid var(--dark-bg);
+}
+
 .close-button {
     position: absolute;
     top: 1rem;
@@ -960,7 +1064,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     align-items: center;
     justify-content: center;
 }
-.close-button:hover {
+.close-button:hover, .close-button:active {
     background: var(--accent);
     color: var(--primary-bg);
 }
@@ -969,8 +1073,21 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
         transform: rotate(90deg) scale(1.1);
     }
 }
+.close-button:active {
+    transform: rotate(90deg) scale(1.1);
+}
+
+.modal-body { 
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 60% 40%;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+}
 
 .modal-header {
+    grid-column: 1 / -1;
     padding: 1.5rem 2.5rem;
     border-bottom: 1px solid var(--border-color);
     text-align: center;
@@ -998,15 +1115,9 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     white-space: pre-wrap;
 }
 
-.modal-body { 
-    display: flex; 
-    height: 100%;
-    flex-grow: 1;
-    overflow: hidden;
-}
-
 .modal-image-area {
-    flex-basis: 60%;
+    grid-column: 1;
+    grid-row: 2;
     background: var(--primary-bg);
     position: relative;
     overflow: hidden;
@@ -1036,7 +1147,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     height: 50px;
     transition: all var(--transition-fast);
 }
-.modal-nav-button:hover { background-color: var(--accent); }
+.modal-nav-button:hover, .modal-nav-button:active { background-color: var(--accent); }
 .prev-image { left: 1rem; }
 .next-image { right: 1rem; }
 
@@ -1076,7 +1187,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
 }
 
-.modal-thumbnail-gallery img:hover {
+.modal-thumbnail-gallery img:hover, .modal-thumbnail-gallery img:active {
     opacity: 1;
     border-color: var(--accent);
 }
@@ -1086,6 +1197,11 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
         transform: scale(1.1);
         box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
     }
+}
+
+.modal-thumbnail-gallery img:active {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
 }
 
 .modal-details-area { 
@@ -1110,7 +1226,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     width: 100%;
     transition: all var(--transition-fast);
 }
-.modal-price:hover {
+.modal-price:hover, .modal-price:active {
     background-color: var(--accent-hover);
     box-shadow: 0 0 20px var(--glow-color);
 }
@@ -1136,7 +1252,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     transition: all var(--transition-fast);
 }
 
-.modal-tab-button:not(.active):hover { color: var(--text-light); }
+.modal-tab-button:not(.active):hover, .modal-tab-button:not(.active):active { color: var(--text-light); }
 .modal-tab-button::after {
     content: '';
     position: absolute;
@@ -1188,6 +1304,10 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     }
 }
 
+.scroll-top:active {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px var(--glow-color);
+}
 
 
 /* --- CSS for Modal Loader --- */
@@ -1265,10 +1385,25 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     .section-title { margin-bottom: 3rem; }
     .hero-title { font-size: clamp(2.5rem, 12vw, 3.5rem); }
     .hero-subtitle { font-size: clamp(0.9rem, 4vw, 1rem); letter-spacing: 3px; }
-    .modal-body { display: block; overflow-y: auto; max-height: 85vh; }
-    .modal-header { padding: 1.5rem 4.5rem; }
-    .modal-details-area { padding: 2rem; }
-    #modalArtworkTitle { font-size: 2rem; }
+    .modal-content {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .modal-body { 
+        display: block; 
+        height: auto;
+        flex-grow: 0;
+        overflow: visible;
+    }
+    .modal-header { 
+        padding: 1.5rem 1.5rem 0; 
+    }
+    .modal-details-area { 
+        padding: 1.5rem; 
+    }
+    #modalArtworkTitle { 
+        font-size: 2rem; 
+    }
     .gallery-grid { column-count: 1; } /* Masonry para móvil */
 
     /* Fix for contact card on mobile */
@@ -1277,30 +1412,7 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
         grid-template-columns: 1fr;
     }
     .contact-card {
-        perspective: none;
-        height: auto;
-    }
-    .contact-front,
-    .contact-back {
-        position: static;
-        transform: none;
-        height: auto;
-        backface-visibility: visible;
-    }
-    .contact-back {
-        display: none;
-        border-top: 1px solid var(--border-color);
-        margin-top: 2rem;
-        padding-top: 2rem;
-    }
-    .contact-card.revealed .contact-back {
-        display: flex;
-    }
-    .contact-card.revealed .contact-front {
-        display: none;
-    }
-    .flip-back-button {
-        display: none;
+        height: 850px; /* Adjusted height for mobile flipping */
     }
 
     /* Fix for carousel on mobile */
@@ -1398,4 +1510,50 @@ body:not(.modal-is-open) .image-wrapper:hover::after {
     .method-value {
         font-size: 0.8rem;
     }
+}
+
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1rem;
+    padding-top: 80px;
+    align-items: flex-start; /* Prevent vertical stretching */
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 2.5rem);
+  }
+
+  .hero-section {
+    min-height: auto; /* Allow section to shrink */
+    padding: 2rem 0;
+  }
+  
+  .image-wrapper {
+    max-width: 250px; /* Smaller image in landscape */
+    margin: 0 auto;
+  }
+
+  .carousel-section {
+      /* Hide carousel on small landscape to save space */
+  }
+
+  .gallery-grid {
+    column-count: 3;
+  }
+
+  .modal-body {
+    display: block;
+    overflow-y: auto;
+    max-height: 85vh;
+  }
+
+  .modal-image-area, .modal-details-area {
+    flex-basis: auto;
+  }
+  
+  .modal-details-area {
+      padding: 1.5rem;
+  }
 }

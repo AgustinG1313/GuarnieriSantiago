@@ -16,24 +16,57 @@ document.addEventListener('DOMContentLoaded', function () {
     const originalTitle = document.title;
     let lastFocusedElement;
 
+    // --- UTILITY: Throttle ---
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        }
+    }
+
     // --- MANEJADOR DEL MENÚ MÓVIL (HAMBURGUESA) ---
     const mobileMenuHandler = {
         init() {
             if (!hamburger || !mainNav) return;
             hamburger.addEventListener('click', () => {
-                const isActive = mainNav.classList.toggle('is-active');
-                hamburger.classList.toggle('is-active', isActive);
-                document.body.style.overflow = isActive ? 'hidden' : '';
-                navLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        if (mainNav.classList.contains('is-active')) {
-                            mainNav.classList.remove('is-active');
-                            hamburger.classList.remove('is-active');
-                            document.body.style.overflow = '';
-                        }
-                    });
+                const isActive = mainNav.classList.contains('is-active');
+                if (isActive) {
+                    this.closeMenu();
+                } else {
+                    this.openMenu();
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('is-active')) {
+                        this.closeMenu();
+                    }
                 });
             });
+        },
+        openMenu() {
+            const scrollY = window.scrollY;
+            mainNav.classList.add('is-active');
+            hamburger.classList.add('is-active');
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
+        },
+        closeMenu() {
+            const scrollY = parseInt(document.body.style.top || '0') * -1;
+            mainNav.classList.remove('is-active');
+            hamburger.classList.remove('is-active');
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, scrollY);
         }
     };
 
@@ -102,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalHandler = {
         currentArtworkId: null,
         currentImageIndex: 0,
+        focusableElements: [],
         init() {
             if (!modal) return;
             modal.setAttribute('aria-hidden', 'true');
@@ -124,6 +158,25 @@ document.addEventListener('DOMContentLoaded', function () {
             modal.querySelectorAll('.modal-tab-button').forEach(button => {
                 button.addEventListener('click', () => this.switchTab(button));
             });
+            window.addEventListener('hashchange', () => this.handleDeepLink());
+        },
+        handleFocusTrap(e) {
+            if (e.key !== 'Tab') return;
+
+            const firstElement = this.focusableElements[0];
+            const lastElement = this.focusableElements[this.focusableElements.length - 1];
+
+            if (e.shiftKey) { // Shift + Tab
+                if (document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                }
+            } else { // Tab
+                if (document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
         },
         initArtworkListeners() {
             const artworkItems = document.querySelectorAll('.card[data-artwork-id]');
@@ -150,7 +203,9 @@ document.addEventListener('DOMContentLoaded', function () {
             this.currentImageIndex = 0;
 
             lastFocusedElement = document.activeElement;
-            window.location.hash = artworkId;
+            if (window.location.hash !== `#${artworkId}`) {
+                window.location.hash = artworkId;
+            }
 
             modal.querySelector('#modalArtworkTitle').textContent = data.title;
             document.title = `${data.title} | Santiago Guarneri`;
@@ -169,6 +224,12 @@ document.addEventListener('DOMContentLoaded', function () {
             this.updateMainImage();
             this.updateSchema(data);
 
+            this.focusableElements = Array.from(modal.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            )).filter(el => el.offsetParent !== null);
+
+            modal.addEventListener('keydown', this.handleFocusTrap.bind(this));
+
             modal.classList.add('show');
             modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
@@ -176,10 +237,13 @@ document.addEventListener('DOMContentLoaded', function () {
             closeModalButton.focus();
         },
         close() {
+            if (window.location.hash) {
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
+            modal.removeEventListener('keydown', this.handleFocusTrap.bind(this));
             modal.classList.remove('show');
             modal.setAttribute('aria-hidden', 'true');
             document.title = originalTitle;
-            history.pushState("", document.title, window.location.pathname + window.location.search);
             const schemaScript = document.getElementById('artwork-schema');
             schemaScript.textContent = '';
             setTimeout(() => {
@@ -254,7 +318,13 @@ document.addEventListener('DOMContentLoaded', function () {
         handleDeepLink() {
             const artworkId = window.location.hash.substring(1);
             if (artworkId && artworkData[artworkId]) {
-                this.open(artworkId);
+                if (!modal.classList.contains('show')) {
+                    this.open(artworkId);
+                }
+            } else {
+                if (modal.classList.contains('show')) {
+                    this.close();
+                }
             }
         },
         updateSchema(data) {
@@ -389,11 +459,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- EFECTOS DE SCROLL (OPTIMIZADO) ---
     const scrollEffectsHandler = {
         init() {
-            window.addEventListener('scroll', () => {
+            window.addEventListener('scroll', throttle(() => {
                 const scrollY = window.pageYOffset;
                 header.classList.toggle('scrolled', scrollY > 50);
                 scrollTopButton.classList.toggle('visible', scrollY > 300);
-            }, { passive: true });
+            }, 100), { passive: true });
             scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
             const skillObserver = new IntersectionObserver((entries, observer) => {
@@ -445,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const maxTilt = 10;
 
-            tiltElement.addEventListener('mousemove', (e) => {
+            tiltElement.addEventListener('mousemove', throttle((e) => {
                 const { left, top, width, height } = tiltElement.getBoundingClientRect();
                 const x = e.clientX - left;
                 const y = e.clientY - top;
@@ -458,7 +528,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 tiltElement.style.transition = 'transform 0.1s ease-out';
                 tiltElement.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-            });
+            }, 16));
 
             tiltElement.addEventListener('mouseleave', () => {
                 tiltElement.style.transition = 'transform 0.5s ease-in-out';
@@ -477,7 +547,10 @@ document.addEventListener('DOMContentLoaded', function () {
             artworkData = await response.json();
         } catch (error) {
             console.error("Could not load artwork data:", error);
-            // Opcional: Mostrar un mensaje de error al usuario en la página
+            const gallery = document.querySelector('.gallery-grid');
+            if (gallery) {
+                gallery.innerHTML = '<p style="text-align: center; color: var(--text-medium);">Error al cargar la galería. Por favor, intente recargar la página.</p>';
+            }
         }
 
         if (preloader) {
@@ -497,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function () {
         modalHandler.init();
         modalHandler.handleDeepLink();
         initObfuscatedContact();
-        initValidationTool();
+        
     }
 
     init();
@@ -570,81 +643,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // --- HERRAMIENTA DE VALIDACIÓN DE DATOS ---
-    function initValidationTool() {
-        const validateButton = document.getElementById('validate-button');
-        if (validateButton) {
-            validateButton.addEventListener('click', validateArtworks);
-        }
-    }
-
-    async function validateArtworks() {
-        console.log('Iniciando validación de artworks.json...');
-
-        try {
-            const response = await fetch('artworks.json');
-            if (!response.ok) {
-                console.error('Error: No se pudo cargar artworks.json. Estado:', response.status);
-                return;
-            }
-            const artworks = await response.json();
-            const artworkIds = Object.keys(artworks);
-
-            const requiredFields = ['title', 'description', 'materials', 'technique', 'history', 'images'];
-            let errorCount = 0;
-            const errorLog = {};
-
-            console.log(`Se encontraron ${artworkIds.length} obras. Validando campos requeridos: ${requiredFields.join(', ')}...`);
-
-            artworkIds.forEach(id => {
-                const artwork = artworks[id];
-                const errors = [];
-
-                requiredFields.forEach(field => {
-                    if (!artwork.hasOwnProperty(field)) {
-                        errors.push(`Falta el campo requerido: '${field}'.`);
-                    } else if (typeof artwork[field] === 'string' && artwork[field].trim() === '') {
-                        errors.push(`El campo '${field}' está vacío.`);
-                    } else if (Array.isArray(artwork[field]) && artwork[field].length === 0) {
-                        errors.push(`El arreglo de imágenes '${field}' está vacío.`);
-                    }
-                });
-                
-                // Validaciones específicas para campos con descripciones genéricas
-                if (artwork.description && artwork.description.toLowerCase().includes('descripción de la obra')) {
-                    errors.push(`El campo 'description' tiene contenido genérico.`);
-                }
-                if (artwork.materials && artwork.materials.toLowerCase().includes('materiales de la obra')) {
-                    errors.push(`El campo 'materials' tiene contenido genérico.`);
-                }
-                if (artwork.technique && artwork.technique.toLowerCase().includes('técnica utilizada')) {
-                    errors.push(`El campo 'technique' tiene contenido genérico.`);
-                }
-                if (artwork.history && artwork.history.toLowerCase().includes('historia de la obra')) {
-                    errors.push(`El campo 'history' tiene contenido genérico.`);
-                }
-
-                if (errors.length > 0) {
-                    errorCount += errors.length;
-                    errorLog[id] = errors;
-                }
-            });
-
-            if (errorCount === 0) {
-                console.log('%c¡Validación completada! Todos las obras pasaron la prueba.', 'color: #4CAF50; font-weight: bold;');
-            } else {
-                console.warn(`%cValidación completada con ${errorCount} errores en ${Object.keys(errorLog).length} obras.`, 'color: #FFC107; font-weight: bold;');
-                console.log('--- Reporte de Errores ---');
-                for (const id in errorLog) {
-                    console.groupCollapsed(`Obra: ${id}`);
-                    errorLog[id].forEach(error => console.error(`- ${error}`));
-                    console.groupEnd();
-                }
-                console.log('--- Fin del Reporte ---');
-            }
-
-        } catch (error) {
-            console.error('Ocurrió un error inesperado durante la validación:', error);
-        }
-    }
+    
 });
