@@ -1113,6 +1113,7 @@ body:not(.modal-is-open) .card:active img {
 
 #modalArtworkHistory {
     white-space: pre-wrap;
+    text-align: justify;
 }
 
 .modal-image-area {
@@ -1423,26 +1424,29 @@ body:not(.modal-is-open) .card:active img {
         top: 0;
         left: 0;
         width: 100%;
-        transform: none;
+        transform: translateY(0);
         backface-visibility: visible;
         height: auto;
         overflow-x: hidden;
-        transition: none;
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
     }
 
     .contact-back {
         opacity: 0;
         pointer-events: none;
+        transform: translateY(20px);
     }
 
     .contact-card.revealed .contact-front {
         opacity: 0;
         pointer-events: none;
+        transform: translateY(-20px);
     }
 
     .contact-card.revealed .contact-back {
         opacity: 1;
         pointer-events: auto;
+        transform: translateY(0);
     }
 
     /* Fix for carousel on mobile */
