@@ -1427,7 +1427,7 @@ body:not(.modal-is-open) .card:active img {
         backface-visibility: visible;
         height: auto;
         overflow: visible;
-        transition: opacity 0.4s ease-in-out;
+        transition: none;
     }
 
     .contact-back {
