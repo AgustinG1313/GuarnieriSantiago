@@ -1434,6 +1434,9 @@ body:not(.modal-is-open) .card:active img {
     html::before {
         animation: none;
     }
+    .reveal-on-scroll {
+        transition-duration: 0.5s;
+    }
 }
 
 @media (max-height: 700px) and (min-width: 901px) {
