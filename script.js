@@ -655,7 +655,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const flipBackButtonForHeight = document.getElementById('flip-back');
 
         const setCardHeight = () => {
-            const scrollY = window.scrollY; // Save scroll position
             if (window.innerWidth <= 600) {
                 contactCardForHeight.style.height = 'auto'; // Reset height to measure
                 const frontHeight = frontFace.scrollHeight;
@@ -669,7 +668,6 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 contactCardForHeight.style.height = ''; // Reset for desktop
             }
-            window.scrollTo(0, scrollY); // Restore scroll position
         };
 
         if (revealButtonForHeight) {
