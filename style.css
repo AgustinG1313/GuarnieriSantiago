@@ -1426,7 +1426,7 @@ body:not(.modal-is-open) .card:active img {
         transform: none;
         backface-visibility: visible;
         height: auto;
-        overflow: visible;
+        overflow-x: hidden;
         transition: none;
     }
 
