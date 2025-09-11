@@ -644,4 +644,43 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     
-});
+    // --- DYNAMIC CONTACT CARD HEIGHT ON MOBILE ---
+    const contactCardForHeight = document.querySelector('.contact-card');
+    if (contactCardForHeight) {
+        const frontFace = contactCardForHeight.querySelector('.contact-front');
+        const backFace = contactCardForHeight.querySelector('.contact-back');
+        const revealButtonForHeight = document.getElementById('reveal-contact');
+        const flipBackButtonForHeight = document.getElementById('flip-back');
+
+        const setCardHeight = () => {
+            if (window.innerWidth <= 600) {
+                contactCardForHeight.style.height = 'auto'; // Reset height to measure
+                const frontHeight = frontFace.scrollHeight;
+                const backHeight = backFace.scrollHeight;
+                
+                if (contactCardForHeight.classList.contains('revealed')) {
+                    contactCardForHeight.style.height = `${backHeight}px`;
+                } else {
+                    contactCardForHeight.style.height = `${frontHeight}px`;
+                }
+            } else {
+                contactCardForHeight.style.height = ''; // Reset for desktop
+            }
+        };
+
+        if (revealButtonForHeight) {
+            revealButtonForHeight.addEventListener('click', () => {
+                setTimeout(setCardHeight, 50);
+            });
+        }
+        if (flipBackButtonForHeight) {
+            flipBackButtonForHeight.addEventListener('click', () => {
+                setTimeout(setCardHeight, 50);
+            });
+        }
+
+        window.addEventListener('load', setCardHeight);
+        window.addEventListener('resize', throttle(setCardHeight, 100));
+        setCardHeight(); // Initial call
+    }
+    });

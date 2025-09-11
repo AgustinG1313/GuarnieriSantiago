@@ -1412,7 +1412,37 @@ body:not(.modal-is-open) .card:active img {
         grid-template-columns: 1fr;
     }
     .contact-card {
-        height: 850px; /* Adjusted height for mobile flipping */
+        height: auto; /* Set by JS */
+        perspective: none;
+        position: relative;
+    }
+
+    .contact-front,
+    .contact-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: none;
+        backface-visibility: visible;
+        height: auto;
+        overflow: visible;
+        transition: opacity 0.4s ease-in-out;
+    }
+
+    .contact-back {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .contact-card.revealed .contact-front {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .contact-card.revealed .contact-back {
+        opacity: 1;
+        pointer-events: auto;
     }
 
     /* Fix for carousel on mobile */
@@ -1436,6 +1466,14 @@ body:not(.modal-is-open) .card:active img {
     }
     .reveal-on-scroll {
         transition-duration: 0.5s;
+    }
+
+    .flip-back-button {
+        position: relative;
+        top: auto;
+        left: auto;
+        align-self: flex-start;
+        margin-bottom: 1rem;
     }
 }
 
