@@ -67,7 +67,7 @@
     --accent-hover: #f0b94b;
     --border-color: rgba(218, 165, 32, 0.12);
     --glow-color: rgba(218, 165, 32, 0.15);
-    --font-heading: 'Playfair Display', serif;
+    --font-heading: 'Bodoni Moda', serif;
     --font-body: 'Montserrat', sans-serif;
     --radius-sm: 8px;
     --radius-md: 16px;
@@ -768,6 +768,25 @@ body:not(.modal-is-open) .card:active img {
     background: var(--accent-hover);
 }
 
+.cta-button {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.cta-button:hover, .cta-button:active {
+    background: var(--accent);
+    color: var(--primary-bg);
+}
+
 .reveal-button .button-icon {
     transition: transform 0.3s ease;
 }
@@ -1289,26 +1308,7 @@ body:not(.modal-is-open) .card:active img {
 /* =================================
    9. OTROS COMPONENTES Y RESPONSIVE
    ================================= */
-.scroll-top {
-    position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 1200; background: var(--accent);
-    color: var(--primary-bg); border: none; border-radius: 50%; width: 50px; height: 50px;
-    display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-md);
-    opacity: 0; pointer-events: none; transform: translateY(20px);
-    transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
-}
-.scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
-@media (hover: hover) {
-    .scroll-top:hover {
-        transform: scale(1.15);
-        box-shadow: 0 0 20px var(--glow-color);
-    }
-}
-
-.scroll-top:active {
-    transform: scale(1.15);
-    box-shadow: 0 0 20px var(--glow-color);
-}
 
 
 /* --- CSS for Modal Loader --- */
@@ -1374,13 +1374,16 @@ body:not(.modal-is-open) .card:active img {
     .hamburger.is-active span:nth-child(2) { opacity: 0; transform: translateX(20px); }
     .hamburger.is-active span:nth-child(3) { transform: rotate(-45deg); }
 
-    .hero-content { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
+    .hero-content { grid-template-columns: 1fr; text-align: center; padding-top: 150px; }
     .hero-text { text-align: center; }
     .about-grid { grid-template-columns: 1fr; }
     .gallery-grid { column-count: 2; } /* Masonry para tablet */
 }
 
 @media (max-width: 600px) {
+    .hero-content {
+        padding-top: 180px;
+    }
     .section { padding: 2rem 0; }
     .container { padding: 0 1.5rem; }
     .section-title { margin-bottom: 3rem; }

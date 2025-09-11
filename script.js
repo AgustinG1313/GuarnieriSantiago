@@ -12,10 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('artworkModal');
     const closeModalButton = document.querySelector('.close-button');
 
-    let artworkData = {};
-    const originalTitle = document.title;
-    let lastFocusedElement;
-
     // --- UTILITY: Throttle ---
     function throttle(func, limit) {
         let inThrottle;
@@ -462,9 +458,7 @@ document.addEventListener('DOMContentLoaded', function () {
             window.addEventListener('scroll', throttle(() => {
                 const scrollY = window.pageYOffset;
                 header.classList.toggle('scrolled', scrollY > 50);
-                scrollTopButton.classList.toggle('visible', scrollY > 300);
             }, 100), { passive: true });
-            scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
             const skillObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
