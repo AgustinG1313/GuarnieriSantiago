@@ -241,11 +241,26 @@ document.addEventListener('DOMContentLoaded', function () {
             modal.setAttribute('aria-hidden', 'true');
             document.title = originalTitle;
             const schemaScript = document.getElementById('artwork-schema');
-            schemaScript.textContent = '';
+            if(schemaScript){
+                schemaScript.textContent = '';
+            }
+
             setTimeout(() => {
+                const scrollY = parseInt(document.body.style.top || '0') * -1;
+                
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
                 document.body.style.overflow = '';
                 document.body.classList.remove('modal-is-open');
-                if (lastFocusedElement) lastFocusedElement.focus();
+                
+                if (scrollY) {
+                    window.scrollTo(0, scrollY);
+                }
+
+                if (lastFocusedElement) {
+                    lastFocusedElement.focus();
+                }
             }, 500);
         },
         updateMainImage() {
