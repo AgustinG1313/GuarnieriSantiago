@@ -105,6 +105,11 @@ html {
     position: relative;
 }
 
+html.modal-open {
+    overflow: hidden !important;
+    padding-right: 17px; /* Compensar el ancho de la barra de desplazamiento */
+}
+
 html::before {
     content: '';
     position: fixed;
@@ -1583,9 +1588,7 @@ body:not(.modal-is-open) .card:active img {
     margin: 0 auto;
   }
 
-  .carousel-section {
-      /* Hide carousel on small landscape to save space */
-  }
+ 
 
   .gallery-grid {
     column-count: 3;

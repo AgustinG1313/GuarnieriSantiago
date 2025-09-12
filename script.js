@@ -127,11 +127,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
+    let artworkData = {};
+    let lastFocusedElement;
+    let originalTitle = document.title;
+
     // --- MANEJADOR DEL MODAL ---
     const modalHandler = {
         currentArtworkId: null,
         currentImageIndex: 0,
         focusableElements: [],
+        scrollPosition: 0,
         init() {
             if (!modal) return;
             modal.setAttribute('aria-hidden', 'true');
@@ -197,6 +202,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!data) return;
             this.currentArtworkId = artworkId;
             this.currentImageIndex = 0;
+            this.scrollPosition = window.pageYOffset;
+
+            originalTitle = document.title;
 
             lastFocusedElement = document.activeElement;
             if (window.location.hash !== `#${artworkId}`) {
@@ -226,9 +234,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             modal.addEventListener('keydown', this.handleFocusTrap.bind(this));
 
+            document.documentElement.classList.add('modal-open');
             modal.classList.add('show');
             modal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
             document.body.classList.add('modal-is-open');
             closeModalButton.focus();
         },
@@ -245,23 +253,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 schemaScript.textContent = '';
             }
 
-            setTimeout(() => {
-                const scrollY = parseInt(document.body.style.top || '0') * -1;
-                
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.width = '';
-                document.body.style.overflow = '';
-                document.body.classList.remove('modal-is-open');
-                
-                if (scrollY) {
-                    window.scrollTo(0, scrollY);
-                }
+            document.documentElement.classList.remove('modal-open');
+            document.body.classList.remove('modal-is-open');
+            window.scrollTo(0, this.scrollPosition || 0);
 
-                if (lastFocusedElement) {
-                    lastFocusedElement.focus();
-                }
-            }, 500);
+            if (lastFocusedElement) {
+                lastFocusedElement.focus();
+            }
         },
         updateMainImage() {
             const data = artworkData[this.currentArtworkId];
