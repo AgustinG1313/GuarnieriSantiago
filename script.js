@@ -360,15 +360,23 @@ document.addEventListener('DOMContentLoaded', function () {
         createArtworkCard(id, data, isCarousel = false) {
             const imageUrl = data.images.find(img => img.includes('portada')) || data.images[0];
             const card = document.createElement('div');
-            card.className = 'card gallery-item reveal-on-scroll';
+            
+            let classList = 'card gallery-item reveal-on-scroll';
             if (isCarousel) {
-                card.classList.add('carousel-item');
+                classList += ' carousel-item';
             }
+            if (data.size) {
+                classList += ` ${data.size}`;
+            }
+            card.className = classList;
+
             card.dataset.artworkId = id;
+
+            const altText = `Escultura '${data.title}' del artista Santiago Guarnieri.`;
 
             card.innerHTML = `
                 <div class="image-container">
-                    <img src="${imageUrl}" alt="${data.title}" ${isCarousel ? 'loading="lazy"' : ''}>
+                    <img src="${imageUrl}" alt="${altText}" ${isCarousel ? 'loading="lazy"' : ''}>
                 </div>
                 <div class="card-content">
                     <h3>${data.title}</h3>
@@ -577,6 +585,7 @@ document.addEventListener('DOMContentLoaded', function () {
         modalHandler.init();
         modalHandler.handleDeepLink();
         initObfuscatedContact();
+        masonryHandler.init();
         
     }
 
@@ -653,5 +662,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     
+    // --- MANEJADOR DE MASONRY AUTOMÁTICO ---
+const masonryHandler = {
+    gallery: document.querySelector('.gallery-grid'),
+    items: [],
+    init() {
+        if (!this.gallery) return;
+        this.items = Array.from(this.gallery.children);
+
+        // Aplicar layout a cada imagen cuando cargue
+        this.items.forEach(item => {
+            const img = item.querySelector('img');
+            if (img.complete) {
+                this.resizeGridItem(item);
+            } else {
+                img.addEventListener('load', () => this.resizeGridItem(item));
+            }
+        });
+
+        // Re-calcular en el redimensionamiento de la ventana
+        window.addEventListener('resize', throttle(() => this.resizeAllGridItems(), 200));
+    },
+
+    resizeGridItem(item) {
+        // Obtenemos los estilos del contenedor grid para nuestros cálculos
+        const rowHeight = parseInt(window.getComputedStyle(this.gallery).getPropertyValue('grid-auto-rows'));
+        const rowGap = parseInt(window.getComputedStyle(this.gallery).getPropertyValue('grid-row-gap'));
+        
+        // Medimos la altura del contenido (imagen + texto)
+        const contentHeight = item.querySelector('.image-container').scrollHeight + item.querySelector('.card-content').scrollHeight;
+        
+        // Calculamos cuántas filas de la 'grid' necesita este item
+        const spans = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
+        
+        // Asignamos el tamaño al item
+        item.style.gridRowEnd = `span ${spans}`;
+    },
+
+    resizeAllGridItems() {
+        this.items.forEach(item => this.resizeGridItem(item));
+    }
+};
     
     });

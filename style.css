@@ -332,8 +332,9 @@ main section[id], footer.section[id] {
     text-align: left;
 }
 .hero-title {
-    font-family: var(--font-heading);
+    font-family: 'Great Vibes', cursive;
     font-size: clamp(3.5rem, 8vw, 6.5rem);
+    white-space: nowrap;
     line-height: 1;
     color: var(--text-light);
     text-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
@@ -482,18 +483,15 @@ body:not(.modal-is-open) .card:active img {
    5. GALERÍA PRINCIPAL
    ================================= */
 .gallery-grid {
-    column-count: 3;
-    column-gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    grid-auto-rows: 10px;
 }
 
 .gallery-item {
-    width: 100%;
-    display: inline-block;
-    margin-bottom: 2rem;
-    break-inside: avoid;
     animation-delay: calc(0.1s * var(--item-index, 1));
 }
-
 /* =================================
    6. SECCIÓN "QUIÉN SOY" (ABOUT)
    ================================= */
@@ -1382,7 +1380,7 @@ body:not(.modal-is-open) .card:active img {
     .hero-content { grid-template-columns: 1fr; text-align: center; padding-top: 150px; }
     .hero-text { text-align: center; }
     .about-grid { grid-template-columns: 1fr; }
-    .gallery-grid { column-count: 2; } /* Masonry para tablet */
+    
 }
 
 @media (max-width: 600px) {
@@ -1413,7 +1411,7 @@ body:not(.modal-is-open) .card:active img {
     #modalArtworkTitle { 
         font-size: 2rem; 
     }
-    .gallery-grid { column-count: 1; } /* Masonry para móvil */
+    
 
     /* Fix for contact card on mobile */
     .contact-features,
@@ -1590,9 +1588,7 @@ body:not(.modal-is-open) .card:active img {
 
  
 
-  .gallery-grid {
-    column-count: 3;
-  }
+
 
   .modal-body {
     display: block;
