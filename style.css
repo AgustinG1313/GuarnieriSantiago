@@ -1274,3 +1274,35 @@ body:not(.modal-is-open) .image-wrapper:hover::after { opacity: 1; transform: tr
     display: block;
     width: 100%;
 }
+/* --- PERSONALIZACIÓN DEL SCROLLBAR DEL MODAL --- */
+
+/* Aplicar a las áreas con scroll dentro del modal */
+.modal-details-area::-webkit-scrollbar,
+.modal-thumbnail-gallery::-webkit-scrollbar,
+.modal-body::-webkit-scrollbar {
+    width: 6px; /* Un poco más fina para que sea elegante */
+    height: 6px; /* Para el scroll horizontal de la galería */
+}
+
+/* El fondo del carril (track) */
+.modal-details-area::-webkit-scrollbar-track,
+.modal-thumbnail-gallery::-webkit-scrollbar-track,
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05); /* Muy sutil */
+    border-radius: 4px;
+}
+
+/* La barra que se mueve (thumb) */
+.modal-details-area::-webkit-scrollbar-thumb,
+.modal-thumbnail-gallery::-webkit-scrollbar-thumb,
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: var(--accent); /* Color Dorado */
+    border-radius: 4px;
+}
+
+/* Al pasar el mouse por la barra */
+.modal-details-area::-webkit-scrollbar-thumb:hover,
+.modal-thumbnail-gallery::-webkit-scrollbar-thumb:hover,
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-hover);
+}
