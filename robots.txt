@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://santiagoguarnieri.com/sitemap.xml
