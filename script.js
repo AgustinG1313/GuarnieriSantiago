@@ -1,177 +1,491 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // --- INICIALIZAR SMOOTH SCROLL (LENIS) ---
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  // --- INICIALIZAR SMOOTH SCROLL (LENIS) ---
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: "vertical",
+    gestureDirection: "vertical",
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+  });
 
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
+  function raf(time) {
+    lenis.raf(time);
     requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 
-    // --- Variables globales ---
-    const header = document.querySelector('.main-header');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navIndicator = document.querySelector('.nav-indicator');
-    const sections = document.querySelectorAll('main section, footer.section');
-    const hamburger = document.querySelector('.hamburger');
-    const mainNav = document.querySelector('.main-nav');
-    const carousel = document.querySelector('.carousel-items');
-    const modal = document.getElementById('artworkModal');
-    const closeModalButton = document.querySelector('.close-button');
-    
-    let artworkData = {};
-    
-    // --- UTILITY: Throttle ---
-    function throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
+  // --- Variables globales ---
+  const header = document.querySelector(".main-header");
+  const navLinks = document.querySelectorAll(".nav-link");
+  const navIndicator = document.querySelector(".nav-indicator");
+  const sections = document.querySelectorAll("main section, footer.section");
+  const hamburger = document.querySelector(".hamburger");
+  const mainNav = document.querySelector(".main-nav");
+  const carousel = document.querySelector(".carousel-items");
+  const modal = document.getElementById("artworkModal");
+  const closeModalButton = document.querySelector(".close-button");
+
+  let artworkData = {};
+
+  // --- UTILITY: Throttle ---
+  function throttle(func, limit) {
+    let inThrottle;
+    return function () {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => (inThrottle = false), limit);
+      }
+    };
+  }
+
+  // --- DICCIONARIO DE TRADUCCIONES (ES / EN) ---
+  const translations = {
+    es: {
+      // Navegación
+      "nav-home": "Inicio",
+      "nav-gallery": "Mi Galería",
+      "nav-about": "Quién Soy",
+      "nav-contact": "Contacto",
+      // Hero
+      "hero-role": "Escultor",
+      "hero-scroll": "Explorar Obras",
+      // Galería
+      "gallery-title": "Galería de Obras",
+      "gallery-filter-all": "Todas",
+      // Sección Acerca
+      "about-title": "Trayectoria",
+      "about-philosophy": "Mi Filosofía",
+      "about-quote":
+        '"Mi objetivo principal es trascender lo estético, invitando al público a reflexionar sobre la esencia de lo humano a través de una experiencia sensible y significativa."',
+      "about-desc":
+        "Un viaje a través de la forma, el material y el espíritu del chaco.",
+      "about-bio":
+        "Desde mi taller en Resistencia, Chaco, busco trascender lo estético, invitando al público a reflexionar sobre la esencia de lo humano a través de una experiencia sensible y significativa. Mi camino como escultor ha estado marcado por la búsqueda constante de transmitir la esencia humana. Autodidacta por naturaleza, he desarrollado mi formación artística a través de la observación, el estudio de obras maestras y la experimentación con diferentes técnicas y materiales.",
+      "about-focus":
+        "Mi obra escultórica se centra en la representación de la figura humana, destacando su esencia y fragilidad sin llegar al hiperrealismo. A través de bustos y figuras, busco capturar la humanidad y las emociones profundas de cada personaje, utilizando las miradas como un elemento central para generar un diálogo íntimo con el espectador.",
+      "about-training-title": "Formación y Técnicas",
+      "about-achievements-title": "Logros y Exposiciones",
+      // Formación
+      "training-academic-title": "Formación Académica",
+      "training-academic-desc":
+        "Título de Maestro Mayor de Obras (Escuela de Educación Técnica Gral. Manuel Belgrano) y Abogado (Universidad Nacional del Nordeste).",
+      "training-artistic-title": "Formación Artística",
+      "training-artistic-desc":
+        "Autodidacta, incorporando conocimientos a través de la lectura, observación y experimentación en técnicas escultóricas.",
+      "training-technique-title": "Técnica Principal",
+      "training-technique-desc":
+        "Trabajo principalmente en arcilla, transformando la materia prima en un vehículo para explorar la conexión emocional y psicológica de cada figura.",
+      // Logros
+      "achievement-ccn-title": 'Muestra Individual "Huella de Arcilla" (2025)',
+      "achievement-ccn-desc":
+        "Exhibición de 19 obras en el Centro Cultural del Nordeste. Declarada de Interés Municipal (Res. 4210).",
+      "achievement-hands-title": 'Taller "Modelado de Manos" (2025)',
+      "achievement-hands-desc":
+        "Dictado en la Semana de la Cerámica en el Instituto Superior de Bellas Artes (ISPEA).",
+      "achievement-arcilla-title": 'Exposición "Arcilla Viva" (2024)',
+      "achievement-arcilla-desc":
+        "Exposición individual en el Museo Provincial de Bellas Artes Dr. Juan R. Vidal de Corrientes.",
+      "achievement-bienal-title": "Bienal de Esculturas 2022",
+      "achievement-bienal-desc":
+        'Participación en la apertura con la pieza "El Legado", homenaje al escultor Fabriciano Gómez.',
+      "achievement-clandestina-title": 'Muestra Colectiva "Clandestina 2022"',
+      "achievement-clandestina-desc":
+        "Participación en un evento clave para la comunidad artística local.",
+      "achievement-mba-title": "Proyecto Expositivo MBA (2020)",
+      "achievement-mba-desc":
+        "Seleccionado para el proyecto expositivo del Museo de Bellas Artes.",
+      "achievement-sanmartin-title": "Busto del Gral. San Martín",
+      "achievement-sanmartin-desc":
+        "Creación y emplazamiento del busto en la comunidad Hardy, provincia de Santa Fe.",
+      "achievement-muba-title": 'Muestra Individual "La"',
+      "achievement-muba-desc":
+        "Exposición individual en el MUBA. Declarada de Interés Cultural por el Instituto de Cultura del Chaco (Res. 3035/18).",
+      "achievement-tierra-title": 'Muestra "De la misma tierra"',
+      "achievement-tierra-desc":
+        "Participación en la muestra colectiva en el Museo de Bellas Artes René Brusau (MUBA).",
+      "achievement-encuentro-title": "Encuentro de las Artes",
+      "achievement-encuentro-desc":
+        "Evento organizado por el Ministerio de Educación y Cultura del Chaco.",
+      "achievement-intervencion-title": "Intervención Artística",
+      "achievement-intervencion-desc":
+        "Jornada de intervención en la Plaza 25 de Mayo de Resistencia.",
+      "achievement-ceramista-title": "Día del Ceramista",
+      "achievement-ceramista-desc":
+        "Participación activa en la celebración y eventos asociados.",
+      "achievement-docencia-title": "Docencia y Difusión",
+      "achievement-docencia-desc":
+        "Dictado de talleres de Modelado de Figura Humana en el ISPEA.",
+      // Contacto
+      "contact-title": "Creemos algo extraordinario juntos",
+      "contact-subtitle":
+        "Esculturas personalizadas · Monumentos · Obras por encargo",
+      "contact-available": "¡Disponible para encargos!",
+      "contact-quality": "Garantía de calidad",
+      "contact-flexible": "Plazos flexibles",
+      "contact-free": "Consulta gratuita",
+      "contact-ready": "¿Listo para dar vida a tu proyecto?",
+      "contact-reveal": "Solicitar información",
+      "contact-choose": "Elige tu método de contacto preferido",
+      // Modal
+      "lang-btn": "EN",
+      "modal-story": "Historia",
+      "modal-details": "Detalles",
+      "modal-consult": "Consultar",
+      "modal-share": "Compartir:",
+      "modal-materials": "Materiales:",
+      "modal-technique": "Técnica:",
+      // Accessibility
+      "skip-link": "Saltar al contenido",
+    },
+    en: {
+      // Navigation
+      "nav-home": "Home",
+      "nav-gallery": "My Gallery",
+      "nav-about": "About Me",
+      "nav-contact": "Contact",
+      // Hero
+      "hero-role": "Sculptor",
+      "hero-scroll": "Explore Works",
+      // Gallery
+      "gallery-title": "Art Gallery",
+      "gallery-filter-all": "All",
+      // About Section
+      "about-title": "My Journey",
+      "about-philosophy": "My Philosophy",
+      "about-quote":
+        '"My main goal is to transcend the aesthetic, inviting the audience to reflect on the essence of humanity through a sensitive and meaningful experience."',
+      "about-desc":
+        "A journey through form, material, and the spirit of Chaco.",
+      "about-bio":
+        "From my workshop in Resistencia, Chaco, I seek to transcend the aesthetic, inviting the audience to reflect on the essence of humanity through a sensitive and meaningful experience. My path as a sculptor has been marked by the constant search to convey the human essence. Self-taught by nature, I have developed my artistic training through observation, the study of masterpieces and experimentation with different techniques and materials.",
+      "about-focus":
+        "My sculptural work focuses on the representation of the human figure, highlighting its essence and fragility without reaching hyperrealism. Through busts and figures, I seek to capture the humanity and deep emotions of each character, using gazes as a central element to generate an intimate dialogue with the viewer.",
+      "about-training-title": "Training and Techniques",
+      "about-achievements-title": "Achievements and Exhibitions",
+      // Training
+      "training-academic-title": "Academic Background",
+      "training-academic-desc":
+        "Master Builder degree (Gral. Manuel Belgrano Technical School) and Lawyer (National University of the Northeast).",
+      "training-artistic-title": "Artistic Training",
+      "training-artistic-desc":
+        "Self-taught, acquiring knowledge through reading, observation and experimentation in sculptural techniques.",
+      "training-technique-title": "Main Technique",
+      "training-technique-desc":
+        "I work mainly in clay, transforming raw material into a vehicle to explore the emotional and psychological connection of each figure.",
+      // Achievements
+      "achievement-ccn-title": 'Solo Exhibition "Huella de Arcilla" (2025)',
+      "achievement-ccn-desc":
+        "Exhibition of 19 works at the Northeastern Cultural Center. Declared of Municipal Interest (Res. 4210).",
+      "achievement-hands-title": 'Workshop "Hand Modeling" (2025)',
+      "achievement-hands-desc":
+        "Taught during Ceramics Week at the Higher Institute of Fine Arts (ISPEA).",
+      "achievement-arcilla-title": 'Exhibition "Living Clay" (2024)',
+      "achievement-arcilla-desc":
+        "Solo exhibition at the Dr. Juan R. Vidal Provincial Museum of Fine Arts in Corrientes.",
+      "achievement-bienal-title": "Sculpture Biennial 2022",
+      "achievement-bienal-desc":
+        'Participation in the opening with the piece "The Legacy", tribute to sculptor Fabriciano Gómez.',
+      "achievement-clandestina-title": 'Group Show "Clandestina 2022"',
+      "achievement-clandestina-desc":
+        "Participation in a key event for the local artistic community.",
+      "achievement-mba-title": "MBA Exhibition Project (2020)",
+      "achievement-mba-desc":
+        "Selected for the Museum of Fine Arts exhibition project.",
+      "achievement-sanmartin-title": "Bust of Gen. San Martín",
+      "achievement-sanmartin-desc":
+        "Creation and placement of the bust in the Hardy community, Santa Fe province.",
+      "achievement-muba-title": 'Solo Show "La"',
+      "achievement-muba-desc":
+        "Solo exhibition at the MUBA Museum. Declared of Cultural Interest by the Chaco Institute of Culture (Res. 3035/18).",
+      "achievement-tierra-title": 'Show "From the Same Earth"',
+      "achievement-tierra-desc":
+        "Participation in the group show at the René Brusau Museum of Fine Arts (MUBA).",
+      "achievement-encuentro-title": "Arts Encounter",
+      "achievement-encuentro-desc":
+        "Event organized by the Ministry of Education and Culture of Chaco.",
+      "achievement-intervencion-title": "Artistic Intervention",
+      "achievement-intervencion-desc":
+        "Intervention day at Plaza 25 de Mayo in Resistencia.",
+      "achievement-ceramista-title": "Ceramist's Day",
+      "achievement-ceramista-desc":
+        "Active participation in the celebration and associated events.",
+      "achievement-docencia-title": "Teaching and Outreach",
+      "achievement-docencia-desc": "Human Figure Modeling workshops at ISPEA.",
+      // Contact
+      "contact-title": "Let's Create Something Extraordinary",
+      "contact-subtitle": "Custom Sculptures · Monuments · Commissioned Works",
+      "contact-available": "Available for commissions!",
+      "contact-quality": "Quality guarantee",
+      "contact-flexible": "Flexible deadlines",
+      "contact-free": "Free consultation",
+      "contact-ready": "Ready to bring your project to life?",
+      "contact-reveal": "Request information",
+      "contact-choose": "Choose your preferred contact method",
+      // Modal
+      "lang-btn": "ES",
+      "modal-story": "Story",
+      "modal-details": "Details",
+      "modal-consult": "Inquiry",
+      "modal-share": "Share:",
+      "modal-materials": "Materials:",
+      "modal-technique": "Technique:",
+      // Accessibility
+      "skip-link": "Skip to content",
+    },
+  };
+
+  let currentLang = "es";
+
+  const langHandler = {
+    init() {
+      const btn = document.getElementById("lang-toggle");
+      if (!btn) return;
+
+      btn.addEventListener("click", () => {
+        currentLang = currentLang === "es" ? "en" : "es";
+        this.updateLanguage();
+      });
+    },
+    updateLanguage() {
+      // Actualizar textos simples con data-i18n
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.dataset.i18n;
+        if (translations[currentLang][key]) {
+          if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+            el.placeholder = translations[currentLang][key];
+          } else {
+            el.textContent = translations[currentLang][key];
+          }
         }
-    }
+      });
 
-    // --- NUEVO CURSOR ELEGANTE (ESTO FALTABA) ---
-    const customCursorHandler = {
-        init() {
-            // No ejecutar en móviles
-            if (window.matchMedia("(max-width: 900px)").matches) return;
+      // Actualizar botón
+      const btn = document.getElementById("lang-toggle");
+      if (btn) btn.textContent = translations[currentLang]["lang-btn"];
 
-            const dot = document.querySelector("[data-cursor-dot]");
-            const outline = document.querySelector("[data-cursor-outline]");
-            
-            if (!dot || !outline) return;
+      // Actualizar Modal (si está abierto)
+      const storyTab = document.querySelector(
+        '.modal-tab-button[data-tab="modal-tab-story"]'
+      );
+      if (storyTab)
+        storyTab.textContent = translations[currentLang]["modal-story"];
 
-            window.addEventListener("mousemove", (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
+      const detailTab = document.querySelector(
+        '.modal-tab-button[data-tab="modal-tab-details"]'
+      );
+      if (detailTab)
+        detailTab.textContent = translations[currentLang]["modal-details"];
 
-                // El punto se mueve instantáneo
-                dot.style.left = `${posX}px`;
-                dot.style.top = `${posY}px`;
+      const shareLabel = document.querySelector(".share-label");
+      if (shareLabel)
+        shareLabel.textContent = translations[currentLang]["modal-share"];
 
-                // El círculo con inercia suave
-                outline.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: "forwards" });
+      // Actualizar botón Consultar
+      const consultBtn = document.getElementById("modalArtworkQuote");
+      if (consultBtn) {
+        const icon = consultBtn.querySelector("svg");
+        consultBtn.innerHTML = "";
+        if (icon) consultBtn.appendChild(icon);
+        consultBtn.appendChild(
+          document.createTextNode(
+            " " + translations[currentLang]["modal-consult"]
+          )
+        );
+      }
+
+      // Recargar datos de obras
+      loadArtworkData(currentLang);
+    },
+  };
+
+  // --- NUEVO CURSOR ELEGANTE ---
+  const customCursorHandler = {
+    init() {
+      // No ejecutar en móviles
+      if (window.matchMedia("(max-width: 900px)").matches) return;
+
+      const dot = document.querySelector("[data-cursor-dot]");
+      const outline = document.querySelector("[data-cursor-outline]");
+
+      if (!dot || !outline) return;
+
+      window.addEventListener("mousemove", (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        dot.style.left = `${posX}px`;
+        dot.style.top = `${posY}px`;
+
+        outline.animate(
+          {
+            left: `${posX}px`,
+            top: `${posY}px`,
+          },
+          { duration: 500, fill: "forwards" }
+        );
+      });
+
+      // Efecto Hover en elementos interactivos
+      const interactables = document.querySelectorAll(
+        "a, button, .card, input, textarea, .carousel-items"
+      );
+
+      interactables.forEach((el) => {
+        el.addEventListener("mouseenter", () =>
+          document.body.classList.add("cursor-hover")
+        );
+        el.addEventListener("mouseleave", () =>
+          document.body.classList.remove("cursor-hover")
+        );
+      });
+    },
+  };
+
+  // --- MANEJADOR DE EFECTO MAGNÉTICO ---
+  const magneticButtonHandler = {
+    init() {
+      if (window.matchMedia("(max-width: 900px)").matches) return;
+      const magnets = document.querySelectorAll(
+        ".nav-link, .cta-button, .close-button, .share-btn, #modalArtworkQuote, .lang-toggle"
+      );
+      magnets.forEach((btn) => {
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          const strength = 0.3;
+          btn.style.transform = `translate(${x * strength}px, ${
+            y * strength
+          }px)`;
+          btn.style.transition = "transform 0s linear";
+        });
+        btn.addEventListener("mouseleave", () => {
+          btn.style.transform = "translate(0, 0)";
+          btn.style.transition =
+            "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)";
+        });
+      });
+    },
+  };
+
+  // --- MANEJADOR DE EFECTO PARALLAX ---
+  const parallaxHandler = {
+    init() {
+      const wrappers = document.querySelectorAll(
+        ".gallery-grid .card .parallax-wrap"
+      );
+      if (!wrappers.length) return;
+
+      const updateParallax = () => {
+        const windowHeight = window.innerHeight;
+        wrappers.forEach((wrap) => {
+          const container = wrap.closest(".card");
+          if (!container) return;
+          const rect = container.getBoundingClientRect();
+          if (rect.top < windowHeight && rect.bottom > 0) {
+            const distanceFromCenter =
+              rect.top + rect.height / 2 - windowHeight / 2;
+            const translateY = distanceFromCenter * -0.1;
+            wrap.style.transform = `translateY(${translateY}px)`;
+          }
+        });
+      };
+
+      let ticking = false;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              updateParallax();
+              ticking = false;
             });
-
-            // Efecto Hover en elementos interactivos
-            const interactables = document.querySelectorAll('a, button, .card, input, textarea, .carousel-items');
-            
-            interactables.forEach(el => {
-                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-            });
-        }
-    };
-
-    // --- MANEJADOR DE EFECTO PARALLAX ---
-    const parallaxHandler = {
-        init() {
-            const wrappers = document.querySelectorAll('.gallery-grid .card .parallax-wrap');
-            if (!wrappers.length) return;
-
-            const updateParallax = () => {
-                const windowHeight = window.innerHeight;
-                wrappers.forEach(wrap => {
-                    const container = wrap.closest('.card');
-                    if (!container) return;
-                    const rect = container.getBoundingClientRect();
-                    if (rect.top < windowHeight && rect.bottom > 0) {
-                        const distanceFromCenter = (rect.top + rect.height / 2) - (windowHeight / 2);
-                        const translateY = distanceFromCenter * -0.1; 
-                        wrap.style.transform = `translateY(${translateY}px)`;
-                    }
-                });
-            };
-
-            let ticking = false;
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        updateParallax();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }, { passive: true });
-            updateParallax();
-        }
-    };
-
-    // --- MANEJADOR MASONRY ---
-    const masonryHandler = {
-        gallery: document.querySelector('.gallery-grid'),
-        init() {
-            if (!this.gallery) return;
-            window.addEventListener('resize', throttle(() => this.resizeAllGridItems(), 200));
-            let checkCount = 0;
-            const checkInterval = setInterval(() => {
-                this.resizeAllGridItems();
-                checkCount++;
-                if(checkCount > 10) clearInterval(checkInterval);
-            }, 500);
+            ticking = true;
+          }
         },
+        { passive: true }
+      );
+      updateParallax();
+    },
+  };
 
-        resizeGridItem(item) {
-            const grid = this.gallery;
-            const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-            const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-            const imageContainer = item.querySelector('.image-container');
-            const content = item.querySelector('.card-content');
-            const img = item.querySelector('img');
+  // --- MANEJADOR MASONRY ---
+  const masonryHandler = {
+    gallery: document.querySelector(".gallery-grid"),
+    init() {
+      if (!this.gallery) return;
+      window.addEventListener(
+        "resize",
+        throttle(() => this.resizeAllGridItems(), 200)
+      );
+      let checkCount = 0;
+      const checkInterval = setInterval(() => {
+        this.resizeAllGridItems();
+        checkCount++;
+        if (checkCount > 10) clearInterval(checkInterval);
+      }, 500);
+    },
 
-            if (!img || img.naturalHeight === 0) return;
+    resizeGridItem(item) {
+      const grid = this.gallery;
+      const rowHeight = parseInt(
+        window.getComputedStyle(grid).getPropertyValue("grid-auto-rows")
+      );
+      const rowGap = parseInt(
+        window.getComputedStyle(grid).getPropertyValue("grid-row-gap")
+      );
+      const imageContainer = item.querySelector(".image-container");
+      const content = item.querySelector(".card-content");
+      const img = item.querySelector("img");
 
-            const aspectRatio = img.naturalHeight / img.naturalWidth;
-            const currentWidth = item.getBoundingClientRect().width;
-            const projectedImageHeight = currentWidth * aspectRatio;
-            const contentHeight = content.getBoundingClientRect().height;
-            const totalHeight = projectedImageHeight + contentHeight;
-            const spans = Math.ceil((totalHeight + rowGap) / (rowHeight + rowGap));
-            
-            item.style.gridRowEnd = `span ${spans}`;
-            if(imageContainer) imageContainer.style.height = `${projectedImageHeight}px`;
-        },
+      if (!img || img.naturalHeight === 0) return;
 
-        resizeAllGridItems() {
-            const allItems = document.querySelectorAll('.gallery-item');
-            allItems.forEach(item => this.resizeGridItem(item));
-        }
-    };
+      const aspectRatio = img.naturalHeight / img.naturalWidth;
+      const currentWidth = item.getBoundingClientRect().width;
+      const projectedImageHeight = currentWidth * aspectRatio;
+      const contentHeight = content.getBoundingClientRect().height;
+      const totalHeight = projectedImageHeight + contentHeight;
+      const spans = Math.ceil((totalHeight + rowGap) / (rowHeight + rowGap));
 
-    // --- MANEJADOR DE GALERÍA DINÁMICA ---
-    const dynamicGalleryHandler = {
-        createArtworkCard(id, data, isCarousel = false) {
-            const imageUrl = data.images.find(img => img.includes('portada')) || data.images[0];
-            const card = document.createElement('div');
-            
-            let classList = 'card gallery-item';
-            if (isCarousel) classList += ' carousel-item';
-            card.className = classList;
-            card.dataset.artworkId = id;
+      item.style.gridRowEnd = `span ${spans}`;
+      if (imageContainer)
+        imageContainer.style.height = `${projectedImageHeight}px`;
+    },
 
-            const altText = `Escultura de ${data.technique || 'arcilla'} titulada '${data.title}', obra de Santiago Guarnieri.`;
+    resizeAllGridItems() {
+      const allItems = document.querySelectorAll(".gallery-item");
+      allItems.forEach((item) => this.resizeGridItem(item));
+    },
+  };
 
-            card.innerHTML = `
+  // --- MANEJADOR DE GALERÍA DINÁMICA ---
+  const dynamicGalleryHandler = {
+    createArtworkCard(id, data, isCarousel = false) {
+      const imageUrl =
+        data.images.find((img) => img.includes("portada")) || data.images[0];
+      const card = document.createElement("div");
+
+      let classList = "card gallery-item";
+      if (isCarousel) classList += " carousel-item";
+      card.className = classList;
+      card.dataset.artworkId = id;
+
+      const altText = `Escultura de ${data.technique || "arcilla"} titulada '${
+        data.title
+      }', obra de Santiago Guarnieri.`;
+
+      card.innerHTML = `
                 <div class="image-container">
                     <div class="parallax-wrap">
-                        <img src="${imageUrl}" alt="${altText}" loading="${isCarousel ? 'lazy' : 'eager'}">
+                        <img src="${imageUrl}" alt="${altText}" loading="${
+        isCarousel ? "lazy" : "eager"
+      }">
                     </div>
                 </div>
                 <div class="card-content">
@@ -179,455 +493,605 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             `;
 
-            const img = card.querySelector('img');
-            if (!isCarousel) {
-                img.onload = () => {
-                    masonryHandler.resizeGridItem(card);
-                    card.classList.add('reveal-on-scroll', 'is-visible');
-                };
-            }
-            return card;
-        },
-        
-        populate() {
-            const galleryContainer = document.querySelector('.gallery-grid');
-            const carouselContainer = document.querySelector('.carousel-items');
-            if (!galleryContainer || !carouselContainer) return;
+      const img = card.querySelector("img");
 
-            galleryContainer.innerHTML = '';
-            carouselContainer.innerHTML = '';
-            
-            const artworkIds = Object.keys(artworkData);
-
-            artworkIds.forEach((id) => {
-                const card = this.createArtworkCard(id, artworkData[id]);
-                galleryContainer.appendChild(card);
-            });
-
-            artworkIds.forEach(id => {
-                if (artworkData[id].featured) {
-                    const card = this.createArtworkCard(id, artworkData[id], true);
-                    carouselContainer.appendChild(card);
-                }
-            });
-            
-            modalHandler.initArtworkListeners();
-            
-            setTimeout(() => {
-                masonryHandler.init();
-                masonryHandler.resizeAllGridItems();
-                parallaxHandler.init();
-            }, 100);
+      // Blur-to-focus effect: add 'loaded' class when image finishes loading
+      img.onload = () => {
+        img.classList.add("loaded");
+        if (!isCarousel) {
+          masonryHandler.resizeGridItem(card);
+          card.classList.add("reveal-on-scroll", "is-visible");
         }
-    };
+      };
 
-    // --- MANEJADORES MENÚ Y NAV ---
-    const mobileMenuHandler = {
-        init() {
-            if (!hamburger || !mainNav) return;
-            hamburger.addEventListener('click', () => {
-                const isActive = mainNav.classList.contains('is-active');
-                isActive ? this.closeMenu() : this.openMenu();
-            });
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mainNav.classList.contains('is-active')) this.closeMenu();
-                });
-            });
-        },
-        openMenu() {
-            const scrollY = window.scrollY;
-            mainNav.classList.add('is-active');
-            hamburger.classList.add('is-active');
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${scrollY}px`;
-            document.body.style.width = '100%';
-        },
-        closeMenu() {
-            const scrollY = parseInt(document.body.style.top || '0') * -1;
-            mainNav.classList.remove('is-active');
-            hamburger.classList.remove('is-active');
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            window.scrollTo(0, scrollY);
+      // Handle cached images (already loaded before onload attached)
+      if (img.complete) {
+        img.classList.add("loaded");
+      }
+      return card;
+    },
+
+    populate() {
+      const galleryContainer = document.querySelector(".gallery-grid");
+      const carouselContainer = document.querySelector(".carousel-items");
+      if (!galleryContainer || !carouselContainer) return;
+
+      galleryContainer.innerHTML = "";
+      carouselContainer.innerHTML = "";
+
+      const artworkIds = Object.keys(artworkData);
+
+      artworkIds.forEach((id) => {
+        const card = this.createArtworkCard(id, artworkData[id]);
+        galleryContainer.appendChild(card);
+      });
+
+      artworkIds.forEach((id) => {
+        if (artworkData[id].featured) {
+          const card = this.createArtworkCard(id, artworkData[id], true);
+          carouselContainer.appendChild(card);
         }
-    };
+      });
 
-    const navigationHandler = {
-        init() {
-            const activeLink = document.querySelector('.nav-link.active');
-            if (activeLink) this.updateIndicator(activeLink);
-            navLinks.forEach(link => {
-                link.addEventListener('mouseenter', () => this.updateIndicator(link));
-                link.addEventListener('click', this.smoothScroll);
-            });
-            const navList = document.querySelector('.main-nav ul');
-            if (navList) {
-                navList.addEventListener('mouseleave', () => {
-                    const currentActiveLink = document.querySelector('.nav-link.active');
-                    if(currentActiveLink) this.updateIndicator(currentActiveLink);
-                });
-            }
-            this.initScrollSpy();
-        },
-        updateIndicator(link) {
-            if (!link || !navIndicator) return;
-            const linkRect = link.getBoundingClientRect();
-            const navRect = navIndicator.parentElement.getBoundingClientRect();
-            navIndicator.style.width = `${linkRect.width}px`;
-            navIndicator.style.transform = `translateX(${linkRect.left - navRect.left}px)`;
-        },
-        smoothScroll(event) {
-            event.preventDefault();
-            const targetId = event.currentTarget.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const headerHeight = header.offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight;
-                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-            }
-        },
-        initScrollSpy() {
-            const observerOptions = { rootMargin: `-${header.offsetHeight}px 0px -40% 0px`, threshold: 0 };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const id = entry.target.getAttribute('id');
-                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                    if (entry.isIntersecting && navLink) {
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        navLink.classList.add('active');
-                        this.updateIndicator(navLink);
-                    }
-                });
-            }, observerOptions);
-            sections.forEach(section => observer.observe(section));
-        }
-    };
+      modalHandler.initArtworkListeners();
 
-    const modalHandler = {
-        currentArtworkId: null,
-        currentImageIndex: 0,
-        scrollPosition: 0,
-        init() {
-            if (!modal) return;
-            closeModalButton.addEventListener('click', () => this.close());
-            modal.addEventListener('click', (e) => { if (e.target === modal) this.close(); });
-            document.addEventListener('keydown', (e) => {
-                if (modal.classList.contains('show')) {
-                    if (e.key === 'Escape') this.close();
-                    if (e.key === 'ArrowLeft') this.showPrevImage();
-                    if (e.key === 'ArrowRight') this.showNextImage();
-                }
-            });
-            modal.querySelector('#prevModalImage').addEventListener('click', () => this.showPrevImage());
-            modal.querySelector('#nextModalImage').addEventListener('click', () => this.showNextImage());
-            modal.querySelectorAll('.modal-tab-button').forEach(button => {
-                button.addEventListener('click', () => this.switchTab(button));
-            });
-            window.addEventListener('hashchange', () => this.handleDeepLink());
-        },
-        initArtworkListeners() {
-            const artworkItems = document.querySelectorAll('.card[data-artwork-id]');
-            artworkItems.forEach(item => {
-                item.addEventListener('click', () => this.open(item.dataset.artworkId));
-            });
-        },
-        open(artworkId) {
-            lenis.stop();
-            const data = artworkData[artworkId];
-            if (!data) return;
-            this.currentArtworkId = artworkId;
-            this.currentImageIndex = 0;
-            this.scrollPosition = window.pageYOffset;
-            
-            modal.querySelector('#modalArtworkTitle').textContent = data.title;
-            modal.querySelector('#modalArtworkDescription').textContent = data.description;
-            modal.querySelector('#modalArtworkMaterials').textContent = data.materials;
-            modal.querySelector('#modalArtworkTechnique').textContent = data.technique;
-            modal.querySelector('#modalArtworkHistory').textContent = data.history;
-            const priceEl = modal.querySelector('#modalArtworkPrice');
-            priceEl.textContent = data.price || '';
-            priceEl.style.display = data.price ? 'block' : 'none';
-            
-            this.generateThumbnails(data.images);
-            this.updateMainImage();
-            
-            modal.classList.add('show');
-            document.body.classList.add('modal-is-open');
-        },
-        close() {
-            lenis.start();
-            modal.classList.remove('show');
-            document.body.classList.remove('modal-is-open');
-            window.scrollTo(0, this.scrollPosition);
-        },
-        updateMainImage() {
-            const data = artworkData[this.currentArtworkId];
-            const mainImage = modal.querySelector('#modalArtworkMainImage');
-            const imageArea = modal.querySelector('.modal-image-area');
-            
-            imageArea.classList.add('loading');
-            mainImage.style.opacity = '0.5';
-            mainImage.onload = () => {
-                imageArea.classList.remove('loading');
-                mainImage.style.opacity = '1';
-            };
-            mainImage.src = data.images[this.currentImageIndex];
-            
-            const navButtons = modal.querySelectorAll('.modal-nav-button');
-            navButtons.forEach(btn => btn.style.display = data.images.length > 1 ? 'block' : 'none');
-        },
-        generateThumbnails(images) {
-            const gallery = modal.querySelector('.modal-thumbnail-gallery');
-            gallery.innerHTML = '';
-            if (!images || images.length <= 1) {
-                gallery.style.display = 'none'; 
-                return;
-            }
-            gallery.style.display = 'flex';
-            images.forEach((src, index) => {
-                const img = document.createElement('img');
-                img.src = src;
-                img.addEventListener('click', () => {
-                    this.currentImageIndex = index;
-                    this.updateMainImage();
-                });
-                gallery.appendChild(img);
-            });
-        },
-        showNextImage() {
-            const images = artworkData[this.currentArtworkId].images;
-            if (images.length <= 1) return;
-            this.currentImageIndex = (this.currentImageIndex + 1) % images.length;
-            this.updateMainImage();
-        },
-        showPrevImage() {
-            const images = artworkData[this.currentArtworkId].images;
-            if (images.length <= 1) return;
-            this.currentImageIndex = (this.currentImageIndex - 1 + images.length) % images.length;
-            this.updateMainImage();
-        },
-        switchTab(button) {
-            const targetId = button.dataset.tab;
-            modal.querySelectorAll('.modal-tab-button').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            modal.querySelectorAll('.modal-tab-content').forEach(content => {
-                content.classList.toggle('active', content.id === targetId);
-            });
-        },
-        handleDeepLink() {
-            const artworkId = window.location.hash.substring(1);
-            if (artworkId && artworkData[artworkId]) this.open(artworkId);
-        }
-    };
+      setTimeout(() => {
+        masonryHandler.init();
+        masonryHandler.resizeAllGridItems();
+        parallaxHandler.init();
+      }, 100);
+    },
+  };
 
-    const carouselHandler = {
-        isDown: false, startX: 0, scrollLeft: 0,
-        init() {
-            if (!carousel) return;
-            carousel.addEventListener('mousedown', (e) => {
-                this.isDown = true;
-                carousel.classList.add('active');
-                this.startX = e.pageX - carousel.offsetLeft;
-                this.scrollLeft = carousel.scrollLeft;
-            });
-            carousel.addEventListener('mouseleave', () => { this.isDown = false; carousel.classList.remove('active'); });
-            carousel.addEventListener('mouseup', () => { this.isDown = false; carousel.classList.remove('active'); });
-            carousel.addEventListener('mousemove', (e) => {
-                if (!this.isDown) return;
-                e.preventDefault();
-                const x = e.pageX - carousel.offsetLeft;
-                const walk = (x - this.startX) * 2;
-                carousel.scrollLeft = this.scrollLeft - walk;
-            });
-        }
-    };
-
-    // --- SCHEMA SEO ---
-    const schemaGenerator = {
-        init() {
-            setTimeout(() => {
-                if (Object.keys(artworkData).length === 0) return;
-                this.generateArtworkSchema();
-            }, 1000);
-        },
-
-        generateArtworkSchema() {
-            const artworkIds = Object.keys(artworkData);
-            const schemaList = artworkIds.map(id => {
-                const item = artworkData[id];
-                const imageUrl = item.images[0];
-                return {
-                    "@context": "https://schema.org",
-                    "@type": "VisualArtwork",
-                    "name": item.title,
-                    "image": `https://santiagoguarnieri.com/${imageUrl}`,
-                    "description": item.description,
-                    "artist": { "@type": "Person", "name": "Santiago Guarnieri" },
-                    "artMedium": item.materials || "Arcilla / Bronce",
-                    "artform": "Escultura",
-                    "creator": { "@type": "Person", "name": "Santiago Guarnieri" },
-                    "material": item.technique
-                };
-            });
-            const script = document.createElement('script');
-            script.type = 'application/ld+json';
-            script.text = JSON.stringify(schemaList);
-            document.head.appendChild(script);
-        }
-    };
-
-    // --- MANEJADOR DE PARTÍCULAS (LENTO Y ELEGANTE) ---
-    const particleSystemHandler = {
-        init() {
-            const canvas = document.getElementById('particle-canvas');
-            if (!canvas) return;
-
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            let width, height;
-
-            // Configuración de interacción
-            const mouse = { x: null, y: null, radius: 150 };
-
-            const resize = () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            };
-            window.addEventListener('resize', resize);
-            resize();
-
-            window.addEventListener('mousemove', (e) => {
-                mouse.x = e.x;
-                mouse.y = e.y;
-            });
-
-            class Particle {
-                constructor() {
-                    this.reset();
-                }
-                
-                reset() {
-                    this.x = Math.random() * width;
-                    this.y = Math.random() * height;
-                    
-                    // VELOCIDAD BASE (CRUCERO - LENTA):
-                    this.vx = (Math.random() - 0.5) * 0.6; 
-                    this.vy = (Math.random() - 0.5) * 0.6;
-                    
-                    this.originalVx = this.vx;
-                    this.originalVy = this.vy;
-
-                    this.size = Math.random() * 2 + 1; 
-                    this.opacity = Math.random() * 0.5 + 0.1;
-                    this.baseOpacity = this.opacity;
-                }
-
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-
-                    if (this.x < 0 || this.x > width) this.vx *= -1;
-                    if (this.y < 0 || this.y > height) this.vy *= -1;
-
-                    let isInteracting = false;
-                    if (mouse.x != null) {
-                        let dx = mouse.x - this.x;
-                        let dy = mouse.y - this.y;
-                        let distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < mouse.radius) {
-                            isInteracting = true;
-                            const forceDirectionX = dx / distance;
-                            const forceDirectionY = dy / distance;
-                            const force = (mouse.radius - distance) / mouse.radius;
-                            const pushStrength = 0.08; 
-                            
-                            this.vx -= forceDirectionX * force * pushStrength;
-                            this.vy -= forceDirectionY * force * pushStrength;
-                            this.opacity = Math.min(1, this.opacity + 0.05);
-                        }
-                    }
-
-                    // RECUPERACIÓN SUAVE (ELASTICIDAD)
-                    if (!isInteracting) {
-                        this.vx += (this.originalVx - this.vx) * 0.05;
-                        this.vy += (this.originalVy - this.vy) * 0.05;
-                        if (this.opacity > this.baseOpacity) this.opacity -= 0.01;
-                    }
-                }
-
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(218, 165, 32, ${this.opacity})`;
-                    ctx.fill();
-                }
-            }
-
-            for (let i = 0; i < 150; i++) {
-                particles.push(new Particle());
-            }
-
-            const animate = () => {
-                ctx.clearRect(0, 0, width, height);
-                particles.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
-                requestAnimationFrame(animate);
-            };
-            animate();
-        }
-    };
-
-    // --- INIT PRINCIPAL ---
-    async function init() {
-        const preloader = document.querySelector('.preloader');
-        try {
-            const response = await fetch('artworks.json');
-            if (response.ok) artworkData = await response.json();
-        } catch (e) { console.error(e); }
-
-        if (preloader) preloader.style.display = 'none';
-
-        // Inicializar módulos
-        dynamicGalleryHandler.populate();
-        mobileMenuHandler.init();
-        navigationHandler.init();
-        carouselHandler.init();
-        
-        // AQUÍ ESTABA EL ERROR: Agregamos el cursor, quitamos spotlight
-        customCursorHandler.init(); 
-        
-        schemaGenerator.init();
-        particleSystemHandler.init();
-        modalHandler.init();
-        
-        // Contacto
-        const revealButton = document.getElementById('reveal-contact');
-        const contactCard = document.querySelector('.contact-card');
-        const flipBack = document.getElementById('flip-back');
-        if(revealButton && contactCard) {
-            revealButton.addEventListener('click', () => contactCard.classList.add('revealed'));
-            if(flipBack) flipBack.addEventListener('click', () => contactCard.classList.remove('revealed'));
-        }
-
-        // Revelado de textos
-        const textObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('p, h3, h4, .detail-card').forEach(el => {
-            el.classList.add('text-reveal');
-            textObserver.observe(el);
+  // --- MANEJADORES MENÚ Y NAV ---
+  const mobileMenuHandler = {
+    init() {
+      if (!hamburger || !mainNav) return;
+      hamburger.addEventListener("click", () => {
+        const isActive = mainNav.classList.contains("is-active");
+        isActive ? this.closeMenu() : this.openMenu();
+      });
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (mainNav.classList.contains("is-active")) this.closeMenu();
         });
+      });
+    },
+    openMenu() {
+      const scrollY = window.scrollY;
+      mainNav.classList.add("is-active");
+      hamburger.classList.add("is-active");
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+    },
+    closeMenu() {
+      const scrollY = parseInt(document.body.style.top || "0") * -1;
+      mainNav.classList.remove("is-active");
+      hamburger.classList.remove("is-active");
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollY);
+    },
+  };
+
+  const navigationHandler = {
+    init() {
+      const activeLink = document.querySelector(".nav-link.active");
+      if (activeLink) this.updateIndicator(activeLink);
+      navLinks.forEach((link) => {
+        link.addEventListener("mouseenter", () => this.updateIndicator(link));
+        link.addEventListener("click", this.smoothScroll);
+      });
+      const navList = document.querySelector(".main-nav ul");
+      if (navList) {
+        navList.addEventListener("mouseleave", () => {
+          const currentActiveLink = document.querySelector(".nav-link.active");
+          if (currentActiveLink) this.updateIndicator(currentActiveLink);
+        });
+      }
+      this.initScrollSpy();
+    },
+    updateIndicator(link) {
+      if (!link || !navIndicator) return;
+      const linkRect = link.getBoundingClientRect();
+      const navRect = navIndicator.parentElement.getBoundingClientRect();
+      navIndicator.style.width = `${linkRect.width}px`;
+      navIndicator.style.transform = `translateX(${
+        linkRect.left - navRect.left
+      }px)`;
+    },
+    smoothScroll(event) {
+      event.preventDefault();
+      const targetId = event.currentTarget.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const headerHeight = header.offsetHeight;
+        const targetPosition = targetElement.offsetTop - headerHeight;
+        window.scrollTo({ top: targetPosition, behavior: "smooth" });
+      }
+    },
+    initScrollSpy() {
+      const observerOptions = {
+        rootMargin: `-${header.offsetHeight}px 0px -40% 0px`,
+        threshold: 0,
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute("id");
+          const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+          if (entry.isIntersecting && navLink) {
+            navLinks.forEach((link) => link.classList.remove("active"));
+            navLink.classList.add("active");
+            this.updateIndicator(navLink);
+          }
+        });
+      }, observerOptions);
+      sections.forEach((section) => observer.observe(section));
+    },
+  };
+
+  const modalHandler = {
+    currentArtworkId: null,
+    currentImageIndex: 0,
+    scrollPosition: 0,
+    init() {
+      if (!modal) return;
+      closeModalButton.addEventListener("click", () => this.close());
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) this.close();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (modal.classList.contains("show")) {
+          if (e.key === "Escape") this.close();
+          if (e.key === "ArrowLeft") this.showPrevImage();
+          if (e.key === "ArrowRight") this.showNextImage();
+        }
+      });
+      modal
+        .querySelector("#prevModalImage")
+        .addEventListener("click", () => this.showPrevImage());
+      modal
+        .querySelector("#nextModalImage")
+        .addEventListener("click", () => this.showNextImage());
+      modal.querySelectorAll(".modal-tab-button").forEach((button) => {
+        button.addEventListener("click", () => this.switchTab(button));
+      });
+      window.addEventListener("hashchange", () => this.handleDeepLink());
+    },
+    initArtworkListeners() {
+      const artworkItems = document.querySelectorAll(".card[data-artwork-id]");
+      artworkItems.forEach((item) => {
+        item.addEventListener("click", () => this.open(item.dataset.artworkId));
+      });
+    },
+    open(artworkId) {
+      lenis.stop();
+      const data = artworkData[artworkId];
+      if (!data) return;
+      this.currentArtworkId = artworkId;
+      this.currentImageIndex = 0;
+      this.scrollPosition = window.pageYOffset;
+
+      // Usar datos cargados directamente (el idioma ya lo gestiona loadArtworkData)
+      modal.querySelector("#modalArtworkTitle").textContent = data.title;
+      modal.querySelector("#modalArtworkDescription").textContent =
+        data.description;
+      modal.querySelector("#modalArtworkMaterials").textContent =
+        data.materials;
+      modal.querySelector("#modalArtworkTechnique").textContent =
+        data.technique;
+      modal.querySelector("#modalArtworkHistory").textContent = data.history;
+
+      const priceEl = modal.querySelector("#modalArtworkPrice");
+      // FIX: Si el precio es "Consultar", ocultamos el texto para dejar solo el botón
+      const priceLower = (data.price || "").toLowerCase();
+      if (
+        data.price &&
+        priceLower !== "consultar" &&
+        priceLower !== "inquiry"
+      ) {
+        priceEl.textContent = data.price;
+        priceEl.style.display = "block";
+      } else {
+        priceEl.style.display = "none";
+      }
+
+      // --- NUEVO: Botón de consulta específico ---
+      const quoteBtn = modal.querySelector("#modalArtworkQuote");
+      if (quoteBtn) {
+        // Al hacer click, cerrar modal y scrollear al contacto + Tracking
+        quoteBtn.onclick = (e) => {
+          e.preventDefault();
+
+          // Tracking de Analytics
+          if (typeof gtag === "function") {
+            gtag("event", "click_consultar", {
+              event_category: "Engagement",
+              event_label: data.title,
+              value: 1,
+            });
+          }
+
+          this.close();
+          const footer = document.querySelector("#footer-contact");
+          if (footer) footer.scrollIntoView({ behavior: "smooth" });
+        };
+        // Limpiamos href por si acaso
+        quoteBtn.removeAttribute("href");
+      }
+
+      // --- NUEVO: Actualizar enlaces de Compartir ---
+      const currentUrl = `${window.location.origin}${window.location.pathname}#${artworkId}`;
+      const shareText = `Mira esta escultura de Santiago Guarnieri: ${data.title}`;
+
+      const whatsappBtn = modal.querySelector(".share-btn.whatsapp");
+      if (whatsappBtn)
+        whatsappBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+          shareText + " " + currentUrl
+        )}`;
+
+      const facebookBtn = modal.querySelector(".share-btn.facebook");
+      if (facebookBtn)
+        facebookBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+          currentUrl
+        )}`;
+
+      const twitterBtn = modal.querySelector(".share-btn.twitter");
+      if (twitterBtn)
+        twitterBtn.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          shareText
+        )}&url=${encodeURIComponent(currentUrl)}`;
+
+      // --- NUEVO: Botón Copiar Link ---
+      const copyBtn = modal.querySelector(".share-btn.copy-link");
+      if (copyBtn) {
+        copyBtn.onclick = async () => {
+          try {
+            await navigator.clipboard.writeText(currentUrl);
+
+            // Feedback visual temporal
+            const originalIcon = copyBtn.innerHTML;
+            copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+            copyBtn.style.color = "#4CAF50"; // Verde éxito
+            copyBtn.style.borderColor = "#4CAF50";
+
+            setTimeout(() => {
+              copyBtn.innerHTML = originalIcon;
+              copyBtn.style.color = "";
+              copyBtn.style.borderColor = "";
+            }, 2000);
+          } catch (err) {
+            console.error("Error al copiar:", err);
+          }
+        };
+      }
+
+      // --- SEO DINÁMICO ---
+      document.title = `${data.title} | Santiago Guarnieri`;
+
+      this.generateThumbnails(data.images);
+      this.updateMainImage();
+
+      modal.classList.add("show");
+      document.body.classList.add("modal-is-open");
+    },
+    close() {
+      lenis.start();
+      modal.classList.remove("show");
+      document.body.classList.remove("modal-is-open");
+      window.scrollTo(0, this.scrollPosition);
+
+      // RESTAURAR TÍTULO ORIGINAL
+      document.title =
+        "Santiago Guarnieri | Escultor en Arcilla y Bronce | Resistencia, Chaco";
+    },
+    updateMainImage() {
+      const data = artworkData[this.currentArtworkId];
+      const mainImage = modal.querySelector("#modalArtworkMainImage");
+      const imageArea = modal.querySelector(".modal-image-area");
+
+      imageArea.classList.add("loading");
+      mainImage.style.opacity = "0.5";
+      mainImage.onload = () => {
+        imageArea.classList.remove("loading");
+        mainImage.style.opacity = "1";
+      };
+      mainImage.src = data.images[this.currentImageIndex];
+
+      const navButtons = modal.querySelectorAll(".modal-nav-button");
+      navButtons.forEach(
+        (btn) => (btn.style.display = data.images.length > 1 ? "block" : "none")
+      );
+    },
+    generateThumbnails(images) {
+      const gallery = modal.querySelector(".modal-thumbnail-gallery");
+      gallery.innerHTML = "";
+      if (!images || images.length <= 1) {
+        gallery.style.display = "none";
+        return;
+      }
+      gallery.style.display = "flex";
+      images.forEach((src, index) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.addEventListener("click", () => {
+          this.currentImageIndex = index;
+          this.updateMainImage();
+        });
+        gallery.appendChild(img);
+      });
+    },
+    showNextImage() {
+      const images = artworkData[this.currentArtworkId].images;
+      if (images.length <= 1) return;
+      this.currentImageIndex = (this.currentImageIndex + 1) % images.length;
+      this.updateMainImage();
+    },
+    showPrevImage() {
+      const images = artworkData[this.currentArtworkId].images;
+      if (images.length <= 1) return;
+      this.currentImageIndex =
+        (this.currentImageIndex - 1 + images.length) % images.length;
+      this.updateMainImage();
+    },
+    switchTab(button) {
+      const targetId = button.dataset.tab;
+      modal
+        .querySelectorAll(".modal-tab-button")
+        .forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+      modal.querySelectorAll(".modal-tab-content").forEach((content) => {
+        content.classList.toggle("active", content.id === targetId);
+      });
+    },
+    handleDeepLink() {
+      const artworkId = window.location.hash.substring(1);
+      if (artworkId && artworkData[artworkId]) this.open(artworkId);
+    },
+  };
+
+  const carouselHandler = {
+    isDown: false,
+    startX: 0,
+    scrollLeft: 0,
+    init() {
+      if (!carousel) return;
+      carousel.addEventListener("mousedown", (e) => {
+        this.isDown = true;
+        carousel.classList.add("active");
+        this.startX = e.pageX - carousel.offsetLeft;
+        this.scrollLeft = carousel.scrollLeft;
+      });
+      carousel.addEventListener("mouseleave", () => {
+        this.isDown = false;
+        carousel.classList.remove("active");
+      });
+      carousel.addEventListener("mouseup", () => {
+        this.isDown = false;
+        carousel.classList.remove("active");
+      });
+      carousel.addEventListener("mousemove", (e) => {
+        if (!this.isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - this.startX) * 2;
+        carousel.scrollLeft = this.scrollLeft - walk;
+      });
+    },
+  };
+
+  // --- SCHEMA SEO ---
+  const schemaGenerator = {
+    init() {
+      setTimeout(() => {
+        if (Object.keys(artworkData).length === 0) return;
+        this.generateArtworkSchema();
+      }, 1000);
+    },
+
+    generateArtworkSchema() {
+      const artworkIds = Object.keys(artworkData);
+      const schemaList = artworkIds.map((id) => {
+        const item = artworkData[id];
+        const imageUrl = item.images[0];
+        return {
+          "@context": "https://schema.org",
+          "@type": "VisualArtwork",
+          name: item.title,
+          image: `https://santiagoguarnieri.com/${imageUrl}`,
+          description: item.description,
+          artist: { "@type": "Person", name: "Santiago Guarnieri" },
+          artMedium: item.materials || "Arcilla / Bronce",
+          artform: "Escultura",
+          creator: { "@type": "Person", name: "Santiago Guarnieri" },
+          material: item.technique,
+        };
+      });
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.text = JSON.stringify(schemaList);
+      document.head.appendChild(script);
+    },
+  };
+
+  // --- MANEJADOR DE PARTÍCULAS (LENTO Y ELEGANTE) ---
+  const particleSystemHandler = {
+    init() {
+      const canvas = document.getElementById("particle-canvas");
+      if (!canvas) return;
+
+      const ctx = canvas.getContext("2d");
+      let particles = [];
+      let width, height;
+
+      // Configuración de interacción
+      const mouse = { x: null, y: null, radius: 150 };
+
+      const resize = () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      };
+      window.addEventListener("resize", resize);
+      resize();
+
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+      });
+
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+
+        reset() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+
+          // VELOCIDAD BASE (CRUCERO - LENTA):
+          this.vx = (Math.random() - 0.5) * 0.6;
+          this.vy = (Math.random() - 0.5) * 0.6;
+
+          this.originalVx = this.vx;
+          this.originalVy = this.vy;
+
+          this.size = Math.random() * 2 + 1;
+          this.opacity = Math.random() * 0.5 + 0.1;
+          this.baseOpacity = this.opacity;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+
+          let isInteracting = false;
+          if (mouse.x != null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < mouse.radius) {
+              isInteracting = true;
+              const forceDirectionX = dx / distance;
+              const forceDirectionY = dy / distance;
+              const force = (mouse.radius - distance) / mouse.radius;
+              const pushStrength = 0.08;
+
+              this.vx -= forceDirectionX * force * pushStrength;
+              this.vy -= forceDirectionY * force * pushStrength;
+              this.opacity = Math.min(1, this.opacity + 0.05);
+            }
+          }
+
+          // RECUPERACIÓN SUAVE (ELASTICIDAD)
+          if (!isInteracting) {
+            this.vx += (this.originalVx - this.vx) * 0.05;
+            this.vy += (this.originalVy - this.vy) * 0.05;
+            if (this.opacity > this.baseOpacity) this.opacity -= 0.01;
+          }
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(218, 165, 32, ${this.opacity})`;
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < 150; i++) {
+        particles.push(new Particle());
+      }
+
+      const animate = () => {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach((p) => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      };
+      animate();
+    },
+  };
+
+  // --- CARGA DE DATOS ---
+  async function loadArtworkData(lang) {
+    const file = lang === "en" ? "artworks_en.json" : "artworks.json";
+    try {
+      const response = await fetch(file);
+      if (response.ok) {
+        artworkData = await response.json();
+        dynamicGalleryHandler.populate();
+      }
+    } catch (e) {
+      console.error("Error loading artwork data:", e);
+    }
+  }
+
+  // --- INIT PRINCIPAL ---
+  async function init() {
+    const preloader = document.querySelector(".preloader");
+
+    // Cargamos datos iniciales (español o el que estuviera si implementáramos persistencia)
+    await loadArtworkData("es");
+
+    if (preloader) preloader.style.display = "none";
+
+    // Inicializar módulos
+    dynamicGalleryHandler.populate();
+    mobileMenuHandler.init();
+    navigationHandler.init();
+    carouselHandler.init();
+
+    // AQUÍ ESTABA EL ERROR: Agregamos el cursor, quitamos spotlight
+    customCursorHandler.init();
+    if (typeof magneticButtonHandler !== "undefined")
+      magneticButtonHandler.init();
+
+    schemaGenerator.init();
+    particleSystemHandler.init();
+    modalHandler.init();
+
+    // Contacto
+    const revealButton = document.getElementById("reveal-contact");
+    const contactCard = document.querySelector(".contact-card");
+    const flipBack = document.getElementById("flip-back");
+    if (revealButton && contactCard) {
+      revealButton.addEventListener("click", () =>
+        contactCard.classList.add("revealed")
+      );
+      if (flipBack)
+        flipBack.addEventListener("click", () =>
+          contactCard.classList.remove("revealed")
+        );
     }
 
-    init();
+    // Revelado de textos
+    const textObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll("p, h3, h4, .detail-card").forEach((el) => {
+      el.classList.add("text-reveal");
+      textObserver.observe(el);
+    });
+
+    // INICIAR IDIOMA
+    if (typeof langHandler !== "undefined") langHandler.init();
+  }
+
+  init();
 });

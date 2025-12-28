@@ -1,241 +1,289 @@
 {
-    "Freya": {
-        "title": "Freya: Belleza, Magia y Poder Guerrero",
-        "featured": true,
-        "description": "Una evocación de la diosa nórdica Freya, que amalgama belleza, magia y poder guerrero para honrar la mitología de los inmigrantes del Chaco.",
-        "history": "La creación de esta obra es una manifestación de la profunda conexión del artista con su tierra y, al mismo tiempo, con las culturas que la han enriquecido. La escultura nace de la intención de rendir homenaje a las mitologías y creencias de los inmigrantes que llegaron a la provincia de Resistencia, Chaco, y que se fusionaron con las culturas criollas, guaraníes y qom.\n\nEl artista mantiene su estilo característico de usar las formas corporales para contar historias. En esta pieza, el rostro y la expresión del personaje son la clave para transmitir una narrativa. El mayor desafío técnico y artístico consistió en combinar la belleza femenina con un inmenso poder, elementos que son la esencia de la figura de Freya. Los cuernos de carnero, el peinado complejo y la simbología grabada en su piel fueron cuidadosamente elegidos para reflejar el bagaje cultural de las tradiciones nórdicas. A través de este trabajo, el artista busca poner de relieve el mestizaje de creencias y culturas que han llegado a su tierra, convirtiendo a la figura de la diosa nórdica en un vehículo para explorar un diálogo cultural único. Es una obra que no solo celebra la belleza de una deidad, sino que también honra la rica diversidad que define a la región.",
-        "price": "Consultar",
-        "materials": "Escultura en arcilla",
-        "technique": "Modelado en arcilla",
-        "images": [
-            "Fotos/Freya/portada.webp",
-            "Fotos/Freya/20240913_222418.webp",
-            "Fotos/Freya/20240913_223002.webp",
-            "Fotos/Freya/20240913_223304.webp",
-            "Fotos/Freya/20240913_223855.webp",
-            "Fotos/Freya/20240913_224259.webp"
-        ],
-        "size": "tall"
-    },
-    "matero": {
-        "title": "Alma y Mate: Tradición e Introspección Gaucha",
-        "description": "Un homenaje a la tradición y la introspección gaucha, elevando el acto cotidiano de tomar mate a un momento de meditación.",
-        "history": "La obra Alma y Mate es el resultado de la fascinación del artista por el arquetipo del gaucho y su relación con la naturaleza y el tiempo. Santiago Guarnieri se propuso explorar ese momento de soledad y paz en el que el mate se convierte en una fiel compañía, un espacio para la reflexión personal. A través de esta pieza, busca resaltar la figura del gaucho como portador de un legado de sabiduría y trabajo, visible en las huellas que el sol ha dejado en su piel.\n\nLa escultura trasciende la mera representation y se convierte en un símbolo del ritual del mate como un instante de introspección y planificación antes de que comiencen las labores diarias. Las ondas que conectan al personaje con el mate simbolizan el alma del hombre que se amalgama con el ritual, convirtiendo un simple acto en un momento de contemplación único. A través de la minuciosidad en los detalles del rostro y la barba, el artista no solo busca la precisión, sino que también quiere invitar al espectador a contemplar la riqueza de las tradiciones que forman parte de la identidad cultural argentina.",
-        "price": "Consultar",
-        "materials": "Escultura en material con acabado de madera",
-        "technique": "Modelado y tallado",
-        "images": [
-            "Fotos/Matero/portada.webp",
-            "Fotos/Matero/1.webp",
-            "Fotos/Matero/20240511_225300.webp",
-            "Fotos/Matero/20240511_225318.webp",
-            "Fotos/Matero/20240513_212612.webp"
-        ],
-        "size": "tall"
-    },
-    "Escultura-de-San-Martin": {
-        "title": "Busto del General San Martín: Legado de Firmeza y Determinación",
-        "description": "Un homenaje al legado de José de San Martín, que trasciende el retrato para estudiar la firmeza y determinación del General.",
-        "history": "La creación de esta obra surge de la profunda admiración por el rol de San Martín como líder y estratega militar. El artista se propuso el desafío de ir más allá del retrato convencional, buscando una imagen que resonara con el imaginario popular, pero que a la vez estuviera arraigada en la precisión histórica. Para ello, se basó en el daguerrotipo de 1827, la fuente más confiable de sus rasgos anatómicos, fusionando esa realidad con la mística del héroe.\n\nEl proceso de investigación fue tan crucial como el artístico. El artista consultó bases de datos del Ejército Argentino para replicar con exactitud el bordado de los galones y el diseño de las medallas, asegurando que cada elemento fuera una referencia cabal a sus victorias y honores. La escultura, que carece de un título explícito, busca que el espectador no sea forzado a una interpretación única, permitiendo que la obra \"hable por sí misma\" y que los valores del General —como su compromiso, su valentía y su rigor— sean percibidos a través de la contemplación de cada detalle. La elección de la altura, pensada para un espacio público, subraya la intención de mantener vivo su legado y servir como un recordatorio constante de su invaluable aporte a la historia de la humanidad.",
-        "price": "Consultar",
-        "materials": "Escultura en arcilla (90 cm de alto)",
-        "technique": "Modelado y tallado",
-        "images": [
-            "Fotos/Escultura-de-San-Martin/portada.webp",
-            "Fotos/Escultura-de-San-Martin/20240805_212144.webp",
-            "Fotos/Escultura-de-San-Martin/20240805_212419.webp",
-            "Fotos/Escultura-de-San-Martin/20240805_212528.webp",
-            "Fotos/Escultura-de-San-Martin/20240805_212614.webp",
-            "Fotos/Escultura-de-San-Martin/20240805_212634.webp",
-            "Fotos/Escultura-de-San-Martin/20240805_212712.webp"
-        ],
-        "size": "tall"
-    },
-    "Tamborcito-de-Tacuari": {
-        "title": "El Eco de la Infancia: Homenaje a Pedro Ríos",
-        "description": "La obra captura la dualidad de Pedro Ríos, el Tambor de Tacuarí: la inocencia de un niño y la valentía de un héroe.",
-        "history": "En su obra, Santiago Guarnieri nos presenta a Pedro Ríos, el Tambor de Tacuarí, no como una figura idealizada de la historia, sino como lo que fue: un niño. Guarnieri capta con maestría la dualidad de su personaje: la inocencia de un niño de las orillas del Paraná, mezclada con la valentía de un héroe que se enfrenta a un destino abrumador. La escultura inmortaliza el momento exacto en que Pedro recibe los elementos que lo acompañarán en su hazaña: un tambor y una banda de cuero, símbolos de su compromiso y sacrificio.La expresión del rostro es de una profunda valentía y temor a lo desconocido, la de alguien que, a pesar de su corta edad, decide seguir adelante por unos ideales que quizás no entiende por completo, pero que resuenan en su corazón. La piel, tersa y lisa, contrasta con la dureza de las obras anteriores del artista y resalta la juventud del personaje, acentuando la tragedia de una infancia sacrificada en aras de la patria. Historia de la Obra: El Silencio del Tambor Pedro Ríos se integra a la perfección en la narrativa de Guarnieri sobre la identidad regional y nacional. Si San Fernando Rey exploraba la herencia europea y Monte Quemado abordaba la fragilidad de los pueblos originarios, esta obra rinde homenaje a un héroe regional, un niño que, nacido en lo más profundo del litoral argentino, se convierte en un símbolo de la entrega y el amor por la patria. Es un recordatorio de que la identidad de una nación se construye no solo con grandes figuras, sino también con el sacrificio de aquellos que, como Pedro Ríos, deciden luchar por su tierra.A diferencia de sus obras anteriores, Guarnieri experimenta en esta pieza con nuevos materiales: la arcilla es utilizada como medio para un fin, que es la resina y fibra de vidrio. Estos materiales le permiten captar con una precisión inusitada hasta el más mínimo detalle de la figura, confiriéndole un acabado liso y delicado que subraya la fragilidad del niño, pero también la fortaleza de su esp... [truncated]",
-        "price": "Consultar",
-        "materials": "Resina y fibra de vidrio",
-        "technique": "Modelado en arcilla y vaciado en resina",
-        "images": [
-            "Fotos/Tamborcito-de-Tacuari/portada.webp",
-            "Fotos/Tamborcito-de-Tacuari/20241001_201930.webp",
-            "Fotos/Tamborcito-de-Tacuari/20241001_201952.webp",
-            "Fotos/Tamborcito-de-Tacuari/20241001_202430.webp",
-            "Fotos/Tamborcito-de-Tacuari/20241001_202458.webp"
-        ],
-        "size": "tall"
-    },
-    "Napalpi": {
-        "title": "Napalpí: Un Homenaje a la Resistencia Chaqueña",
-        "description": "Un conmovedor homenaje a las víctimas de la masacre de 1924 en Chaco, dando un rostro humano al dolor y la resistencia.",
-        "history": "La escultura Napalpí es un conmovedor homenaje a las víctimas y a los sobrevivientes de la masacre de 1924 en la provincia del Chaco. A través de la figura de un cacique ficticio, la obra busca dar un rostro humano al dolor y la resistencia. El rostro del personaje, surcado por arrugas que hablan de una vida de sabiduría y sufrimiento, refleja la crueldad inimaginable que el ser humano puede infligir, pero también la resistencia al olvido. La mirada del cacique, dirigida hacia el cielo, evoca el momento en que un avión del Ejército Argentino, en su vuelo de bautismo, fue utilizado para distraer a los niños antes del ataque. La pieza se sostiene sobre una base de cedro tallada, que busca representar las raíces de aquellos que perdieron su vida, mientras que la delgada y curva conexión entre la cabeza y la base simboliza la fragilidad de la vida y el deseo de la obra de elevarse. Los detalles de su tocado y collar, elaborados con materiales que remiten a las artesanías qom y wichi, refuerzan la identidad de un pueblo y su profundo sentido de pertenencia a la tierra.\n\nLa creación de Napalpí es una respuesta del artista a la necesidad de mantener viva la historia de su provincia. Para Santiago Guarnieri, el arte tiene la responsabilidad de ser un vehículo para la memoria, especialmente cuando los registros históricos son escasos. El artista, oriundo del Chaco, asume el compromiso de contar la historia de su pueblo, entendiendo que al ser una provincia joven, aún hay mucho que debe ser contado para fortalecer su identidad.\n\nLa elección de la arcilla como material principal no es casual: representa el barro y la tierra de los que venimos, un material noble que, al transformarse en cerámica por la acción del fuego, simboliza la resiliencia de un pueblo. El proceso de modelado y tallado fue una forma de rendir homenaje, de dar vida y dignidad a una historia que merece ser escuchada. A través de esta obra, el artista nos invita a la empatía y la refle... [truncated]",
-        "price": "Consultar",
-        "materials": "Escultura en cerámica y madera de cedro (40 cm de alto)",
-        "technique": "Modelado y tallado",
-        "images": [
-            "Fotos/Napalpi/portada.webp",
-            "Fotos/Napalpi/20240513_200225.webp",
-            "Fotos/Napalpi/20240513_200243.webp",
-            "Fotos/Napalpi/20240513_204832.webp",
-            "Fotos/Napalpi/20240513_205153.webp",
-            "Fotos/Napalpi/20240608_202652.webp"
-        ],
-        "size": "tall"
-    },
-    "San-Fernando-Rey": {
-        "title": "San Fernando Rey: Un Rostro ante el Infinito",
-        "featured": true,
-        "description": "Una representación del patrono de Resistencia despojado de su majestuosidad, revelando la introspección de un hombre en el ocaso de su vida.",
-        "history": "En esta obra, Santiago Guarnieri nos presenta un San Fernando Rey despojado de la majestuosidad convencional, revelando en cambio la introspección de un hombre en el ocaso de su vida. La escultura, de una pátina de cobalto que le confiere una cualidad atemporal, parece extraída de una historia antigua, cruda y sin adornos. Guarnieri combina magistralmente la nobleza del personaje con una vulnerabilidad que resuena profundamente.\n\nEl artista elige a San Fernando Rey, patrono de su ciudad, Resistencia, para explorar la identidad forjada por historias y creencias de otras tierras. La expresión en el rostro del rey no es de victoria, sino de una serena melancolía. Es el semblante de alguien que ha conocido el poder y la batalla, pero ahora, despojado de su armadura, se enfrenta a la fragilidad de su propio cuerpo y a la igualdad de la muerte.\n\nLa corona, lejos de ser un objeto de lujo, es simple y austera, con la marca del martillo que la forjó, simbolizando los valores del catolicismo que el rey abrazó. Las cruces que la coronan reafirman su fe y su devoción. El manto, que parece un lecho antes de la muerte, envuelve un cuerpo desgastado por el tiempo y las batallas, exponiendo al hombre debajo del monarca.\n\nLa técnica de Guarnieri, que combina texturas pulidas y rugosas, otorga a la obra una personalidad única. La esfera de óxido de cobalto sobre la que descansa el rey representa el infinito y el ciclo constante del universo, un eco visual del mensaje central de la obra. Con su mirada hacia el horizonte, San Fernando nos invita a un momento de reflexión: un balance final de los logros y fracasos, la fe y la humildad que conviven en una sola figura, que al final, se encuentra con la fragilidad más pura.\n\n,Historia de la obra: El Rey Despojado\"San Fernando Rey\" es una pieza fundamental en la exploración de Santiago Guarnieri sobre la identidad y las influencias históricas. A menudo, nuestra propia identidad está moldeada por figuras que, au... [truncated]",
-        "price": "Consultar",
-        "materials": "Cerámica (39cm de alto, 26 cm de ancho y 19 cm de largo)",
-        "technique": "Moldeado y esculpido en arcilla, ahuecado, horneado y patinado con óxido de cobalto.",
-        "images": [
-            "Fotos/San-Fernando-Rey/portada.webp",
-            "Fotos/San-Fernando-Rey/1.webp",
-            "Fotos/San-Fernando-Rey/20240826_195300.webp",
-            "Fotos/San-Fernando-Rey/20240826_195407.webp",
-            "Fotos/San-Fernando-Rey/20240826_195649.webp",
-            "Fotos/San-Fernando-Rey/20240826_200819.webp",
-            "Fotos/San-Fernando-Rey/20240826_202856.webp",
-            "Fotos/San-Fernando-Rey/20240826_203104.webp"
-        ],
-        "size": "tall"
-    },
-    "Introspeccion": {
-        "title": "Introspección: Un Estudio del Silencio Interior",
-        "featured": true,
-        "description": "Un poderoso estudio sobre el silencio interior que invita a una pausa en un mundo de estímulos constantes.",
-        "history": "La creación de Introspección surge de la necesidad de representar un momento universal de reflexión. El artista busca capturar ese instante en el que una persona se detiene para mirar hacia su interior, buscando las respuestas que necesita para seguir adelante. Sin ser el retrato de un personaje histórico en particular, esta obra se centra en la experiencia humana. El artista se apoya en el lenguaje del cuerpo y las formas para transmitir las inquietudes y los sentimientos que nos acompañan a lo largo de la vida.\n\nEn un mundo dominado por la tecnología y la exposición constante, esta obra se erige como un contrapunto, un recordatorio de la importancia de encontrar un momento de paz personal. A través de la empatía, la pieza busca que el espectador se conecte con el personaje y se sienta invitado a realizar su propio ejercicio de introspección. El meticuloso trabajo con la arcilla y el juego de contrastes texturales no son solo una elección estética; son parte fundamental de la narrativa de la obra, una guía visual que acompaña al espectador en su recorrido por las capas de significado que subyacen en la pieza",
-        "price": "Consultar",
-        "materials": "Escultura en arcilla policromada (40 x 20 cm)",
-        "technique": "Modelado en arcilla",
-        "images": [
-            "Fotos/Introspeccion/portada.webp",
-            "Fotos/Introspeccion/11.webp",
-            "Fotos/Introspeccion/20240913_220530.webp",
-            "Fotos/Introspeccion/20240913_220639.webp",
-            "Fotos/Introspeccion/20240913_220840.webp"
-        ],
-        "size": "tall"
-    },
-    "Plumitas": {
-        "title": "Félix: Serenidad y Convicción Qom",
-        "description": "Un homenaje a Félix Díaz, activista qom, que captura la serenidad y la convicción de que los ideales pueden defenderse sin violencia.",
-        "history": "La creación de Félix es una extensión de la exploración artística de Santiago Guarnieri sobre la identidad y la historia de los pueblos del norte argentino. A través de esta pieza, busca dar rostro a los líderes que, con su accionar, forjan la identidad de una comunidad. El artista se sintió atraído por la figura de Félix Díaz, un líder que inspira respeto por su tenaz y pacífica lucha.\n\nLa obra es una continuidad del lenguaje artístico del artista, en el que el cuerpo y la expresión facial se convierten en el medio para contar una historia. El rostro de la escultura, con sus ojos abiertos y una mirada que transmite tranquilidad, se opone a las marcas que la vida ha dejado en su piel. El contraste en la textura, entre la piel suave y la rugosa base de madera, simboliza la coexistencia de la fragilidad y la fortaleza. En última instancia, Félix no es solo un retrato; es un testimonio de la lucha, un llamado a la reflexión sobre la importancia de la paz y una celebración de la profunda conexión de un líder con la tierra de sus ancestros.",
-        "price": "Consultar",
-        "materials": "Escultura en arcilla y madera (25 cm de alto)",
-        "technique": "Modelado y tallado",
-        "images": [
-            "Fotos/Plumitas/portada.webp",
-            "Fotos/Plumitas/20240513_194753.webp",
-            "Fotos/Plumitas/20240513_195012.webp",
-            "Fotos/Plumitas/20240513_195422.webp"
-        ],
-        "size": "tall"
-    },
-    "sombrerito": {
-        "title": "Esperanza: El Rostro del Esfuerzo y la Honestidad",
-        "description": "Un arquetipo del trabajador rural anónimo, cuya expresión de esperanza y rostro curtido cuentan una historia de esfuerzo y honestidad.",
-        "history": "En esta obra llamada \"Esperanza\", Santiago Guarnieri nos presenta una figura que, a pesar de su aparente simpleza, encapsula la esencia del hombre del campo argentino. No es el retrato de una persona, sino de un arquetipo: el trabajador rural anónimo, cuyas manos y rostro cuentan una historia de esfuerzo y honestidad. Guarnieri ha esculpido en arcilla los valores fundamentales de la vida en la llanura: la humildad, la simpleza y una profunda conexión con la tierra.\n\nLa expresión de su rostro es la clave de la obra. Con la mirada dirigida hacia el cielo, nos transmite una mezcla de experiencia y esperanza. Las arrugas y surcos en la piel no son solo el resultado del paso del tiempo y del sol; son las marcas de la sabiduría forjada en el trabajo diario. A través del modelado y esculpido en la arcilla, el artista logra una textura que nos habla de la dureza de una vida dedicada al campo, pero que al mismo tiempo resalta una luz interior, una fe inquebrantable en un futuro mejor. El contraste cromático, intencionalmente minimizado, sirve para que la forma del rostro, su pose y su expresión, sean los verdaderos protagonistas.\n\nHistoria de la Obra: El Rostro de la Nación\nEsta escultura se integra a la serie de obras de Santiago Guarnieri sobre la identidad chaqueña. Si bien cada pieza aborda un aspecto diferente, todas convergen en la idea de que la identidad de una región se construye a partir de una rica diversidad de historias y personajes. Si \"San Fernando Rey\" exploraba la herencia europea y \"Monte Quemado\" visibilizaba la tragedia de los pueblos originarios, esta obra rinde homenaje a los hombres y mujeres que, con su trabajo, forjan la nación día a día.\n\nA través de este busto, Guarnieri pone en primer plano a quienes a menudo permanecen en la sombra. Es un tributo a la labor silenciosa y vital de aquellos que labran la tierra y sustentan la vida.",
-        "price": "Consultar",
-        "materials": "Arcilla",
-        "technique": "Modelado y esculpido",
-        "images": [
-            "Fotos/sombrerito/portada.webp",
-            "Fotos/sombrerito/20240511_214659.webp",
-            "Fotos/sombrerito/20240511_220118.webp",
-            "Fotos/sombrerito/20240511_220738.webp",
-            "Fotos/sombrerito/20240513_220234.webp"
-        ],
-        "size": "tall"
-    },
-    "Cicatrices-del-Alma": {
-        "title": "Cicatrices del Alma: Un Viaje de Resiliencia",
-        "description": "Un torso masculino que simboliza cómo las heridas emocionales se convierten en parte de la identidad, un signo de sanación y fortaleza.",
-        "history": "En su obra \"Cicatrices del Alma\", Santiago Guarnieri nos presenta una figura que profundiza en la vulnerabilidad y la fortaleza del espíritu humano. La escultura, un torso masculino con un acabado que combina texturas suaves y rugosas, simboliza la complejidad de la experiencia personal. La figura incompleta y el desgarramiento de la piel sugieren heridas emocionales y físicas, que forman una parte integral de la identidad del individuo.\n\nLa obra invita al espectador a una profunda introspección. Las cicatrices no solo son un signo de dolor, sino también de sanación y crecimiento personal. La expresión serena del rostro, con una ligera inclinación y los ojos cerrados, evoca un estado de paz interior y aceptación, una quietud que se alcanza a través de la resiliencia ante el sufrimiento. La técnica, que combina el modelado en arcilla con un vaciado en resina y un acabado de pátina en dorado y colores pasteles, resalta la dualidad de la obra: la fragilidad del ser y la riqueza de las experiencias que lo han marcado.\n\nHistoria de la Obra: De la Vulnerabilidad a la Fortaleza\"Cicatrices del Alma\" marca un nuevo capítulo en la exploración de la identidad humana de Guarnieri. A diferencia de las figuras de sus obras anteriores, que se enfocan en la identidad regional y nacional a través de personajes arquetípicos o históricos, esta pieza es una inmersión en un concepto universal y atemporal: la condición humana. La obra nos recuerda que nuestras dificultades y heridas son parte esencial de nuestro viaje personal y contribuyen a nuestra fortaleza. A través de este torso fragmentado, Guarnieri nos propone una poderosa reflexión sobre cómo el dolor no nos define, sino que nos transforma, dejando una huella de oro en nuestro interior. Es una obra que nos invita a ver nuestras propias cicatrices no como debilidades, sino como símbolos de nuestra capacidad para sanar y seguir adelante.",
-        "price": "Consultar",
-        "materials": "Resina con pátina de dorado y colores pasteles",
-        "technique": "Modelado en arcilla y vaciado en resina",
-        "images": [
-            "Fotos/Cicatrices-del-Alma/portada.webp",
-            "Fotos/Cicatrices-del-Alma/20240608_211255.webp"
-        ],
-        "size": "tall"
-    },
-    "Tiro-al-Blanco": {
-        "title": "Libre: La Furia y la Nobleza del Caballo Chaqueño",
-        "description": "Un homenaje al caballo criollo del Chaco, capturando su fuerza indomable y su espíritu de libertad en una pose de asombrosa vitalidad.",
-        "history": "En la escultura \"Libre\", Santiago Guarnieri rinde un homenaje al caballo criollo del Chaco, un animal que es tanto un símbolo de fuerza indomable como un compañero de trabajo esencial. La obra, con su estilo realista y expresionista, captura la esencia de este animal a través de una pose de asombrosa vitalidad: con sus patas delanteras elevadas, el caballo parece suspenderse en el aire, un gesto que evoca la libertad y el poder del monte.\nLa inspiración de la obra proviene directamente del poeta Antonio Falcón, quien describe al caballo chaqueño como un ser de rayos de luz que se adentra en el monte. La escultura se convierte en una manifestación tangible de esos versos, plasmando la rebeldía y la belleza de un animal que vive en comunión con su tierra. El material, arcilla modelada y esculpida, y coloreada con pigmentos, otorga una textura rugosa a la pieza, un reflejo de la aspereza del terreno y la dureza de la vida en el campo.\n\nHistoria de la Obra: El Corcel de la Identidad Colectiva\nCon \"Libre\", Guarnieri expande su exploración de la identidad chaqueña más allá de las figuras humanas, integrando un nuevo elemento: el caballo, un protagonista de la historia y el presente de la región. Si \"Esperanza\" representaba los valores del trabajador del campo, y \"Monte Quemado\" denunciaba la devastación ambiental, esta obra celebra la conexión profunda entre la naturaleza y el hombre. El caballo es un testigo de la vida cotidiana del Chaco, llevando a maestros y alumnos, tirando carros, y siendo un símbolo de la \"nobleza del porvenir\".\n\nEl título, \"Libre\", sintetiza la esencia de la obra: un homenaje a un ser indómito que, a pesar de su servicio, mantiene su espíritu salvaje. La escultura es un testimonio del lazo entre el animal y su entorno, un recordatorio de que la identidad de una región se forja tanto en las historias de sus gentes como en la majestuosidad de su fauna.",
-        "price": "Consultar",
-        "materials": "Arcilla modelada y esculpida, coloreada con pigmentos",
-        "technique": "Modelado y esculpido",
-        "images": [
-            "Fotos/Tiro-al-Blanco/portada.webp",
-            "Fotos/Tiro-al-Blanco/20240913_225000.webp"
-        ],
-        "size": "short"
-    },
-    "Fabriziano": {
-        "title": "Legado: Retrato de Serenidad y Paz",
-        "description": "Un retrato íntimo y emotivo de Fabriciano Gómez, que capta al maestro con los ojos cerrados, transmitiendo una profunda serenidad y paz.",
-        "history": "La creación de Legado surge de una admiración personal y profunda por la humildad y generosidad de Fabriciano Gómez. El artista, que tuvo la oportunidad de conocerlo y de vivir el crecimiento de la Bienal de Escultura de Resistencia, sintió la necesidad de rendir homenaje a este referente chaqueño. El desafío artístico fue considerable: transmitir la esencia del personaje sin recurrir a la comunicación a través de la mirada, una característica fundamental en el trabajo del artista. La solución fue utilizar el gesto de los ojos cerrados para simbolizar la serenidad con la que el maestro comunicaba sus ideas.\n\nEsta pieza tiene un significado especialmente emotivo, ya que representa la conexión del artista con su propia historia y con el crecimiento de su ciudad. Desde niño, el artista recorrió las calles de Resistencia, contemplando las obras que despertaban su curiosidad y lo impulsaban a cuestionar cómo eran creadas. La Bienal, impulsada por Fabriciano, se convirtió en una fuente de respuestas, un espacio donde los escultores le permitieron entender el proceso creativo. A través de la meticulosa investigación del rostro y la técnica de acabado realista, la escultura busca que el público sienta la misma cercanía que el artista sintió con la figura de Fabriciano, un hombre cuyo legado escultórico y cultural está cimentado en el corazón de su querida ciudad.",
-        "price": "Consultar",
-        "materials": "Escultura en arcilla policromada (30 cm de alto)",
-        "technique": "Modelado y acabado realista",
-        "images": [
-            "Fotos/Fabriziano/20240626_125403.webp",
-            "Fotos/Fabriziano/portada.webp",
-            "Fotos/Fabriziano/20240626_123740.webp",
-            "Fotos/Fabriziano/20240626_125703.webp"
-        ],
-        "size": "tall"
-    },
-    "Manos": {
-        "title": "Manos: un estudio anatómico",
-        "featured": false,
-        "description": "Una exploración de la forma y la emoción humana, donde un simple gesto de la mano captura una historia de intención y deseo.",
-        "history": "Esta escultura nace de la convicción del artista de que el conocimiento anatómico es fundamental para una representación auténtica de la emoción humana. Para Santiago Guarnieri, la anatomía no es un fin en sí misma, sino una herramienta para comprender cómo cada músculo y cada gesto contribuyen a la narrativa de una pieza. En este sentido, Manos se concibe como una obra base, un ejercicio esencial que le permite al artista ahondar en la forma y en el movimiento para aplicarlo en futuros proyectos.\n\nEl proceso de creación fue meticuloso, aprovechando las propiedades de la arcilla para modelar las formas generales y luego tallar los detalles finos cuando el material alcanzaba el punto de humedad preciso. Este método permite que la obra transmita con fidelidad la tensión muscular y la lucha interior que motivó al artista. A través de esta pieza, el artista nos invita a reflexionar sobre cómo incluso los gestos más simples, los que hacemos a diario, son un reflejo de nuestra interacción con el entorno y de la carga emocional que llevamos dentro.",
-        "price": "Consultar",
-        "materials": "Escultura en arcilla (30 x 12 cm)",
-        "technique": "Modelado y tallado",
-        "images": [
-            "Fotos/Manos/portada.webp",
-            "Fotos/Manos/2.webp",
-            "Fotos/Manos/20250602_210045.webp",
-            "Fotos/Manos/20250602_211147.webp",
-            "Fotos/Manos/3.webp"
-        ],
-        "size": "short"
-    },
-    "Mitad": {
-        "title": "Fragmentado: Meditación sobre la Resiliencia",
-        "description": "Una meditación sobre la resiliencia, donde las fracturas y cicatrices se convierten en parte de la historia, dando dignidad y fortaleza.",
-        "history": "La concepción de Fragmentado nace de una experiencia personal de adversidad. Lo que originalmente era un proyecto de estudio anatómico se vio dañado por un accidente, un suceso que, lejos de ser el final de la obra, se convirtió en su punto de inflexión. El artista, inspirado por la idea de que uno puede reconstruirse por completo después de una catástrofe y que las marcas de las heridas se convierten en parte de la historia personal, decidió darle un nuevo significado a la pieza.\n\nLa obra es una re-conceptualización de su ya profundo estudio anatómico. Sin embargo, la fractura de la escultura original le permitió explorar la antinomia humana desde una perspectiva más íntima y emocional. El artista utilizó la arcilla y la cerámica para crear un juego de texturas y acabados, donde el tallado meticuloso de los músculos y huesos contrasta con la fragilidad de las piezas rotas. La lágrima es el elemento clave que humaniza el proceso; simboliza el dolor necesario para aceptar la propia fragmentación. De esta forma, Fragmentado no solo es una obra sobre la reconstrucción, sino una reflexión sobre cómo las cicatrices nos forjan, nos dan historia y, en última instancia, nos hacen más fuertes.",
-        "price": "Consultar",
-        "materials": "Escultura en arcilla y cerámica policromada (15 cm de alto)",
-        "technique": "Modelado y tallado",
-        "images": [
-            "Fotos/Mitad/portada.webp",
-            "Fotos/Mitad/20240608_185959.webp",
-            "Fotos/Mitad/20240608_190551.webp",
-            "Fotos/Mitad/20240608_192322.webp"
-        ]
-    },
-    "Davincci": {
-        "title": "Leonardo: Intelecto y Templanza en Miniatura",
-        "description": "Un monumento al intelecto y la templanza de Leonardo da Vinci en un formato íntimo de solo 7 cm.",
-        "history": "En el corazón de esta pieza yace la admiración por la versatilidad incansable de Leonardo da Vinci. El artista se sintió impulsado a esculpir su figura no solo por su renombre, sino por su audaz curiosidad para explorar desde los hechos más simples de la naturaleza hasta las más complejas obras de arte. El desafío principal fue lograr la armonía en cada elemento del rostro, buscando que la suma de sus partes revelara una expresión de templanza y sabiduría, la misma que le permitió a da Vinci defender sus ideas e investigaciones contra las fuertes críticas de su época.\n\nLa técnica empleada es un viaje dual: un modelado inicial para definir los volúmenes generales, seguido de un meticuloso tallado en la arcilla que desvela los detalles más finos. Este proceso artesanal conecta al artista con el mismo espíritu de da Vinci, el de un creador que moldea y perfecciona su visión. Al optar por un formato pequeño, pensado para un escritorio o biblioteca, la escultura busca ser un recordatorio constante del legado de este genio. Es una obra netamente figurativa, despojada de simbolismos externos para concentrarse únicamente en la fuerza de los rasgos faciales, un recordatorio de que la verdadera influencia de un hombre puede residir en el poder de su intelecto y la profundidad de su mirada.",
-        "price": "Consultar",
-        "materials": "Escultura en arcilla (7 cm de alto)",
-        "technique": "Modelado y tallado",
-        "images": [
-            "Fotos/Davincci/portada.webp",
-            "Fotos/Davincci/20240511_224704.webp",
-            "Fotos/Davincci/20240511_224719.webp",
-            "Fotos/Davincci/20240511_224735.webp"
-        ]
-    }
+  "Freya": {
+    "title": "Freya: Belleza, Magia y Poder Guerrero",
+    "featured": true,
+    "description": "Una evocación de la diosa nórdica Freya, que amalgama belleza, magia y poder guerrero para honrar la mitología de los inmigrantes del Chaco.",
+    "history": "La creación de esta obra es una manifestación de la profunda conexión del artista con su tierra y, al mismo tiempo, con las culturas que la han enriquecido. La escultura nace de la intención de rendir homenaje a las mitologías y creencias de los inmigrantes que llegaron a la provincia de Resistencia, Chaco, y que se fusionaron con las culturas criollas, guaraníes y qom.\n\nEl artista mantiene su estilo característico de usar las formas corporales para contar historias. En esta pieza, el rostro y la expresión del personaje son la clave para transmitir una narrativa. El mayor desafío técnico y artístico consistió en combinar la belleza femenina con un inmenso poder, elementos que son la esencia de la figura de Freya. Los cuernos de carnero, el peinado complejo y la simbología grabada en su piel fueron cuidadosamente elegidos para reflejar el bagaje cultural de las tradiciones nórdicas. A través de este trabajo, el artista busca poner de relieve el mestizaje de creencias y culturas que han llegado a su tierra, convirtiendo a la figura de la diosa nórdica en un vehículo para explorar un diálogo cultural único. Es una obra que no solo celebra la belleza de una deidad, sino que también honra la rica diversidad que define a la región.",
+    "price": "Consultar",
+    "materials": "Escultura en arcilla",
+    "technique": "Modelado en arcilla",
+    "images": [
+      "Fotos/Freya/portada.webp",
+      "Fotos/Freya/20240913_222418.webp",
+      "Fotos/Freya/20240913_223002.webp",
+      "Fotos/Freya/20240913_223304.webp",
+      "Fotos/Freya/20240913_223855.webp",
+      "Fotos/Freya/20240913_224259.webp"
+    ]
+  },
+  "matero": {
+    "title": "Alma y Mate: Tradición e Introspección Gaucha",
+    "description": "Un homenaje a la tradición y la introspección gaucha, elevando el acto cotidiano de tomar mate a un momento de meditación.",
+    "history": "La obra Alma y Mate es el resultado de la fascinación del artista por el arquetipo del gaucho y su relación con la naturaleza y el tiempo. Santiago Guarnieri se propuso explorar ese momento de soledad y paz en el que el mate se convierte en una fiel compañía, un espacio para la reflexión personal. A través de esta pieza, busca resaltar la figura del gaucho como portador de un legado de sabiduría y trabajo, visible en las huellas que el sol ha dejado en su piel.\n\nLa escultura trasciende la mera representación y se convierte en un símbolo del ritual del mate como un instante de introspección y planificación antes de que comiencen las labores diarias. Las ondas que conectan al personaje con el mate simbolizan el alma del hombre que se amalgama con el ritual, convirtiendo un simple acto en un momento de contemplación único. A través de la minuciosidad en los detalles del rostro y la barba, el artista no solo busca la precisión, sino que también quiere invitar al espectador a contemplar la riqueza de las tradiciones que forman parte de la identidad cultural argentina.",
+    "price": "Consultar",
+    "materials": "Escultura en material con acabado de madera",
+    "technique": "Modelado y tallado",
+    "images": [
+      "Fotos/Matero/portada.webp",
+      "Fotos/Matero/1.webp",
+      "Fotos/Matero/20240511_225300.webp",
+      "Fotos/Matero/20240511_225318.webp",
+      "Fotos/Matero/20240513_212612.webp"
+    ]
+  },
+  "Escultura-de-San-Martin": {
+    "title": "Busto del General San Martín: Legado de Firmeza y Determinación",
+    "description": "Un homenaje al legado de José de San Martín, que trasciende el retrato para estudiar la firmeza y determinación del General.",
+    "history": "La creación de esta obra surge de la profunda admiración por el rol de San Martín como líder y estratega militar. El artista se propuso el desafío de ir más allá del retrato convencional, buscando una imagen que resonara con el imaginario popular, pero que a la vez estuviera arraigada en la precisión histórica. Para ello, se basó en el daguerrotipo de 1827, la fuente más confiable de sus rasgos anatómicos, fusionando esa realidad con la mística del héroe.\n\nEl proceso de investigación fue tan crucial como el artístico. El artista consultó bases de datos del Ejército Argentino para replicar con exactitud el bordado de los galones y el diseño de las medallas, asegurando que cada elemento fuera una referencia cabal a sus victorias y honores. La escultura, que carece de un título explícito, busca que el espectador no sea forzado a una interpretación única, permitiendo que la obra \"hable por sí misma\" y que los valores del General —como su compromiso, su valentía y su rigor— sean percibidos a través de la contemplación de cada detalle. La elección de la altura, pensada para un espacio público, subraya la intención de mantener vivo su legado y servir como un recordatorio constante de su invaluable aporte a la historia de la humanidad.",
+    "price": "Consultar",
+    "materials": "Escultura en arcilla (90 cm de alto)",
+    "technique": "Modelado y tallado",
+    "images": [
+      "Fotos/Escultura-de-San-Martin/portada.webp",
+      "Fotos/Escultura-de-San-Martin/20240805_212144.webp",
+      "Fotos/Escultura-de-San-Martin/20240805_212419.webp",
+      "Fotos/Escultura-de-San-Martin/20240805_212528.webp",
+      "Fotos/Escultura-de-San-Martin/20240805_212614.webp",
+      "Fotos/Escultura-de-San-Martin/20240805_212634.webp",
+      "Fotos/Escultura-de-San-Martin/20240805_212712.webp"
+    ]
+  },
+  "Tamborcito-de-Tacuari": {
+    "title": "El Eco de la Infancia: Homenaje a Pedro Ríos",
+    "description": "La obra captura la dualidad de Pedro Ríos, el Tambor de Tacuarí: la inocencia de un niño y la valentía de un héroe.",
+    "history": "En su obra, Santiago Guarnieri nos presenta a Pedro Ríos, el Tambor de Tacuarí, no como una figura idealizada de la historia, sino como lo que fue: un niño. Guarnieri capta con maestría la dualidad de su personaje: la inocencia de un niño de las orillas del Paraná, mezclada con la valentía de un héroe que se enfrenta a un destino abrumador. La escultura inmortaliza el momento exacto en que Pedro recibe los elementos que lo acompañarán en su hazaña: un tambor y una banda de cuero, símbolos de su compromiso y sacrificio.La expresión del rostro es de una profunda valentía y temor a lo desconocido, la de alguien que, a pesar de su corta edad, decide seguir adelante por unos ideales que quizás no entiende por completo, pero que resuenan en su corazón. La piel, tersa y lisa, contrasta con la dureza de las obras anteriores del artista y resalta la juventud del personaje, acentuando la tragedia de una infancia sacrificada en aras de la patria. Historia de la Obra: El Silencio del Tambor Pedro Ríos se integra a la perfección en la narrativa de Guarnieri sobre la identidad regional y nacional. Si San Fernando Rey exploraba la herencia europea y Monte Quemado abordaba la fragilidad de los pueblos originarios, esta obra rinde homenaje a un héroe regional, un niño que, nacido en lo más profundo del litoral argentino, se convierte en un símbolo de la entrega y el amor por la patria. Es un recordatorio de que la identidad de una nación se construye no solo con grandes figuras, sino también con el sacrificio de aquellos que, como Pedro Ríos, deciden luchar por su tierra.A diferencia de sus obras anteriores, Guarnieri experimenta en esta pieza con nuevos materiales: la arcilla es utilizada como medio para un fin, que es la resina y fibra de vidrio. Estos materiales le permiten captar con una precisión inusitada hasta el más mínimo detalle de la figura, confiriéndole un acabado liso y delicado que subraya la fragilidad del niño, pero también la fortaleza de su esp... [truncated]\n        ",
+    "price": "Consultar",
+    "materials": "Resina y fibra de vidrio",
+    "technique": "Modelado en arcilla y vaciado en resina",
+    "images": [
+      "Fotos/Tamborcito-de-Tacuari/portada.webp",
+      "Fotos/Tamborcito-de-Tacuari/20241001_201930.webp",
+      "Fotos/Tamborcito-de-Tacuari/20241001_201952.webp",
+      "Fotos/Tamborcito-de-Tacuari/20241001_202430.webp",
+      "Fotos/Tamborcito-de-Tacuari/20241001_202458.webp"
+    ]
+  },
+  "Napalpi": {
+    "title": "Napalpí: Un Homenaje a la Resistencia Chaqueña",
+    "description": "Un conmovedor homenaje a las víctimas de la masacre de 1924 en Chaco, dando un rostro humano al dolor y la resistencia.",
+    "history": "La escultura Napalpí es un conmovedor homenaje a las víctimas y a los sobrevivientes de la masacre de 1924 en la provincia del Chaco. A través de la figura de un cacique ficticio, la obra busca dar un rostro humano al dolor y la resistencia. El rostro del personaje, surcado por arrugas que hablan de una vida de sabiduría y sufrimiento, refleja la crueldad inimaginable que el ser humano puede infligir, pero también la resistencia al olvido. La mirada del cacique, dirigida hacia el cielo, evoca el momento en que un avión del Ejército Argentino, en su vuelo de bautismo, fue utilizado para distraer a los niños antes del ataque. La pieza se sostiene sobre una base de cedro tallada, que busca representar las raíces de aquellos que perdieron su vida, mientras que la delgada y curva conexión entre la cabeza y la base simboliza la fragilidad de la vida y el deseo de la obra de elevarse. Los detalles de su tocado y collar, elaborados con materiales que remiten a las artesanías qom y wichi, refuerzan la identidad de un pueblo y su profundo sentido de pertenencia a la tierra.\n\nLa creación de Napalpí es una respuesta del artista a la necesidad de mantener viva la historia de su provincia. Para Santiago Guarnieri, el arte tiene la responsabilidad de ser un vehículo para la memoria, especialmente cuando los registros históricos son escasos. El artista, oriundo del Chaco, asume el compromiso de contar la historia de su pueblo, entendiendo que al ser una provincia joven, aún hay mucho que debe ser contado para fortalecer su identidad.\n\nLa elección de la arcilla como material principal no es casual: representa el barro y la tierra de los que venimos, un material noble que, al transformarse en cerámica por la acción del fuego, simboliza la resiliencia de un pueblo. El proceso de modelado y tallado fue una forma de rendir homenaje, de dar vida y dignidad a una historia que merece ser escuchada. A través de esta obra, el artista nos invita a la empatía y la refle... [truncated]\n        ",
+    "price": "Consultar",
+    "materials": "Escultura en cerámica y madera de cedro (40 cm de alto)",
+    "technique": "Modelado y tallado",
+    "images": [
+      "Fotos/Napalpi/portada.webp",
+      "Fotos/Napalpi/20240513_200225.webp",
+      "Fotos/Napalpi/20240513_200243.webp",
+      "Fotos/Napalpi/20240513_204832.webp",
+      "Fotos/Napalpi/20240513_205153.webp",
+      "Fotos/Napalpi/20240608_202652.webp"
+    ]
+  },
+  "San-Fernando-Rey": {
+    "title": "San Fernando Rey: Un Rostro ante el Infinito",
+    "featured": true,
+    "description": "Una representación del patrono de Resistencia despojado de su majestuosidad, revelando la introspección de un hombre en el ocaso de su vida.",
+    "history": "En esta obra, Santiago Guarnieri nos presenta un San Fernando Rey despojado de la majestuosidad convencional, revelando en cambio la introspección de un hombre en el ocaso de su vida. La escultura, de una pátina de cobalto que le confiere una cualidad atemporal, parece extraída de una historia antigua, cruda y sin adornos. Guarnieri combina magistralmente la nobleza del personaje con una vulnerabilidad que resuena profundamente.\n\nEl artista elige a San Fernando Rey, patrono de su ciudad, Resistencia, para explorar la identidad forjada por historias y creencias de otras tierras. La expresión en el rostro del rey no es de victoria, sino de una serena melancolía. Es el semblante de alguien que ha conocido el poder y la batalla, pero ahora, despojado de su armadura, se enfrenta a la fragilidad de su propio cuerpo y a la igualdad de la muerte.\n\nLa corona, lejos de ser un objeto de lujo, es simple y austera, con la marca del martillo que la forjó, simbolizando los valores del catolicismo que el rey abrazó. Las cruces que la coronan reafirman su fe y su devoción. El manto, que parece un lecho antes de la muerte, envuelve un cuerpo desgastado por el tiempo y las batallas, exponiendo al hombre debajo del monarca.\n\nLa técnica de Guarnieri, que combina texturas pulidas y rugosas, otorga a la obra una personalidad única. La esfera de óxido de cobalto sobre la que descansa el rey representa el infinito y el ciclo constante del universo, un eco visual del mensaje central de la obra. Con su mirada hacia el horizonte, San Fernando nos invita a un momento de reflexión: un balance final de los logros y fracasos, la fe y la humildad que conviven en una sola figura, que al final, se encuentra con la fragilidad más pura.\n\n,Historia de la obra: El Rey Despojado\"San Fernando Rey\" es una pieza fundamental en la exploración de Santiago Guarnieri sobre la identidad y las influencias históricas. A menudo, nuestra propia identidad está moldeada por figuras que, au... [truncated]\n        ",
+    "price": "Consultar",
+    "materials": "Cerámica (39cm de alto, 26 cm de ancho y 19 cm de largo)",
+    "technique": "Moldeado y esculpido en arcilla, ahuecado, horneado y patinado con óxido de cobalto.",
+    "images": [
+      "Fotos/San-Fernando-Rey/portada.webp",
+      "Fotos/San-Fernando-Rey/1.webp",
+      "Fotos/San-Fernando-Rey/20240826_195300.webp",
+      "Fotos/San-Fernando-Rey/20240826_195407.webp",
+      "Fotos/San-Fernando-Rey/20240826_195649.webp",
+      "Fotos/San-Fernando-Rey/20240826_200819.webp",
+      "Fotos/San-Fernando-Rey/20240826_202856.webp",
+      "Fotos/San-Fernando-Rey/20240826_203104.webp"
+    ]
+  },
+  "Introspeccion": {
+    "title": "Introspección: Un Estudio del Silencio Interior",
+    "featured": true,
+    "description": "Un poderoso estudio sobre el silencio interior que invita a una pausa en un mundo de estímulos constantes.",
+    "history": "La creación de Introspección surge de la necesidad de representar un momento universal de reflexión. El artista busca capturar ese instante en el que una persona se detiene para mirar hacia su interior, buscando las respuestas que necesita para seguir adelante. Sin ser el retrato de un personaje histórico en particular, esta obra se centra en la experiencia humana. El artista se apoya en el lenguaje del cuerpo y las formas para transmitir las inquietudes y los sentimientos que nos acompañan a lo largo de la vida.\n\nEn un mundo dominado por la tecnología y la exposición constante, esta obra se erige como un contrapunto, un recordatorio de la importancia de encontrar un momento de paz personal. A través de la empatía, la pieza busca que el espectador se conecte con el personaje y se sienta invitado a realizar su propio ejercicio de introspección. El meticuloso trabajo con la arcilla y el juego de contrastes texturales no son solo una elección estética; son parte fundamental de la narrativa de la obra, una guía visual que acompaña al espectador en su recorrido por las capas de significado que subyacen en la pieza",
+    "price": "Consultar",
+    "materials": "Escultura en arcilla policromada (40 x 20 cm)",
+    "technique": "Modelado en arcilla",
+    "images": [
+      "Fotos/Introspeccion/portada.webp",
+      "Fotos/Introspeccion/11.webp",
+      "Fotos/Introspeccion/20240913_220530.webp",
+      "Fotos/Introspeccion/20240913_220639.webp",
+      "Fotos/Introspeccion/20240913_220840.webp"
+    ]
+  },
+  "Plumitas": {
+    "title": "Félix: Serenidad y Convicción Qom",
+    "description": "Un homenaje a Félix Díaz, activista qom, que captura la serenidad y la convicción de que los ideales pueden defenderse sin violencia.",
+    "history": "La creación de Félix es una extensión de la exploración artística de Santiago Guarnieri sobre la identidad y la historia de los pueblos del norte argentino. A través de esta pieza, busca dar rostro a los líderes que, con su accionar, forjan la identidad de una comunidad. El artista se sintió atraído por la figura de Félix Díaz, un líder que inspira respeto por su tenaz y pacífica lucha.\n\nLa obra es una continuidad del lenguaje artístico del artista, en el que el cuerpo y la expresión facial se convierten en el medio para contar una historia. El rostro de la escultura, con sus ojos abiertos y una mirada que transmite tranquilidad, se opone a las marcas que la vida ha dejado en su piel. El contraste en la textura, entre la piel suave y la rugosa base de madera, simboliza la coexistencia de la fragilidad y la fortaleza. En última instancia, Félix no es solo un retrato; es un testimonio de la lucha, un llamado a la reflexión sobre la importancia de la paz y una celebración de la profunda conexión de un líder con la tierra de sus ancestros.",
+    "price": "Consultar",
+    "materials": "Escultura en arcilla y madera (25 cm de alto)",
+    "technique": "Modelado y tallado",
+    "images": [
+      "Fotos/Plumitas/portada.webp",
+      "Fotos/Plumitas/20240513_194753.webp",
+      "Fotos/Plumitas/20240513_195012.webp",
+      "Fotos/Plumitas/20240513_195422.webp"
+    ]
+  },
+  "sombrerito": {
+    "title": "Esperanza: El Rostro del Esfuerzo y la Honestidad",
+    "description": "Un arquetipo del trabajador rural anónimo, cuya expresión de esperanza y rostro curtido cuentan una historia de esfuerzo y honestidad.",
+    "history": "En esta obra llamada \"Esperanza\", Santiago Guarnieri nos presenta una figura que, a pesar de su aparente simpleza, encapsula la esencia del hombre del campo argentino. No es el retrato de una persona, sino de un arquetipo: el trabajador rural anónimo, cuyas manos y rostro cuentan una historia de esfuerzo y honestidad. Guarnieri ha esculpido en arcilla los valores fundamentales de la vida en la llanura: la humildad, la simpleza y una profunda conexión con la tierra.\n\nLa expresión de su rostro es la clave de la obra. Con la mirada dirigida hacia el cielo, nos transmite una mezcla de experiencia y esperanza. Las arrugas y surcos en la piel no son solo el resultado del paso del tiempo y del sol; son las marcas de la sabiduría forjada en el trabajo diario. A través del modelado y esculpido en la arcilla, el artista logra una textura que nos habla de la dureza de una vida dedicada al campo, pero que al mismo tiempo resalta una luz interior, una fe inquebrantable en un futuro mejor. El contraste cromático, intencionalmente minimizado, sirve para que la forma del rostro, su pose y su expresión, sean los verdaderos protagonistas.\n\nHistoria de la Obra: El Rostro de la Nación\nEsta escultura se integra a la serie de obras de Santiago Guarnieri sobre la identidad chaqueña. Si bien cada pieza aborda un aspecto diferente, todas convergen en la idea de que la identidad de una región se construye a partir de una rica diversidad de historias y personajes. Si \"San Fernando Rey\" exploraba la herencia europea y \"Monte Quemado\" visibilizaba la tragedia de los pueblos originarios, esta obra rinde homenaje a los hombres y mujeres que, con su trabajo, forjan la nación día a día.\n\nA través de este busto, Guarnieri pone en primer plano a quienes a menudo permanecen en la sombra. Es un tributo a la labor silenciosa y vital de aquellos que labran la tierra y sustentan la vida.",
+    "price": "Consultar",
+    "materials": "Arcilla",
+    "technique": "Modelado y esculpido",
+    "images": [
+      "Fotos/sombrerito/portada.webp",
+      "Fotos/sombrerito/20240511_214659.webp",
+      "Fotos/sombrerito/20240511_220118.webp",
+      "Fotos/sombrerito/20240511_220738.webp",
+      "Fotos/sombrerito/20240513_220234.webp"
+    ]
+  },
+  "Cicatrices-del-Alma": {
+    "title": "Cicatrices del Alma: Un Viaje de Resiliencia",
+    "description": "Un torso masculino que simboliza cómo las heridas emocionales se convierten en parte de la identidad, un signo de sanación y fortaleza.",
+    "history": "En su obra \"Cicatrices del Alma\", Santiago Guarnieri nos presenta una figura que profundiza en la vulnerabilidad y la fortaleza del espíritu humano. La escultura, un torso masculino con un acabado que combina texturas suaves y rugosas, simboliza la complejidad de la experiencia personal. La figura incompleta y el desgarramiento de la piel sugieren heridas emocionales y físicas, que forman una parte integral de la identidad del individuo.\n\nLa obra invita al espectador a una profunda introspección. Las cicatrices no solo son un signo de dolor, sino también de sanación y crecimiento personal. La expresión serena del rostro, con una ligera inclinación y los ojos cerrados, evoca un estado de paz interior y aceptación, una quietud que se alcanza a través de la resiliencia ante el sufrimiento. La técnica, que combina el modelado en arcilla con un vaciado en resina y un acabado de pátina en dorado y colores pasteles, resalta la dualidad de la obra: la fragilidad del ser y la riqueza de las experiencias que lo han marcado.\n\nHistoria de la Obra: De la Vulnerabilidad a la Fortaleza\"Cicatrices del Alma\" marca un nuevo capítulo en la exploración de la identidad humana de Guarnieri. A diferencia de las figuras de sus obras anteriores, que se enfocan en la identidad regional y nacional a través de personajes arquetípicos o históricos, esta pieza es una inmersión en un concepto universal y atemporal: la condición humana. La obra nos recuerda que nuestras dificultades y heridas son parte esencial de nuestro viaje personal y contribuyen a nuestra fortaleza. A través de este torso fragmentado, Guarnieri nos propone una poderosa reflexión sobre cómo el dolor no nos define, sino que nos transforma, dejando una huella de oro en nuestro interior. Es una obra que nos invita a ver nuestras propias cicatrices no como debilidades, sino como símbolos de nuestra capacidad para sanar y seguir adelante.",
+    "price": "Consultar",
+    "materials": "Resina con pátina de dorado y colores pasteles",
+    "technique": "Modelado en arcilla y vaciado en resina",
+    "images": [
+      "Fotos/Cicatrices-del-Alma/portada.webp",
+      "Fotos/Cicatrices-del-Alma/20240608_211255.webp"
+    ]
+  },
+  "Busto-de-San-Martin": {
+    "title": "El Rostro de la Historia: Un Homenaje a San Martín",
+    "description": "Una representación íntima y humana del Libertador, basada en el daguerrotipo de 1848.",
+    "history": "En este busto de San Martín, el escultor Santiago Guarnieri se aparta de la iconografía militar y heroica para sumergirse en una representación más íntima y humana del Libertador. La obra es un desafío, un intento de amalgamar la imagen popular con la única referencia fisonómica certera que se tiene: el daguerrotipo tomado en 1848 en Boulogne-sur-Mer, Francia, en la etapa final de su vida. El artista busca capturar el rostro de un hombre en un momento de introspección y serenidad, rodeado de sus afectos más cercanos.\n\nEl rostro del prócer, modelado y esculpido en arcilla, refleja una profunda mezcla de resignación y aceptación. En su mirada se percibe la sabiduría de una vida dedicada a la libertad, una vida que culmina en una etapa de reflexión y paz. La textura suave de la piel, a diferencia de otras obras del artista, evita cualquier distracción y busca generar un acercamiento respetuoso con el espectador. La indumentaria, trabajada con un acabado limpio, ayuda a contextualizar la época, invitando a una conexión más profunda con el momento y el espacio que vivió el General.\n\nLa Identidad Forjada en la Historia\nEsta escultura de San Martín se integra de manera fundamental en la serie de obras de Guarnieri sobre la identidad. Al igual que con \"Esperanza\" y \"Monte Quemado\", el artista nos demuestra que la identidad chaqueña y, por extensión, la identidad argentina, se construye a partir de una rica diversidad de personajes y sus historias.\n\nSan Martín es el arquetipo del héroe que nace de la tierra y dedica su vida a un ideal superior. La obra es un homenaje a la identidad forjada en el arraigo a un lugar de origen. Siendo un personaje que nació en el corazón del litoral argentino, se formó en Europa, y dedicó su vida a la lucha por la independencia, representa la complejidad de una identidad que se construye con la entrega y el amor por la patria. Es un recordatorio de que la historia y la identidad de una nación no son conceptos abst... [truncated]\n        ",
+    "price": "Consultar",
+    "materials": "Arcilla",
+    "technique": "Modelado y esculpido",
+    "images": [
+      "Fotos/Busto-de-San-Martin/portada.webp",
+      "Fotos/Busto-de-San-Martin/2.webp",
+      "Fotos/Busto-de-San-Martin/20250817_131528.webp",
+      "Fotos/Busto-de-San-Martin/4.webp"
+    ]
+  },
+  "Tiro-al-Blanco": {
+    "title": "Libre: La Furia y la Nobleza del Caballo Chaqueño",
+    "description": "Un homenaje al caballo criollo del Chaco, capturando su fuerza indomable y su espíritu de libertad en una pose de asombrosa vitalidad.",
+    "history": "En la escultura \"Libre\", Santiago Guarnieri rinde un homenaje al caballo criollo del Chaco, un animal que es tanto un símbolo de fuerza indomable como un compañero de trabajo esencial. La obra, con su estilo realista y expresionista, captura la esencia de este animal a través de una pose de asombrosa vitalidad: con sus patas delanteras elevadas, el caballo parece suspenderse en el aire, un gesto que evoca la libertad y el poder del monte.\nLa inspiración de la obra proviene directamente del poeta Antonio Falcón, quien describe al caballo chaqueño como un ser de rayos de luz que se adentra en el monte. La escultura se convierte en una manifestación tangible de esos versos, plasmando la rebeldía y la belleza de un animal que vive en comunión con su tierra. El material, arcilla modelada y esculpida, y coloreada con pigmentos, otorga una textura rugosa a la pieza, un reflejo de la aspereza del terreno y la dureza de la vida en el campo.\n\nHistoria de la Obra: El Corcel de la Identidad Colectiva\nCon \"Libre\", Guarnieri expande su exploración de la identidad chaqueña más allá de las figuras humanas, integrando un nuevo elemento: el caballo, un protagonista de la historia y el presente de la región. Si \"Esperanza\" representaba los valores del trabajador del campo, y \"Monte Quemado\" denunciaba la devastación ambiental, esta obra celebra la conexión profunda entre la naturaleza y el hombre. El caballo es un testigo de la vida cotidiana del Chaco, llevando a maestros y alumnos, tirando carros, y siendo un símbolo de la \"nobleza del porvenir\".\n\nEl título, \"Libre\", sintetiza la esencia de la obra: un homenaje a un ser indómito que, a pesar de su servicio, mantiene su espíritu salvaje. La escultura es un testimonio del lazo entre el animal y su entorno, un recordatorio de que la identidad de una región se forja tanto en las historias de sus gentes como en la majestuosidad de su fauna.",
+    "price": "Consultar",
+    "materials": "Arcilla modelada y esculpida, coloreada con pigmentos",
+    "technique": "Modelado y esculpido",
+    "images": [
+      "Fotos/Tiro-al-Blanco/portada.webp",
+      "Fotos/Tiro-al-Blanco/20240913_225000.webp"
+    ]
+  },
+  "Fabriziano": {
+    "title": "Legado: Retrato de Serenidad y Paz",
+    "description": "Un retrato íntimo y emotivo de Fabriciano Gómez, que capta al maestro con los ojos cerrados, transmitiendo una profunda serenidad y paz.",
+    "history": "La creación de Legado surge de una admiración personal y profunda por la humildad y generosidad de Fabriciano Gómez. El artista, que tuvo la oportunidad de conocerlo y de vivir el crecimiento de la Bienal de Escultura de Resistencia, sintió la necesidad de rendir homenaje a este referente chaqueño. El desafío artístico fue considerable: transmitir la esencia del personaje sin recurrir a la comunicación a través de la mirada, una característica fundamental en el trabajo del artista. La solución fue utilizar el gesto de los ojos cerrados para simbolizar la serenidad con la que el maestro comunicaba sus ideas.\n\nEsta pieza tiene un significado especialmente emotivo, ya que representa la conexión del artista con su propia historia y con el crecimiento de su ciudad. Desde niño, el artista recorrió las calles de Resistencia, contemplando las obras que despertaban su curiosidad y lo impulsaban a cuestionar cómo eran creadas. La Bienal, impulsada por Fabriciano, se convirtió en una fuente de respuestas, un espacio donde los escultores le permitieron entender el proceso creativo. A través de la meticulosa investigación del rostro y la técnica de acabado realista, la escultura busca que el público sienta la misma cercanía que el artista sintió con la figura de Fabriciano, un hombre cuyo legado escultórico y cultural está cimentado en el corazón de su querida ciudad.",
+    "price": "Consultar",
+    "materials": "Escultura en arcilla policromada (30 cm de alto)",
+    "technique": "Modelado y acabado realista",
+    "images": [
+      "Fotos/Fabriziano/20240626_125403.webp",
+      "Fotos/Fabriziano/portada.webp",
+      "Fotos/Fabriziano/20240626_123740.webp",
+      "Fotos/Fabriziano/20240626_125703.webp"
+    ]
+  },
+  "Manos": {
+    "title": "Manos: un estudio anatómico",
+    "featured": false,
+    "description": "Una exploración de la forma y la emoción humana, donde un simple gesto de la mano captura una historia de intención y deseo.",
+    "history": "Esta escultura nace de la convicción del artista de que el conocimiento anatómico es fundamental para una representación auténtica de la emoción humana. Para Santiago Guarnieri, la anatomía no es un fin en sí misma, sino una herramienta para comprender cómo cada músculo y cada gesto contribuyen a la narrativa de una pieza. En este sentido, Manos se concibe como una obra base, un ejercicio esencial que le permite al artista ahondar en la forma y en el movimiento para aplicarlo en futuros proyectos.\n\nEl proceso de creación fue meticuloso, aprovechando las propiedades de la arcilla para modelar las formas generales y luego tallar los detalles finos cuando el material alcanzaba el punto de humedad preciso. Este método permite que la obra transmita con fidelidad la tensión muscular y la lucha interior que motivó al artista. A través de esta pieza, el artista nos invita a reflexionar sobre cómo incluso los gestos más simples, los que hacemos a diario, son un reflejo de nuestra interacción con el entorno y de la carga emocional que llevamos dentro.",
+    "price": "Consultar",
+    "materials": "Escultura en arcilla (30 x 12 cm)",
+    "technique": "Modelado y tallado",
+    "images": [
+      "Fotos/Manos/portada.webp",
+      "Fotos/Manos/2.webp",
+      "Fotos/Manos/20250602_210045.webp",
+      "Fotos/Manos/20250602_211147.webp",
+      "Fotos/Manos/3.webp"
+    ]
+  },
+  "Mitad": {
+    "title": "Fragmentado: Meditación sobre la Resiliencia",
+    "description": "Una meditación sobre la resiliencia, donde las fracturas y cicatrices se convierten en parte de la historia, dando dignidad y fortaleza.",
+    "history": "La concepción de Fragmentado nace de una experiencia personal de adversidad. Lo que originalmente era un proyecto de estudio anatómico se vio dañado por un accidente, un suceso que, lejos de ser el final de la obra, se convirtió en su punto de inflexión. El artista, inspirado por la idea de que uno puede reconstruirse por completo después de una catástrofe y que las marcas de las heridas se convierten en parte de la historia personal, decidió darle un nuevo significado a la pieza.\n\nLa obra es una re-conceptualización de su ya profundo estudio anatómico. Sin embargo, la fractura de la escultura original le permitió explorar la antinomia humana desde una perspectiva más íntima y emocional. El artista utilizó la arcilla y la cerámica para crear un juego de texturas y acabados, donde el tallado meticuloso de los músculos y huesos contrasta con la fragilidad de las piezas rotas. La lágrima es el elemento clave que humaniza el proceso; simboliza el dolor necesario para aceptar la propia fragmentación. De esta forma, Fragmentado no solo es una obra sobre la reconstrucción, sino una reflexión sobre cómo las cicatrices nos forjan, nos dan historia y, en última instancia, nos hacen más fuertes.",
+    "price": "Consultar",
+    "materials": "Escultura en arcilla y cerámica policromada (15 cm de alto)",
+    "technique": "Modelado y tallado",
+    "images": [
+      "Fotos/Mitad/portada.webp",
+      "Fotos/Mitad/20240608_185959.webp",
+      "Fotos/Mitad/20240608_190551.webp",
+      "Fotos/Mitad/20240608_192322.webp"
+    ]
+  },
+  "Davincci": {
+    "title": "Leonardo: Intelecto y Templanza en Miniatura",
+    "description": "Un monumento al intelecto y la templanza de Leonardo da Vinci en un formato íntimo de solo 7 cm.",
+    "history": "En el corazón de esta pieza yace la admiración por la versatilidad incansable de Leonardo da Vinci. El artista se sintió impulsado a esculpir su figura no solo por su renombre, sino por su audaz curiosidad para explorar desde los hechos más simples de la naturaleza hasta las más complejas obras de arte. El desafío principal fue lograr la armonía en cada elemento del rostro, buscando que la suma de sus partes revelara una expresión de templanza y sabiduría, la misma que le permitió a da Vinci defender sus ideas e investigaciones contra las fuertes críticas de su época.\n\nLa técnica empleada es un viaje dual: un modelado inicial para definir los volúmenes generales, seguido de un meticuloso tallado en la arcilla que desvela los detalles más finos. Este proceso artesanal conecta al artista con el mismo espíritu de da Vinci, el de un creador que moldea y perfecciona su visión. Al optar por un formato pequeño, pensado para un escritorio o biblioteca, la escultura busca ser un recordatorio constante del legado de este genio. Es una obra netamente figurativa, despojada de simbolismos externos para concentrarse únicamente en la fuerza de los rasgos faciales, un recordatorio de que la verdadera influencia de un hombre puede residir en el poder de su intelecto y la profundidad de su mirada.",
+    "price": "Consultar",
+    "materials": "Escultura en arcilla (7 cm de alto)",
+    "technique": "Modelado y tallado",
+    "images": [
+      "Fotos/Davincci/portada.webp",
+      "Fotos/Davincci/20240511_224704.webp",
+      "Fotos/Davincci/20240511_224719.webp",
+      "Fotos/Davincci/20240511_224735.webp"
+    ]
+  },
+  "Zeus": {
+    "title": "Zeus",
+    "featured": false,
+    "description": "En proceso de documentación.",
+    "history": "Información próximamente.",
+    "price": "Consultar",
+    "materials": "Arcilla",
+    "technique": "Modelado",
+    "images": [
+      "Fotos/Zeus/1.webp",
+      "Fotos/Zeus/2.webp",
+      "Fotos/Zeus/3.webp",
+      "Fotos/Zeus/4.webp",
+      "Fotos/Zeus/5.webp",
+      "Fotos/Zeus/6.webp"
+    ]
+  },
+  "Veta-Ancestral": {
+    "title": "Veta Ancestral",
+    "featured": false,
+    "description": "En proceso de documentación.",
+    "history": "Información próximamente.",
+    "price": "Consultar",
+    "materials": "Arcilla",
+    "technique": "Modelado",
+    "images": ["Fotos/Veta-Ancestral/1.webp", "Fotos/Veta-Ancestral/2.webp"]
+  },
+  "Taigoye": {
+    "title": "Taigoye",
+    "featured": false,
+    "description": "En proceso de documentación.",
+    "history": "Información próximamente.",
+    "price": "Consultar",
+    "materials": "Arcilla",
+    "technique": "Modelado",
+    "images": ["Fotos/Taigoye/1.webp"]
+  },
+  "Sin-Nombre": {
+    "title": "Sin Título",
+    "featured": false,
+    "description": "En proceso de documentación.",
+    "history": "Información próximamente.",
+    "price": "Consultar",
+    "materials": "Arcilla",
+    "technique": "Modelado",
+    "images": ["Fotos/Sin-Nombre/1.webp"]
+  }
 }

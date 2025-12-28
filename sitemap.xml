@@ -1,12 +1,353 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<url>
-  <loc>https://santiagoguarnieri.com/</loc>
-  <lastmod>2025-11-22T20:28:00+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://santiagoguarnieri.com/</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Freya/portada.webp</image:loc>
+      <image:title>Freya: Belleza, Magia y Poder Guerrero</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Freya/20240913_222418.webp</image:loc>
+      <image:title>Freya: Belleza, Magia y Poder Guerrero</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Freya/20240913_223002.webp</image:loc>
+      <image:title>Freya: Belleza, Magia y Poder Guerrero</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Freya/20240913_223304.webp</image:loc>
+      <image:title>Freya: Belleza, Magia y Poder Guerrero</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Freya/20240913_223855.webp</image:loc>
+      <image:title>Freya: Belleza, Magia y Poder Guerrero</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Freya/20240913_224259.webp</image:loc>
+      <image:title>Freya: Belleza, Magia y Poder Guerrero</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Matero/portada.webp</image:loc>
+      <image:title>Alma y Mate: Tradición e Introspección Gaucha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Matero/1.webp</image:loc>
+      <image:title>Alma y Mate: Tradición e Introspección Gaucha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Matero/20240511_225300.webp</image:loc>
+      <image:title>Alma y Mate: Tradición e Introspección Gaucha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Matero/20240511_225318.webp</image:loc>
+      <image:title>Alma y Mate: Tradición e Introspección Gaucha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Matero/20240513_212612.webp</image:loc>
+      <image:title>Alma y Mate: Tradición e Introspección Gaucha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Escultura-de-San-Martin/portada.webp</image:loc>
+      <image:title>Busto del General San Martín: Legado de Firmeza y Determinación</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Escultura-de-San-Martin/20240805_212144.webp</image:loc>
+      <image:title>Busto del General San Martín: Legado de Firmeza y Determinación</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Escultura-de-San-Martin/20240805_212419.webp</image:loc>
+      <image:title>Busto del General San Martín: Legado de Firmeza y Determinación</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Escultura-de-San-Martin/20240805_212528.webp</image:loc>
+      <image:title>Busto del General San Martín: Legado de Firmeza y Determinación</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Escultura-de-San-Martin/20240805_212614.webp</image:loc>
+      <image:title>Busto del General San Martín: Legado de Firmeza y Determinación</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Escultura-de-San-Martin/20240805_212634.webp</image:loc>
+      <image:title>Busto del General San Martín: Legado de Firmeza y Determinación</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Escultura-de-San-Martin/20240805_212712.webp</image:loc>
+      <image:title>Busto del General San Martín: Legado de Firmeza y Determinación</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Tamborcito-de-Tacuari/portada.webp</image:loc>
+      <image:title>El Eco de la Infancia: Homenaje a Pedro Ríos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Tamborcito-de-Tacuari/20241001_201930.webp</image:loc>
+      <image:title>El Eco de la Infancia: Homenaje a Pedro Ríos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Tamborcito-de-Tacuari/20241001_201952.webp</image:loc>
+      <image:title>El Eco de la Infancia: Homenaje a Pedro Ríos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Tamborcito-de-Tacuari/20241001_202430.webp</image:loc>
+      <image:title>El Eco de la Infancia: Homenaje a Pedro Ríos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Tamborcito-de-Tacuari/20241001_202458.webp</image:loc>
+      <image:title>El Eco de la Infancia: Homenaje a Pedro Ríos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Napalpi/portada.webp</image:loc>
+      <image:title>Napalpí: Un Homenaje a la Resistencia Chaqueña</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Napalpi/20240513_200225.webp</image:loc>
+      <image:title>Napalpí: Un Homenaje a la Resistencia Chaqueña</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Napalpi/20240513_200243.webp</image:loc>
+      <image:title>Napalpí: Un Homenaje a la Resistencia Chaqueña</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Napalpi/20240513_204832.webp</image:loc>
+      <image:title>Napalpí: Un Homenaje a la Resistencia Chaqueña</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Napalpi/20240513_205153.webp</image:loc>
+      <image:title>Napalpí: Un Homenaje a la Resistencia Chaqueña</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Napalpi/20240608_202652.webp</image:loc>
+      <image:title>Napalpí: Un Homenaje a la Resistencia Chaqueña</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/San-Fernando-Rey/portada.webp</image:loc>
+      <image:title>San Fernando Rey: Un Rostro ante el Infinito</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/San-Fernando-Rey/1.webp</image:loc>
+      <image:title>San Fernando Rey: Un Rostro ante el Infinito</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/San-Fernando-Rey/20240826_195300.webp</image:loc>
+      <image:title>San Fernando Rey: Un Rostro ante el Infinito</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/San-Fernando-Rey/20240826_195407.webp</image:loc>
+      <image:title>San Fernando Rey: Un Rostro ante el Infinito</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/San-Fernando-Rey/20240826_195649.webp</image:loc>
+      <image:title>San Fernando Rey: Un Rostro ante el Infinito</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/San-Fernando-Rey/20240826_200819.webp</image:loc>
+      <image:title>San Fernando Rey: Un Rostro ante el Infinito</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/San-Fernando-Rey/20240826_202856.webp</image:loc>
+      <image:title>San Fernando Rey: Un Rostro ante el Infinito</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/San-Fernando-Rey/20240826_203104.webp</image:loc>
+      <image:title>San Fernando Rey: Un Rostro ante el Infinito</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Introspeccion/portada.webp</image:loc>
+      <image:title>Introspección: Un Estudio del Silencio Interior</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Introspeccion/11.webp</image:loc>
+      <image:title>Introspección: Un Estudio del Silencio Interior</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Introspeccion/20240913_220530.webp</image:loc>
+      <image:title>Introspección: Un Estudio del Silencio Interior</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Introspeccion/20240913_220639.webp</image:loc>
+      <image:title>Introspección: Un Estudio del Silencio Interior</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Introspeccion/20240913_220840.webp</image:loc>
+      <image:title>Introspección: Un Estudio del Silencio Interior</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Plumitas/portada.webp</image:loc>
+      <image:title>Félix: Serenidad y Convicción Qom</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Plumitas/20240513_194753.webp</image:loc>
+      <image:title>Félix: Serenidad y Convicción Qom</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Plumitas/20240513_195012.webp</image:loc>
+      <image:title>Félix: Serenidad y Convicción Qom</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Plumitas/20240513_195422.webp</image:loc>
+      <image:title>Félix: Serenidad y Convicción Qom</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/sombrerito/portada.webp</image:loc>
+      <image:title>Esperanza: El Rostro del Esfuerzo y la Honestidad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/sombrerito/20240511_214659.webp</image:loc>
+      <image:title>Esperanza: El Rostro del Esfuerzo y la Honestidad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/sombrerito/20240511_220118.webp</image:loc>
+      <image:title>Esperanza: El Rostro del Esfuerzo y la Honestidad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/sombrerito/20240511_220738.webp</image:loc>
+      <image:title>Esperanza: El Rostro del Esfuerzo y la Honestidad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/sombrerito/20240513_220234.webp</image:loc>
+      <image:title>Esperanza: El Rostro del Esfuerzo y la Honestidad</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Cicatrices-del-Alma/portada.webp</image:loc>
+      <image:title>Cicatrices del Alma: Un Viaje de Resiliencia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Cicatrices-del-Alma/20240608_211255.webp</image:loc>
+      <image:title>Cicatrices del Alma: Un Viaje de Resiliencia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Busto-de-San-Martin/portada.webp</image:loc>
+      <image:title>El Rostro de la Historia: Un Homenaje a San Martín</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Busto-de-San-Martin/2.webp</image:loc>
+      <image:title>El Rostro de la Historia: Un Homenaje a San Martín</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Busto-de-San-Martin/20250817_131528.webp</image:loc>
+      <image:title>El Rostro de la Historia: Un Homenaje a San Martín</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Busto-de-San-Martin/4.webp</image:loc>
+      <image:title>El Rostro de la Historia: Un Homenaje a San Martín</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Tiro-al-Blanco/portada.webp</image:loc>
+      <image:title>Libre: La Furia y la Nobleza del Caballo Chaqueño</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Tiro-al-Blanco/20240913_225000.webp</image:loc>
+      <image:title>Libre: La Furia y la Nobleza del Caballo Chaqueño</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Fabriziano/20240626_125403.webp</image:loc>
+      <image:title>Legado: Retrato de Serenidad y Paz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Fabriziano/portada.webp</image:loc>
+      <image:title>Legado: Retrato de Serenidad y Paz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Fabriziano/20240626_123740.webp</image:loc>
+      <image:title>Legado: Retrato de Serenidad y Paz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Fabriziano/20240626_125703.webp</image:loc>
+      <image:title>Legado: Retrato de Serenidad y Paz</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Manos/portada.webp</image:loc>
+      <image:title>Manos: un estudio anatómico</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Manos/2.webp</image:loc>
+      <image:title>Manos: un estudio anatómico</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Manos/20250602_210045.webp</image:loc>
+      <image:title>Manos: un estudio anatómico</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Manos/20250602_211147.webp</image:loc>
+      <image:title>Manos: un estudio anatómico</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Manos/3.webp</image:loc>
+      <image:title>Manos: un estudio anatómico</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Mitad/portada.webp</image:loc>
+      <image:title>Fragmentado: Meditación sobre la Resiliencia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Mitad/20240608_185959.webp</image:loc>
+      <image:title>Fragmentado: Meditación sobre la Resiliencia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Mitad/20240608_190551.webp</image:loc>
+      <image:title>Fragmentado: Meditación sobre la Resiliencia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Mitad/20240608_192322.webp</image:loc>
+      <image:title>Fragmentado: Meditación sobre la Resiliencia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Davincci/portada.webp</image:loc>
+      <image:title>Leonardo: Intelecto y Templanza en Miniatura</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Davincci/20240511_224704.webp</image:loc>
+      <image:title>Leonardo: Intelecto y Templanza en Miniatura</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Davincci/20240511_224719.webp</image:loc>
+      <image:title>Leonardo: Intelecto y Templanza en Miniatura</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Davincci/20240511_224735.webp</image:loc>
+      <image:title>Leonardo: Intelecto y Templanza en Miniatura</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Zeus/1.webp</image:loc>
+      <image:title>Zeus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Zeus/2.webp</image:loc>
+      <image:title>Zeus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Zeus/3.webp</image:loc>
+      <image:title>Zeus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Zeus/4.webp</image:loc>
+      <image:title>Zeus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Zeus/5.webp</image:loc>
+      <image:title>Zeus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Zeus/6.webp</image:loc>
+      <image:title>Zeus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Veta-Ancestral/1.webp</image:loc>
+      <image:title>Veta Ancestral</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Veta-Ancestral/2.webp</image:loc>
+      <image:title>Veta Ancestral</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Taigoye/1.webp</image:loc>
+      <image:title>Taigoye</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiagoguarnieri.com/Fotos/Sin-Nombre/1.webp</image:loc>
+      <image:title>Sin Título</image:title>
+    </image:image>
+  </url>
 </urlset>
